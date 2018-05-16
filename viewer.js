@@ -3,8 +3,14 @@ var focus = {
   y: 50,
   detail: 4,
   zoom: 50,
-  fps: 15
+  fps: 15,
+  tilt: 30
 }
+
+var updateTilt = () => {
+  tiltMatrix.d = Math.cos((focus.tilt) * Math.PI / 180)
+}
+var tiltMatrix = new Snap.Matrix()
 
 var galaxy
 
@@ -73,6 +79,7 @@ var spin = (radius, speed, offset) => {
 
 var position = objectId => {
 
+  var yScale = tiltMatrix.d
   var dLocation = spaceObject => {
     if (typeof (spaceObject) == "undefined") {
       return {
@@ -106,7 +113,13 @@ var position = objectId => {
         }
     }
   }
-  return dLocation(galaxy.map.get(objectId))
+
+  const trueLocation = dLocation(galaxy.map.get(objectId))
+
+  return {
+    x: trueLocation.x,
+    y: trueLocation.y * yScale
+  }
 }
 
 var hashCode = function (string) {
@@ -197,7 +210,8 @@ var drawElement = (svgGroup, data) => {
       c = svgGroup.circle(0, 0, childRadius(data) / (diminishingScale * diminishingScale)).attr({
         fill: "none",
         stroke: "grey",
-        "stroke-width": scale * 0.01
+        "stroke-width": scale * 0.01,
+        transform: tiltMatrix
       })
       break;
     default:
@@ -260,7 +274,7 @@ var chartSvg = function () {
   const viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
   const viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
   const left = galaxyWidth * focus.x / 100 - viewWidth / 2
-  const top = galaxyWidth * (focus.y / 100) - viewHeight / 2
+  const top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
 
   svg.clear()
   svg.attr({
@@ -314,16 +328,17 @@ var svg
 var baseTime = (new Date()).getTime()
 var lastUpdate = null
 var redraw = (timeStamp) => {
-  if(timeStamp - lastUpdate > (1000/ focus.fps)){
-  lastUpdate = timeStamp
-  time = (baseTime + timeStamp) / 1000
-  chartSvg()
-  /*svgPanZoom('#chart', {
-    zoomEnabled: true,
-    controlIconsEnabled: true,
-    fit: true,
-    center: true,
-  })*/
+  if (timeStamp - lastUpdate > (1000 / focus.fps)) {
+    updateTilt()
+    lastUpdate = timeStamp
+    time = (baseTime + timeStamp) / 1000
+    chartSvg()
+    /*svgPanZoom('#chart', {
+      zoomEnabled: true,
+      controlIconsEnabled: true,
+      fit: true,
+      center: true,
+    })*/
   }
   window.requestAnimationFrame(redraw)
 }
