@@ -55,7 +55,8 @@ var createGalaxy = function (objectLookup) {
           childId: i
         }, objectLookup.get(o.children[i]), {}))
         map.set(o.children[i], Object.assign({
-          childId: i
+          childId: i,
+          hash: hashCode(o.children[i])
         }, objectLookup.get(o.children[i]), {}))
         o.children[i] = replacement
       }
@@ -88,7 +89,7 @@ var position = objectId => {
       }
     }
     // Need just x, y
-    var hash = hashCode(spaceObject.id)
+    var hash = spaceObject.hash
     switch (spaceObject.type) {
 
       case "asteroidBelt":
@@ -131,7 +132,7 @@ var hashCode = function (string) {
     hash = ((hash << 5) - hash) + chr;
     hash |= 0;
   }
-  return hash;
+  return Math.abs(hash); // abs, so it plays well with modulo
 }
 
 var makeChild = (parentSVG, childId, level, callback) => {
@@ -181,13 +182,15 @@ var drawElement = (svgGroup, data) => {
       })
       break;
     case "system":
+    var bv = (5.2)*((data.hash % 123)/123) - 0.5
+      var finalColour =  bv_to_rgb(bv)
       c = svgGroup.circle(0, 0, scale * 0.2).attr({
-        fill: "red"
+        fill: finalColour //svg.gradient(`r(0.5, 0.5, 0.5)#fff-#${finalColour}`)
       })
       break;
     case "planet":
       c = svgGroup.circle(0, 0, scale * 0.2).attr({
-        fill: "lightblue"
+        fill: "green"
       })
       break;
     case "moon":
@@ -264,7 +267,6 @@ var attributes = a => {
   }
   return s
 }
-
 
 var chartSvg = function () {
 
