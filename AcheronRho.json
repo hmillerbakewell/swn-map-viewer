@@ -1,0 +1,3112 @@
+{
+  "asteroidBase": {
+    "7aFUTaCg9Nvrndz8YADl": {
+      "attributes": {
+        "occupation": "prospectors",
+        "situation": "fighting"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tarma 1",
+      "parent": "WR6XoNM3F6nJS7P836YI",
+      "parentEntity": "asteroidBelt"
+    },
+    "9hVDGq2sBOwK21LjSHdR": {
+      "attributes": {
+        "occupation": "rebels",
+        "situation": "asteroid"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bremerhaven",
+      "parent": "WR6XoNM3F6nJS7P836YI",
+      "parentEntity": "asteroidBelt"
+    },
+    "Akk7fGDqdDtCXjsVjHNE": {
+      "attributes": {
+        "occupation": "pirates",
+        "situation": "asteroid"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Schiaparelli 5",
+      "parent": "WP8aSrzwtERF4GRytWrw",
+      "parentEntity": "asteroidBelt"
+    },
+    "CCSmt6vHQjMpc2AKqGIV": {
+      "attributes": {
+        "occupation": "sectarians",
+        "situation": "priceless"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Emma Dean 1",
+      "parent": "7ISqVwM4uaivTuwURnYp",
+      "parentEntity": "asteroidBelt"
+    },
+    "jNh4VvziJtftfHsEI2X8": {
+      "attributes": {
+        "occupation": "rebels",
+        "situation": "life"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tomari 3",
+      "parent": "gR4o8KFjnm9W8E0hKTIe",
+      "parentEntity": "asteroidBelt"
+    },
+    "nEO2ewCzypS24bMpeyGs": {
+      "attributes": {
+        "occupation": "sectarians",
+        "situation": "life"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Llanesco 4",
+      "parent": "7ISqVwM4uaivTuwURnYp",
+      "parentEntity": "asteroidBelt"
+    },
+    "yuAHks9eBHm629hXo5oN": {
+      "attributes": {
+        "occupation": "miners",
+        "situation": "priceless"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Crewe 6",
+      "parent": "Ag4NSiiYLrzSWYC8bA38",
+      "parentEntity": "asteroidBelt"
+    }
+  },
+  "asteroidBelt": {
+    "7ISqVwM4uaivTuwURnYp": {
+      "attributes": {
+        "occupation": "base",
+        "situation": "spy"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(917)  Arago",
+      "parent": "XMsrBhMwzCCcOOzlDyPm",
+      "parentEntity": "system"
+    },
+    "Ag4NSiiYLrzSWYC8bA38": {
+      "attributes": {
+        "occupation": "patrol",
+        "situation": "war"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(6752)  Loto",
+      "parent": "18QHcUvaDSqnkQRTpfgO",
+      "parentEntity": "system"
+    },
+    "TBruWlDqPmm0taL5IB4s": {
+      "attributes": {
+        "occupation": "pirates",
+        "situation": "minerals"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(192)  Canillo",
+      "parent": "0tQrU5wsgAjV3B2OGt19",
+      "parentEntity": "system"
+    },
+    "THKdoHCUwNQd34qTIhnR": {
+      "attributes": {
+        "occupation": "patrol",
+        "situation": "ruins"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(019)  Souris",
+      "parent": "CFzS9dZFuYgTLEoDsFJ9",
+      "parentEntity": "system"
+    },
+    "WP8aSrzwtERF4GRytWrw": {
+      "attributes": {
+        "occupation": "base",
+        "situation": "ruins"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "29 Copernicus",
+      "parent": "tUsEd0NFnucDbjXeAzy1",
+      "parentEntity": "system"
+    },
+    "WR6XoNM3F6nJS7P836YI": {
+      "attributes": {
+        "occupation": "patrol",
+        "situation": "war"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(81282)  Oodnadatta",
+      "parent": "0RkIcV3x9D1uqhDAtUJa",
+      "parentEntity": "system"
+    },
+    "Y5v0G7iPOzPT16Lwp9mK": {
+      "attributes": {
+        "occupation": "base",
+        "situation": "rock"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(567)  Azul",
+      "parent": "FAmOYSoqxvpcRK2SGGsy",
+      "parentEntity": "system"
+    },
+    "gR4o8KFjnm9W8E0hKTIe": {
+      "attributes": {
+        "occupation": "patrol",
+        "situation": "rock"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(2173)  Sian",
+      "parent": "oRJ8IAWbsMTWLJ5ZmibD",
+      "parentEntity": "system"
+    },
+    "mTBNx5zcZaHSFhP26PIW": {
+      "attributes": {
+        "occupation": "base",
+        "situation": "spy"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(63)  Moreux",
+      "parent": "AtaF1mHfsKMHQOYxIoLQ",
+      "parentEntity": "system"
+    },
+    "mbxmsTfCXVXGpR2gbeFd": {
+      "attributes": {
+        "occupation": "patrol",
+        "situation": "rock"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "3 Dessau",
+      "parent": "wGQgS070spCMKZqyqCln",
+      "parentEntity": "system"
+    },
+    "pd9ga8suWTe14Vq3IRPR": {
+      "attributes": {
+        "occupation": "pirates",
+        "situation": "war"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "(304)  Udzha",
+      "parent": "AtaF1mHfsKMHQOYxIoLQ",
+      "parentEntity": "system"
+    }
+  },
+  "blackHole": {
+    "VWIoOT4kIGxr9E82nn95": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "NG03-7",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 6,
+      "y": 4
+    },
+    "cabc9PF8xPrQea5ZdUdl": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Sl 8615",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 1,
+      "y": 3
+    },
+    "djxXVLNJWosDOXmuC9le": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "SQA 067-98",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 10,
+      "y": 11
+    }
+  },
+  "deepSpaceStation": {
+    "8tQoNJVxAcfOPAbo6ADn": {
+      "attributes": {
+        "occupation": "observers",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tak 3",
+      "parent": "tUsEd0NFnucDbjXeAzy1",
+      "parentEntity": "system"
+    },
+    "JP2g9OafkFNpvRGqX0Qy": {
+      "attributes": {
+        "occupation": "corpses",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Warra 5",
+      "parent": "CFzS9dZFuYgTLEoDsFJ9",
+      "parentEntity": "system"
+    },
+    "Smd40g0W8UyWc0grsm0P": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ostrov 3",
+      "parent": "CFzS9dZFuYgTLEoDsFJ9",
+      "parentEntity": "system"
+    },
+    "W7zKiDI4nDpuhIVFd0lf": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Yaren 9",
+      "parent": "oQTYsEwIz8sd6sxPuqwt",
+      "parentEntity": "system"
+    },
+    "WKi3nBaWQVfhapcSGhDp": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "systems"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ajon 1",
+      "parent": "DYj5urRgXV2QBFC66oYo",
+      "parentEntity": "system"
+    },
+    "XKqbhQthoq3JV9xaXAE5": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bombala 5",
+      "parent": "18QHcUvaDSqnkQRTpfgO",
+      "parentEntity": "system"
+    },
+    "Y0Y5ln8oU1AYvRavUca8": {
+      "attributes": {
+        "description": "Home to the Guild, Posthuman weirdo infomorphs.\n\nDO NOT GO HERE.",
+        "occupation": "odd",
+        "situation": "pretech",
+        "tags": []
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "The Guild Dyson Sphere",
+      "parent": "s7C3hfSEw97m4nwUq2RR",
+      "parentEntity": "system"
+    },
+    "bvPn7QQznVGdcxvJw7Ju": {
+      "attributes": {
+        "occupation": "corpses",
+        "situation": "systems"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Gokwe 1",
+      "parent": "6CmnZZLixUZuVQFyDOqi",
+      "parentEntity": "system"
+    },
+    "gZ2KEwctTKEWy3CGrcI1": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "sabotage"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Platte",
+      "parent": "AtaF1mHfsKMHQOYxIoLQ",
+      "parentEntity": "system"
+    },
+    "iSnSvfryfTL1hlZL9ag9": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "pirates",
+        "tags": []
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Lodestone",
+      "parent": "yURVCpYkVzXntoFpc1xL",
+      "parentEntity": "system"
+    },
+    "jU4NAdGM1BKBsUUleYO7": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Du Toit 1",
+      "parent": "lD2bvEp0gXpSjEtReYYj",
+      "parentEntity": "system"
+    },
+    "yGKQ5fyO4I5t8640TAPq": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Banff 9",
+      "parent": "0FBEZTaTO50ZvvSFoMAw",
+      "parentEntity": "system"
+    },
+    "yWGZBk5zWp780db7tE49": {
+      "attributes": {
+        "occupation": "corpses",
+        "situation": "sabotage"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Kingston 8",
+      "parent": "VWIoOT4kIGxr9E82nn95",
+      "parentEntity": "blackHole"
+    }
+  },
+  "gasGiantMine": {
+    "1sWuI8cWLZTFAX8KLLmk": {
+      "attributes": {
+        "occupation": "group",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Goba Project",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "4Nfy0RNgD1YcWAvDCqfO": {
+      "attributes": {
+        "occupation": "robots",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Li Fan Project",
+      "parent": "OugImbBA3cOQ5W6xopHQ",
+      "parentEntity": "planet"
+    },
+    "AqDhICMtBHk5nT8STM5S": {
+      "attributes": {
+        "occupation": "serfs",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Meget",
+      "parent": "OugImbBA3cOQ5W6xopHQ",
+      "parentEntity": "planet"
+    },
+    "JQUjL5v8gcHNR2nmAg2i": {
+      "attributes": {
+        "occupation": "robots",
+        "situation": "supplies"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Cobalt Mine",
+      "parent": "AcsNKrlbCBQxQfhaakjK",
+      "parentEntity": "planet"
+    },
+    "K04puacr1WdwONBxGphp": {
+      "attributes": {
+        "occupation": "serfs",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Airy Mine",
+      "parent": "JjJu94D3yXWvO2IShYDU",
+      "parentEntity": "planet"
+    },
+    "LYwf3luAX7ED7SCEvPuj": {
+      "attributes": {
+        "occupation": "robots",
+        "situation": "things"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bland Project",
+      "parent": "gFkCjIxJA3Qo43AEVUES",
+      "parentEntity": "planet"
+    },
+    "QOwxsr8wA8q6AEJm8ymY": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "things"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Lamas Mine Project",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "SMHJ5pfcbMdY27ylliQr": {
+      "attributes": {
+        "occupation": "group",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Korph Project",
+      "parent": "yYCoIVp6wpA6Hm72mNkq",
+      "parentEntity": "planet"
+    },
+    "U6jbddQq8uLvQMTyiDSv": {
+      "attributes": {
+        "occupation": "mine",
+        "situation": "things"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Newport Mine",
+      "parent": "q7H0Ee4FFFjcMMytzKXN",
+      "parentEntity": "planet"
+    },
+    "Vde5TaIYsDzHeFObcVAP": {
+      "attributes": {
+        "occupation": "robots",
+        "situation": "remnants"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Foros",
+      "parent": "AcsNKrlbCBQxQfhaakjK",
+      "parentEntity": "planet"
+    },
+    "XhJWcxpSTaQI2npfxyBs": {
+      "attributes": {
+        "occupation": "serfs",
+        "situation": "supplies"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Johnstown Mine Project",
+      "parent": "MWoDNb7qEAWBmZ5Lj7CF",
+      "parentEntity": "planet"
+    },
+    "enXO41ptPvosEERuiXwC": {
+      "attributes": {
+        "occupation": "serfs",
+        "situation": "things"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Arago Project",
+      "parent": "q7H0Ee4FFFjcMMytzKXN",
+      "parentEntity": "planet"
+    },
+    "imkZoMCReI3SSV1sFJoD": {
+      "attributes": {
+        "occupation": "serfs",
+        "situation": "revolt"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Thom Mine Project",
+      "parent": "yYCoIVp6wpA6Hm72mNkq",
+      "parentEntity": "planet"
+    },
+    "jBXAz8joTDPJBIU9noNr": {
+      "attributes": {
+        "occupation": "mine",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Crater Project",
+      "parent": "vC3YqfrNA7QovEZuA56m",
+      "parentEntity": "planet"
+    },
+    "jNolTDPoV0Ge0kpGniS5": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "things"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Porvoo Mine Project",
+      "parent": "QBJmBhyH6enA7vQoJ6Vk",
+      "parentEntity": "planet"
+    },
+    "lbTa3Bo9Z3SFoqw4Ed9Q": {
+      "attributes": {
+        "occupation": "mine",
+        "situation": "things"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Copernicus Mine Project",
+      "parent": "BBS4toeUIqJUg6Ydp3fK",
+      "parentEntity": "planet"
+    },
+    "nguOuOAuRckQwvdKx7VQ": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "supplies"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Masursky Mine Project",
+      "parent": "DGjqPWz0S1wAfmQ32iHq",
+      "parentEntity": "planet"
+    },
+    "ttlUCDhkYXtiPbcbe8y2": {
+      "attributes": {
+        "occupation": "mine",
+        "situation": "things"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Herculaneum Mine Project",
+      "parent": "q7H0Ee4FFFjcMMytzKXN",
+      "parentEntity": "planet"
+    },
+    "vTbTp4DEUwPhXpAoSHXt": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "remnants"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Wahoo Mine Project",
+      "parent": "vC3YqfrNA7QovEZuA56m",
+      "parentEntity": "planet"
+    },
+    "w3QXZNTa94OKhbLfmpGO": {
+      "attributes": {
+        "occupation": "serfs",
+        "situation": "supplies"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Manzi Mine Project",
+      "parent": "Jvtl9q4MdZWW6aA8dzlS",
+      "parentEntity": "planet"
+    },
+    "w8r6FJaPNNUHzIvDTNGD": {
+      "attributes": {
+        "occupation": "mine",
+        "situation": "revolt"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Farim Project",
+      "parent": "KTclMLeSe3PNBNeRVmsk",
+      "parentEntity": "planet"
+    }
+  },
+  "moon": {
+    "0I8F04kWtSRmdHgQzdul": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tsyomatsa",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "2fcnawB1Vp1IL2bRo3x5": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Shri Vashne",
+      "parent": "qzmdG2E0O8NWJSNJQcys",
+      "parentEntity": "planet"
+    },
+    "2nt3gtIHvm3O7XzzKYdR": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tisoan",
+      "parent": "BBS4toeUIqJUg6Ydp3fK",
+      "parentEntity": "planet"
+    },
+    "5XuChygBiAAnPzcOZbWq": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Meleia",
+      "parent": "OugImbBA3cOQ5W6xopHQ",
+      "parentEntity": "planet"
+    },
+    "6mXy0hQz1qFUL9qaL6R5": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Aganame",
+      "parent": "E4NYcLuLcqoetn98poLX",
+      "parentEntity": "planet"
+    },
+    "7xoIUNtkVrQkYKj9q3uz": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Syeh",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "AV3wwl6WPxPhtqXWUCyP": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Risti Sumalin",
+      "parent": "vC3YqfrNA7QovEZuA56m",
+      "parentEntity": "planet"
+    },
+    "C5A0tSx2H6y98hi5Ynj4": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Nassan",
+      "parent": "OugImbBA3cOQ5W6xopHQ",
+      "parentEntity": "planet"
+    },
+    "IpKMLXMv8o13DPJE8RxQ": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Via",
+      "parent": "q7H0Ee4FFFjcMMytzKXN",
+      "parentEntity": "planet"
+    },
+    "JQ5mfzlqJVIlyU9A16XZ": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Thale",
+      "parent": "BBS4toeUIqJUg6Ydp3fK",
+      "parentEntity": "planet"
+    },
+    "PiLobrQeWEYliInzAb89": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Iara",
+      "parent": "Jvtl9q4MdZWW6aA8dzlS",
+      "parentEntity": "planet"
+    },
+    "RChqU6EJRVMEM52hZPu3": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Euryale",
+      "parent": "C1WaEUhadBfTFNzD9hAA",
+      "parentEntity": "planet"
+    },
+    "SVEKVK9a7J0p7BUEIEMl": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Leo",
+      "parent": "Jvtl9q4MdZWW6aA8dzlS",
+      "parentEntity": "planet"
+    },
+    "Smw8UfWa0BmljNn3QaoE": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Thurid VII",
+      "parent": "RHoNgOsE1IAzTBmzjt33",
+      "parentEntity": "planet"
+    },
+    "TkN0fx2Hmr90sdgkV2H4": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Aleda",
+      "parent": "ipWRNUOpYdoztGQZy3Cx",
+      "parentEntity": "planet"
+    },
+    "WqLfd6IRCpad9OQnke8Q": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Throphe",
+      "parent": "mijPWehM2w27ZeHJLz2A",
+      "parentEntity": "planet"
+    },
+    "XcvXKIjtg0d6wufj3K4h": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Vailami",
+      "parent": "mijPWehM2w27ZeHJLz2A",
+      "parentEntity": "planet"
+    },
+    "Y7V0lnxcs4yrFp03xZf8": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Nasin",
+      "parent": "yYCoIVp6wpA6Hm72mNkq",
+      "parentEntity": "planet"
+    },
+    "Z99Ueab4tKcEEQcQ4Fd6": {
+      "attributes": {
+        "description": "A \"Harvest Moon\" with farms, mines, and other supporting industries. A serfdom with multiple noble houses in place.\n\nSomething of a backwater for the Empire, mostly exports material as part of a trade deal with Echo."
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Mumeri",
+      "parent": "E4NYcLuLcqoetn98poLX",
+      "parentEntity": "planet"
+    },
+    "ZkvEKKww4Vi3rhk28U0R": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Pharos",
+      "parent": "3q2WVRDFEKkfeRPNQwzf",
+      "parentEntity": "planet"
+    },
+    "aNqIaFLlsoIUezBuhHX3": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Astyocl XXII",
+      "parent": "yYCoIVp6wpA6Hm72mNkq",
+      "parentEntity": "planet"
+    },
+    "bhShEkn0ChOKjCW9ABrU": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Thorunn",
+      "parent": "C1WaEUhadBfTFNzD9hAA",
+      "parentEntity": "planet"
+    },
+    "c8unXXYj5YpBF2hosDzm": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Staconago",
+      "parent": "BBS4toeUIqJUg6Ydp3fK",
+      "parentEntity": "planet"
+    },
+    "e9Hiveh9w7lNLWSQfREs": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Mavlakis",
+      "parent": "yYCoIVp6wpA6Hm72mNkq",
+      "parentEntity": "planet"
+    },
+    "enX5s3ihcPWrnHqESDO7": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Clytine",
+      "parent": "vC3YqfrNA7QovEZuA56m",
+      "parentEntity": "planet"
+    },
+    "jXXFIXHQE1z7ob6vfbO6": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Harvaraio",
+      "parent": "Jvtl9q4MdZWW6aA8dzlS",
+      "parentEntity": "planet"
+    },
+    "l1vVfyH4mGV1W1JOjoQ6": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "key": "l1vVfyH4mGV1W1JOjoQ6",
+      "name": "Bai",
+      "parent": "DGjqPWz0S1wAfmQ32iHq",
+      "parentEntity": "planet"
+    },
+    "l7fVG3Oklkq2bTIo1C0Y": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Phio",
+      "parent": "AcsNKrlbCBQxQfhaakjK",
+      "parentEntity": "planet"
+    },
+    "n7BIthqnwmRvkO6BW98t": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Velidorda",
+      "parent": "Ufn2TJ2jFuoCQ1loqlCt",
+      "parentEntity": "planet"
+    },
+    "oOhRBWN5n8uHFhqZuyZT": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Saliyya",
+      "parent": "C1WaEUhadBfTFNzD9hAA",
+      "parentEntity": "planet"
+    },
+    "ogQnIm9XSxN9mPJ6W17G": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Creus XXIII",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "t740IT4EWz9H4V0iEIHR": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Khal",
+      "parent": "mijPWehM2w27ZeHJLz2A",
+      "parentEntity": "planet"
+    },
+    "vWbKtq9EzIGJHhhp3NS7": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bizes",
+      "parent": "E4NYcLuLcqoetn98poLX",
+      "parentEntity": "planet"
+    },
+    "voNS0FMWwaiO0pKVdIFR": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Saritri Pala",
+      "parent": "BBS4toeUIqJUg6Ydp3fK",
+      "parentEntity": "planet"
+    },
+    "wdAfJW9WLcLP4mVvVfLq": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "key": "wdAfJW9WLcLP4mVvVfLq",
+      "name": "Mardis",
+      "parent": "qzmdG2E0O8NWJSNJQcys",
+      "parentEntity": "planet"
+    },
+    "ygiOQPEPxKAaU9rcAYIX": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ecou",
+      "parent": "Ufn2TJ2jFuoCQ1loqlCt",
+      "parentEntity": "planet"
+    },
+    "zLr5ewNJASdPnPoQNuQ0": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Hallfdi",
+      "parent": "EcexU5nJSjfnzSuOxMnH",
+      "parentEntity": "planet"
+    }
+  },
+  "moonBase": {
+    "86YV4mEoJeux4z7EZuWg": {
+      "attributes": {
+        "occupation": "colony",
+        "situation": "dark"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Libertad 2",
+      "parent": "PiLobrQeWEYliInzAb89",
+      "parentEntity": "moon"
+    },
+    "KmE70ybXnptbwcZLgNFK": {
+      "attributes": {
+        "occupation": "colony",
+        "situation": "supplies"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tem 1",
+      "parent": "jXXFIXHQE1z7ob6vfbO6",
+      "parentEntity": "moon"
+    },
+    "TtIT56kHdGgugUvqFACG": {
+      "attributes": {
+        "occupation": "miners",
+        "situation": "dark"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Trouvelot 9",
+      "parent": "TkN0fx2Hmr90sdgkV2H4",
+      "parentEntity": "moon"
+    },
+    "llO5mcB8FFEADsyDXSaX": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "supplies"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tignish 7",
+      "parent": "vWbKtq9EzIGJHhhp3NS7",
+      "parentEntity": "moon"
+    },
+    "lvCYbRlxSBRPJNRtSNJb": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "criminals"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Talsi 8",
+      "parent": "7xoIUNtkVrQkYKj9q3uz",
+      "parentEntity": "moon"
+    },
+    "swxOhCE5GLzCFbAAY07m": {
+      "attributes": {
+        "occupation": "miners",
+        "situation": "rich"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Zaranj 5",
+      "parent": "bhShEkn0ChOKjCW9ABrU",
+      "parentEntity": "moon"
+    },
+    "wy2Kt02JukgCYrwbYGAU": {
+      "attributes": {
+        "occupation": "colony",
+        "situation": "dark"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Milankovic 3",
+      "parent": "6mXy0hQz1qFUL9qaL6R5",
+      "parentEntity": "moon"
+    }
+  },
+  "note": {},
+  "orbitalRuin": {
+    "3oREDEG5pN1ksV2UIl9K": {
+      "attributes": {
+        "occupation": "heirs",
+        "situation": "awakening"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Sumgin 2",
+      "parent": "3q2WVRDFEKkfeRPNQwzf",
+      "parentEntity": "planet"
+    },
+    "9mVSpaGdqVajTqBDrmu5": {
+      "attributes": {
+        "occupation": "military",
+        "situation": "awakening"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Wynn-Williams 8",
+      "parent": "QBJmBhyH6enA7vQoJ6Vk",
+      "parentEntity": "planet"
+    },
+    "PNltwrN8Tj8XIl51AOgK": {
+      "attributes": {
+        "occupation": "scavengers",
+        "situation": "awakening"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Semeykin IV",
+      "parent": "mijPWehM2w27ZeHJLz2A",
+      "parentEntity": "planet"
+    },
+    "PiaafKiITxTn2F9XZHLg": {
+      "attributes": {
+        "occupation": "scavengers",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Littleton 9",
+      "parent": "MWoDNb7qEAWBmZ5Lj7CF",
+      "parentEntity": "planet"
+    },
+    "Tuoed8r12f6FxZ7kpAo4": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Daly 2",
+      "parent": "q7H0Ee4FFFjcMMytzKXN",
+      "parentEntity": "planet"
+    },
+    "c5fe9f7OBc49dYCc1vWH": {
+      "attributes": {
+        "occupation": "robots",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Aki 9",
+      "parent": "IpKMLXMv8o13DPJE8RxQ",
+      "parentEntity": "moon"
+    },
+    "h04uCmC8x6QcO6zxVtxC": {
+      "attributes": {
+        "occupation": "scavengers",
+        "situation": "secret"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Olenek 3",
+      "parent": "BEd3a22A1WvyAuNTqjiy",
+      "parentEntity": "planet"
+    },
+    "hDk2rJzWBQJTT2h8OHT4": {
+      "attributes": {
+        "occupation": "heirs",
+        "situation": "interlopers"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Argo 2",
+      "parent": "gFkCjIxJA3Qo43AEVUES",
+      "parentEntity": "planet"
+    },
+    "hnStrTzaHA0Ku9kp5PK3": {
+      "attributes": {
+        "occupation": "robots",
+        "situation": "awakening"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Esira",
+      "parent": "ogQnIm9XSxN9mPJ6W17G",
+      "parentEntity": "moon"
+    },
+    "liJHeVtQ1D3aRzmOUCFY": {
+      "attributes": {
+        "occupation": "scavengers",
+        "situation": "secret"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Kunes 1",
+      "parent": "fucLk2tmAPkNOu5fagmY",
+      "parentEntity": "planet"
+    },
+    "lkRQwayLi73UwFkDF2LC": {
+      "attributes": {
+        "occupation": "scavengers",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Camargo 3",
+      "parent": "Jvtl9q4MdZWW6aA8dzlS",
+      "parentEntity": "planet"
+    },
+    "oXmlxJH6qFpXZU4oYbxu": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "calamity"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bianchini 6",
+      "parent": "vC3YqfrNA7QovEZuA56m",
+      "parentEntity": "planet"
+    },
+    "s1DEtmNaBoutlmmFeJH0": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "interlopers"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bam",
+      "parent": "QoLdy4dZ3crCo747rG43",
+      "parentEntity": "planet"
+    },
+    "tDPMCojYWLIMpVgKtGgj": {
+      "attributes": {
+        "occupation": "military",
+        "situation": "calamity"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Avan 1",
+      "parent": "BEd3a22A1WvyAuNTqjiy",
+      "parentEntity": "planet"
+    },
+    "uy5BEjQMm1RBG9WKHr37": {
+      "attributes": {
+        "occupation": "robots",
+        "situation": "interlopers"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Renaudot 5",
+      "parent": "qzmdG2E0O8NWJSNJQcys",
+      "parentEntity": "planet"
+    }
+  },
+  "planet": {
+    "3q2WVRDFEKkfeRPNQwzf": {
+      "attributes": {
+        "atmosphere": "corrosive",
+        "biosphere": "immiscible",
+        "description": "Home to House Vela",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "alienRuins",
+          "greatWork",
+          "preceptorArchive"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableWarm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Haqani",
+      "parent": "D6wqw1xdsNGMdnVAuhZa",
+      "parentEntity": "system"
+    },
+    "4BQ6WVl4Wd69kIOE6BW8": {
+      "attributes": {
+        "atmosphere": "thick",
+        "biosphere": "humanMiscible",
+        "population": "alien",
+        "tags": [
+          "alienRuins",
+          "nightWorld",
+          "pleasureWorld"
+        ],
+        "techLevel": "TL4",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "key": "4BQ6WVl4Wd69kIOE6BW8",
+      "name": "Kama",
+      "parent": "jBs9kmOJL5iQxSfXKRFx",
+      "parentEntity": "system"
+    },
+    "54FYXbwLNStDbSund0Ia": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "humanMiscible",
+        "population": "billions",
+        "tags": [
+          "alienRuins",
+          "sealedMenace"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableWarm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Valua",
+      "parent": "6CmnZZLixUZuVQFyDOqi",
+      "parentEntity": "system"
+    },
+    "AcsNKrlbCBQxQfhaakjK": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "engineered",
+        "description": "Home to House Reticulum. Lots of archipelagos, few main land masses.",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "ritualCombat",
+          "terraformFailure"
+        ],
+        "techLevel": "TL4+",
+        "temperature": "variableWarm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Aomori",
+      "parent": "AtaF1mHfsKMHQOYxIoLQ",
+      "parentEntity": "system"
+    },
+    "BBS4toeUIqJUg6Ydp3fK": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "none",
+        "description": "Home to the High Church",
+        "population": "severalMillion",
+        "tags": [
+          "pilgrimageSite",
+          "theocracy"
+        ],
+        "techLevel": "TL4",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Andophael",
+      "parent": "pxeFN8lOfiHeFPNYlpXK",
+      "parentEntity": "system"
+    },
+    "BEd3a22A1WvyAuNTqjiy": {
+      "attributes": {
+        "atmosphere": "corrosive",
+        "biosphere": "hybrid",
+        "description": "Home to House Triangulum",
+        "population": "severalMillion",
+        "tags": [
+          "forbiddenTech",
+          "pretechCultists",
+          "sealedMenace"
+        ],
+        "techLevel": "TL5",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "isHidden": false,
+      "name": "Lovelace",
+      "parent": "oRJ8IAWbsMTWLJ5ZmibD",
+      "parentEntity": "system"
+    },
+    "C1WaEUhadBfTFNzD9hAA": {
+      "attributes": {
+        "atmosphere": "thick",
+        "biosphere": "immiscible",
+        "population": "failed",
+        "tags": [
+          "quarantinedWorld",
+          "forbiddenTech"
+        ],
+        "techLevel": "TL3",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Phymete VIII",
+      "parent": "7UdekfMqDzIHZzLBMbwv",
+      "parentEntity": "system"
+    },
+    "CVmeGU9y9flMNaSevacW": {
+      "attributes": {
+        "atmosphere": "airlessThin",
+        "biosphere": "humanMiscible",
+        "description": "Home Planet of ACRE Corporation",
+        "population": "billions",
+        "tags": [
+          "megacorps",
+          "societalDespair",
+          "urbanizedSurface"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableWarm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Demnoph",
+      "parent": "dlnxxKUndXkizsHfsyc1",
+      "parentEntity": "system"
+    },
+    "CnSAF6fbEcM5WDsOJ8Lq": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "none",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "friendlyFoe",
+          "seagoingCities"
+        ],
+        "techLevel": "TL2",
+        "temperature": "variableCold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Thorhil",
+      "parent": "lD2bvEp0gXpSjEtReYYj",
+      "parentEntity": "system"
+    },
+    "DGjqPWz0S1wAfmQ32iHq": {
+      "attributes": {
+        "atmosphere": "thick",
+        "biosphere": "none",
+        "description": "Home to the Red Dogs Triad",
+        "population": "billions",
+        "tags": [
+          "cheapLife",
+          "secretMasters",
+          "tradeHub"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableWarm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Hong Lu",
+      "parent": "OWHBGjZLq6V0UrGw1srQ",
+      "parentEntity": "system"
+    },
+    "E4NYcLuLcqoetn98poLX": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "engineered",
+        "description": "Home to the PRISM NETWORK",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "culturalPower",
+          "mandarinate",
+          "megacorps"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableCold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Echo",
+      "parent": "C46ZyGAtSKV2hn3y6Crx",
+      "parentEntity": "system"
+    },
+    "EcexU5nJSjfnzSuOxMnH": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "none",
+        "population": "severalMillion",
+        "tags": [
+          "outOfContact",
+          "bubbleCities"
+        ],
+        "techLevel": "TL4+",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ias",
+      "parent": "tUsEd0NFnucDbjXeAzy1",
+      "parentEntity": "system"
+    },
+    "HfCIuEhZh2sUYyuxAHvE": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "immiscible",
+        "population": "billions",
+        "tags": [
+          "preceptorArchive",
+          "tyranny"
+        ],
+        "techLevel": "TL2",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ergus",
+      "parent": "syuHOnToYUekkgPAOauv",
+      "parentEntity": "system"
+    },
+    "IFP5thDt33dr18TR5w3d": {
+      "attributes": {
+        "atmosphere": "corrosiveInvasive",
+        "biosphere": "humanMiscible",
+        "population": "severalMillion",
+        "tags": [
+          "terraformFailure",
+          "outpostWorld"
+        ],
+        "techLevel": "TL2",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Zercoulos",
+      "parent": "sDkxqWf4fgtIxNNTdBEf",
+      "parentEntity": "system"
+    },
+    "JjJu94D3yXWvO2IShYDU": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "none",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "anthropomorphs",
+          "shackledWorld"
+        ],
+        "techLevel": "TL5",
+        "temperature": "variableCold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Al-Dost",
+      "parent": "wGQgS070spCMKZqyqCln",
+      "parentEntity": "system"
+    },
+    "Jvtl9q4MdZWW6aA8dzlS": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "immiscible",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "urbanizedSurface",
+          "zombies"
+        ],
+        "techLevel": "TL4+",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Yanaratso",
+      "parent": "0FBEZTaTO50ZvvSFoMAw",
+      "parentEntity": "system"
+    },
+    "KTclMLeSe3PNBNeRVmsk": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "remnant",
+        "population": "severalMillion",
+        "tags": [
+          "psionicsAcademy",
+          "goldRush"
+        ],
+        "techLevel": "TL4+",
+        "temperature": "variableCold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Mona",
+      "parent": "6CmnZZLixUZuVQFyDOqi",
+      "parentEntity": "system"
+    },
+    "LgZ70j8NwbvIfM9oQyOo": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "humanMiscible",
+        "description": "Home to House Aquila, because nobody else is tough or dumb enough to still live here. \n\nHUU RAH",
+        "population": "lessThanMillion",
+        "tags": [
+          "cheapLife",
+          "xenophobes"
+        ],
+        "techLevel": "TL4",
+        "temperature": "burning"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Diomikato",
+      "parent": "oQTYsEwIz8sd6sxPuqwt",
+      "parentEntity": "system"
+    },
+    "LiaGGaZvAn45sV9w1qnD": {
+      "attributes": {
+        "atmosphere": "corrosive",
+        "biosphere": "engineered",
+        "description": "an imperial prison world, where all the baddies go when they're bad. unless we execute them but... free labour!",
+        "population": "billions",
+        "tags": [
+          "heavyIndustry",
+          "prisonPlanet"
+        ],
+        "techLevel": "TL3",
+        "temperature": "burning"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Imperial Corrections Facility Gleipnir",
+      "parent": "DYj5urRgXV2QBFC66oYo",
+      "parentEntity": "system"
+    },
+    "MWoDNb7qEAWBmZ5Lj7CF": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "remnant",
+        "description": "Home to the Church of Humanity",
+        "population": "severalMillion",
+        "tags": [
+          "friendlyFoe",
+          "theocracy"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableCold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Cabina",
+      "parent": "0tQrU5wsgAjV3B2OGt19",
+      "parentEntity": "system"
+    },
+    "OugImbBA3cOQ5W6xopHQ": {
+      "attributes": {
+        "atmosphere": "thick",
+        "biosphere": "microbial",
+        "description": "Home to House Lyra",
+        "population": "severalMillion",
+        "tags": [
+          "culturalPower",
+          "freakWeather"
+        ],
+        "techLevel": "TL4",
+        "temperature": "cold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Orpheus",
+      "parent": "FAmOYSoqxvpcRK2SGGsy",
+      "parentEntity": "system"
+    },
+    "OwvX33KvQWWvZGiHCSHC": {
+      "attributes": {
+        "atmosphere": "invasive",
+        "biosphere": "engineered",
+        "population": "alien",
+        "tags": [
+          "revolutionaries",
+          "postScarcity"
+        ],
+        "techLevel": "TL3",
+        "temperature": "cold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Pylopid",
+      "parent": "rgghs8hbbCwUXvYlZZ7k",
+      "parentEntity": "system"
+    },
+    "QBJmBhyH6enA7vQoJ6Vk": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "humanMiscible",
+        "population": "billions",
+        "tags": [
+          "rigidCulture",
+          "urbanizedSurface"
+        ],
+        "techLevel": "TL5",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "key": "QBJmBhyH6enA7vQoJ6Vk",
+      "name": "Imperial Prime",
+      "parent": "qh7iQKzfsj8xxSfboAcN",
+      "parentEntity": "system"
+    },
+    "QoLdy4dZ3crCo747rG43": {
+      "attributes": {
+        "atmosphere": "corrosive",
+        "biosphere": "hybrid",
+        "population": "billions",
+        "tags": [
+          "cyclicalDoom",
+          "secretMasters"
+        ],
+        "techLevel": "TL2",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Hallger",
+      "parent": "CnowsBHphwIyZ7GkfdPH",
+      "parentEntity": "system"
+    },
+    "RHoNgOsE1IAzTBmzjt33": {
+      "attributes": {
+        "atmosphere": "thick",
+        "biosphere": "microbial",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "tyranny",
+          "heavyMining"
+        ],
+        "techLevel": "TL0",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Pierus XXIII",
+      "parent": "wGQgS070spCMKZqyqCln",
+      "parentEntity": "system"
+    },
+    "UW4X7pr2O9R2hVCibwFy": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "none",
+        "population": "alien",
+        "tags": [
+          "bubbleCities",
+          "majorSpaceyard"
+        ],
+        "techLevel": "TL4",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Chrates",
+      "parent": "wGQgS070spCMKZqyqCln",
+      "parentEntity": "system"
+    },
+    "Ufn2TJ2jFuoCQ1loqlCt": {
+      "attributes": {
+        "atmosphere": "airlessThin",
+        "biosphere": "remnant",
+        "description": "Home to \"House\" Vagrant",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "freakGeology",
+          "revanchists"
+        ],
+        "techLevel": "TL4",
+        "temperature": "cold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Shān",
+      "parent": "CFzS9dZFuYgTLEoDsFJ9",
+      "parentEntity": "system"
+    },
+    "brMDCI0K3pOXILhAUoAc": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "humanMiscible",
+        "population": "outpost",
+        "tags": [
+          "area51",
+          "coldWar"
+        ],
+        "techLevel": "TL1",
+        "temperature": "burning"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Man",
+      "parent": "tUsEd0NFnucDbjXeAzy1",
+      "parentEntity": "system"
+    },
+    "c5TTPeBf3mJ1snq7isfH": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "engineered",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "localTech",
+          "revanchists"
+        ],
+        "techLevel": "TL4",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Staklakou",
+      "parent": "XMsrBhMwzCCcOOzlDyPm",
+      "parentEntity": "system"
+    },
+    "fucLk2tmAPkNOu5fagmY": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "immiscible",
+        "population": "outpost",
+        "tags": [
+          "feralWorld",
+          "quarantinedWorld",
+          "warlords"
+        ],
+        "techLevel": "TL2",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Thorg",
+      "parent": "QTS9p6ilztJk9Vu5tp7M",
+      "parentEntity": "system"
+    },
+    "gFkCjIxJA3Qo43AEVUES": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "humanMiscible",
+        "description": "Technically this planet belongs to ACRE but it's also where the UPC call home. Keep your enemies close, kids.\n\nACRE labour planet.",
+        "population": "billions",
+        "tags": [
+          "revolutionaries",
+          "tyranny"
+        ],
+        "techLevel": "TL4",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Yakiyah",
+      "parent": "dlnxxKUndXkizsHfsyc1",
+      "parentEntity": "system"
+    },
+    "ggaF7bdv40BlnMzKYNDU": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "humanMiscible",
+        "description": "Home to House Eridanus",
+        "population": "billions",
+        "tags": [
+          "localSpecialty",
+          "restrictiveLaws",
+          "tradeHub"
+        ],
+        "techLevel": "TL4",
+        "temperature": "warm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tiber",
+      "parent": "AtaF1mHfsKMHQOYxIoLQ",
+      "parentEntity": "system"
+    },
+    "hzPHv2vrzQhpqVLe8Wjk": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "humanMiscible",
+        "population": "alien",
+        "tags": [
+          "minimalContact",
+          "ritualCombat"
+        ],
+        "techLevel": "TL2",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Leorgioly",
+      "parent": "lD2bvEp0gXpSjEtReYYj",
+      "parentEntity": "system"
+    },
+    "i2sIrIZbUinOLOdtEO0R": {
+      "attributes": {
+        "atmosphere": "airlessThin",
+        "biosphere": "engineered",
+        "description": "Home to the Trilliant Ring",
+        "population": "lessThanMillion",
+        "tags": [
+          "alteredHumanity",
+          "flyingCities",
+          "pleasureWorld"
+        ],
+        "techLevel": "TL5",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Trillia IX",
+      "parent": "NHmtnfVddY30oXkAgNT1",
+      "parentEntity": "system"
+    },
+    "ipWRNUOpYdoztGQZy3Cx": {
+      "attributes": {
+        "atmosphere": "corrosiveInvasive",
+        "biosphere": "immiscible",
+        "population": "lessThanMillion",
+        "tags": [
+          "shackledWorld",
+          "psionicsWorship"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableWarm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Argiast",
+      "parent": "CFzS9dZFuYgTLEoDsFJ9",
+      "parentEntity": "system"
+    },
+    "kxUXYp4hjqJ9nTAY55yg": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "humanMiscible",
+        "population": "lessThanMillion",
+        "tags": [
+          "nightWorld",
+          "psionicsFear"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableWarm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Teuthem",
+      "parent": "0RkIcV3x9D1uqhDAtUJa",
+      "parentEntity": "system"
+    },
+    "lG1duXic6eOKwTjYJ0h3": {
+      "attributes": {
+        "atmosphere": "thick",
+        "biosphere": "immiscible",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "quarantinedWorld",
+          "tombWorld"
+        ],
+        "techLevel": "TL1",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bora",
+      "parent": "rgghs8hbbCwUXvYlZZ7k",
+      "parentEntity": "system"
+    },
+    "mijPWehM2w27ZeHJLz2A": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "engineered",
+        "description": "Home to House Crux",
+        "population": "billions",
+        "tags": [
+          "colonizedPopulation",
+          "hatred",
+          "policeState"
+        ],
+        "techLevel": "TL4",
+        "temperature": "variableCold"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Hiera",
+      "parent": "6WyDCRgOgZ9OA0P1fTkB",
+      "parentEntity": "system"
+    },
+    "q7H0Ee4FFFjcMMytzKXN": {
+      "attributes": {
+        "atmosphere": "thick",
+        "biosphere": "none",
+        "description": "Home to House Fornax, TL5 Shipyards",
+        "population": "severalMillion",
+        "tags": [
+          "majorSpaceyard",
+          "seismicInstability"
+        ],
+        "techLevel": "TL4+",
+        "temperature": "burning"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Maja",
+      "parent": "qh7iQKzfsj8xxSfboAcN",
+      "parentEntity": "system"
+    },
+    "q8hsxgdm7R1JgpGyDAgU": {
+      "attributes": {
+        "atmosphere": "breathable",
+        "biosphere": "hybrid",
+        "description": "a colony of non-imperial settlers who somehow have avoided being subsumed.",
+        "population": "lessThanMillion",
+        "tags": [
+          "anarchists",
+          "greatWork"
+        ],
+        "techLevel": "TL4",
+        "temperature": "warm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Berkmann III",
+      "parent": "QdwWBwlYVvfbJBftOhdw",
+      "parentEntity": "system"
+    },
+    "qzmdG2E0O8NWJSNJQcys": {
+      "attributes": {
+        "atmosphere": "thick",
+        "biosphere": "humanMiscible",
+        "description": "Home to House Serpens",
+        "population": "severalMillion",
+        "tags": [
+          "doomedWorld",
+          "psionicsAcademy",
+          "psionicsWorship"
+        ],
+        "techLevel": "TL4",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Hroa",
+      "parent": "dlnxxKUndXkizsHfsyc1",
+      "parentEntity": "system"
+    },
+    "thdJPkgKpO9sr8CphOaq": {
+      "attributes": {
+        "atmosphere": "inert",
+        "biosphere": "remnant",
+        "population": "lessThanMillion",
+        "tags": [
+          "regionalHegemon",
+          "seagoingCities"
+        ],
+        "techLevel": "TL2",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Halvei",
+      "parent": "sDkxqWf4fgtIxNNTdBEf",
+      "parentEntity": "system"
+    },
+    "vC3YqfrNA7QovEZuA56m": {
+      "attributes": {
+        "atmosphere": "invasive",
+        "biosphere": "humanMiscible",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "cybercommunists",
+          "postScarcity"
+        ],
+        "techLevel": "TL4",
+        "temperature": "burning"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Eurynoc",
+      "parent": "6CmnZZLixUZuVQFyDOqi",
+      "parentEntity": "system"
+    },
+    "w3g6hdgPzISE8vosAfRL": {
+      "attributes": {
+        "atmosphere": "inert",
+        "biosphere": "none",
+        "population": "severalMillion",
+        "tags": [
+          "oceanicWorld",
+          "nightWorld"
+        ],
+        "techLevel": "TL2",
+        "temperature": "warm"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Chippe",
+      "parent": "18QHcUvaDSqnkQRTpfgO",
+      "parentEntity": "system"
+    },
+    "yYCoIVp6wpA6Hm72mNkq": {
+      "attributes": {
+        "atmosphere": "invasive",
+        "biosphere": "immiscible",
+        "description": "Home Planet of the Deathless Faction",
+        "population": "hundredsOfMillions",
+        "tags": [
+          "mercenaries",
+          "outpostWorld"
+        ],
+        "techLevel": "TL4",
+        "temperature": "temperate"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Koschei",
+      "parent": "QTS9p6ilztJk9Vu5tp7M",
+      "parentEntity": "system"
+    },
+    "zcTSuHGSAtpP5N4FAcCQ": {
+      "attributes": {
+        "atmosphere": "corrosiveInvasive",
+        "biosphere": "none",
+        "description": "Former Home to House Cygnus, now a blasted ruin. OR IS IT?!",
+        "population": "failed",
+        "tags": [
+          "cyborgs",
+          "tombWorld"
+        ],
+        "techLevel": "TL0",
+        "temperature": "frozen"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Gats",
+      "parent": "6WyDCRgOgZ9OA0P1fTkB",
+      "parentEntity": "system"
+    }
+  },
+  "refuelingStation": {
+    "0ZzeelHP7IhHvCTfkdiG": {
+      "attributes": {
+        "occupation": "hermit",
+        "situation": "agents"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bhor 6",
+      "parent": "AtaF1mHfsKMHQOYxIoLQ",
+      "parentEntity": "system"
+    },
+    "2eqzELnUNDdd9lwu0lg9": {
+      "attributes": {
+        "occupation": "vendors",
+        "situation": "alien"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Yalgoo 4",
+      "parent": "CFzS9dZFuYgTLEoDsFJ9",
+      "parentEntity": "system"
+    },
+    "3LsIXbxkAwXSPHhGHl6t": {
+      "attributes": {
+        "occupation": "fun",
+        "situation": "agents"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Manah 6",
+      "parent": "CnowsBHphwIyZ7GkfdPH",
+      "parentEntity": "system"
+    },
+    "3TPMPxU7LM2fZTcaMZrU": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Arrhenius 9",
+      "parent": "TkN0fx2Hmr90sdgkV2H4",
+      "parentEntity": "moon"
+    },
+    "5Csjfiw3uCjvRlzXB0LC": {
+      "attributes": {
+        "occupation": "vendors",
+        "situation": "distress"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Lipany 9",
+      "parent": "E4NYcLuLcqoetn98poLX",
+      "parentEntity": "planet"
+    },
+    "7tReTX1QGsOA8OayWAii": {
+      "attributes": {
+        "occupation": "religious",
+        "situation": "distress"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Li Fan 1",
+      "parent": "q7H0Ee4FFFjcMMytzKXN",
+      "parentEntity": "planet"
+    },
+    "9IDCzChe6NoB5HrxzIqW": {
+      "attributes": {
+        "occupation": "religious",
+        "situation": "saboteurs"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Wafra 8",
+      "parent": "ZkvEKKww4Vi3rhk28U0R",
+      "parentEntity": "moon"
+    },
+    "D0uE7QbntWekqQSUm3Q3": {
+      "attributes": {
+        "occupation": "vendors",
+        "situation": "distress"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Turbi",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "JSSJfZpWTQrjMhHnH25W": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Seminole 4",
+      "parent": "DYj5urRgXV2QBFC66oYo",
+      "parentEntity": "system"
+    },
+    "Mlf0CRe6I07ldSSdYViU": {
+      "attributes": {
+        "occupation": "hermit",
+        "situation": "alien"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Peridier 7",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "NQX8eIhhjXg5ebk9vJjY": {
+      "attributes": {
+        "occupation": "fun",
+        "situation": "distress"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bogra 7",
+      "parent": "QTS9p6ilztJk9Vu5tp7M",
+      "parentEntity": "system"
+    },
+    "Nbi49FcshWbtH2E6beZO": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "alien"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bled 5",
+      "parent": "7ISqVwM4uaivTuwURnYp",
+      "parentEntity": "asteroidBelt"
+    },
+    "NoQ5qarEetRd8BfJml0u": {
+      "attributes": {
+        "occupation": "vendors",
+        "situation": "alien"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "key": "NoQ5qarEetRd8BfJml0u",
+      "name": "Last Stop",
+      "parent": "jBs9kmOJL5iQxSfXKRFx",
+      "parentEntity": "system"
+    },
+    "PaoE3G7AFwUV4SthcrlT": {
+      "attributes": {
+        "occupation": "hermit",
+        "situation": "agents"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Horowitz 5",
+      "parent": "Y5v0G7iPOzPT16Lwp9mK",
+      "parentEntity": "asteroidBelt"
+    },
+    "VSnC2bZSDrMCGc4HiN8o": {
+      "attributes": {
+        "occupation": "religious",
+        "situation": "saboteurs"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Valverde 8",
+      "parent": "XMsrBhMwzCCcOOzlDyPm",
+      "parentEntity": "system"
+    },
+    "XoHxETWzbcuV9eN6BSdv": {
+      "attributes": {
+        "occupation": "hermit",
+        "situation": "alien"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Rahe 1",
+      "parent": "LgZ70j8NwbvIfM9oQyOo",
+      "parentEntity": "planet"
+    },
+    "ZRbMFs7DvaHPAtVojqiL": {
+      "attributes": {
+        "occupation": "religious",
+        "situation": "saboteurs"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Jeans 7",
+      "parent": "NHmtnfVddY30oXkAgNT1",
+      "parentEntity": "system"
+    },
+    "bqJFOJ7GWDSD6CJJLYTX": {
+      "attributes": {
+        "occupation": "religious",
+        "situation": "distress"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Playfair IV",
+      "parent": "yURVCpYkVzXntoFpc1xL",
+      "parentEntity": "system"
+    },
+    "cEyDXzBKUvdPGKctuLzO": {
+      "attributes": {
+        "occupation": "hermit",
+        "situation": "agents"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Luga",
+      "parent": "QoLdy4dZ3crCo747rG43",
+      "parentEntity": "planet"
+    },
+    "elxJ5MuYzAmEht8rhekX": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "saboteurs"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Artik 4",
+      "parent": "cabc9PF8xPrQea5ZdUdl",
+      "parentEntity": "blackHole"
+    },
+    "gdeFUd1TXyfDRLbCZoRs": {
+      "attributes": {
+        "occupation": "vendors",
+        "situation": "distress"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Holden 6",
+      "parent": "bhShEkn0ChOKjCW9ABrU",
+      "parentEntity": "moon"
+    },
+    "gqM3b5kf0t6ICWifnXyq": {
+      "attributes": {
+        "occupation": "fun",
+        "situation": "alien"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Nier 6",
+      "parent": "0RkIcV3x9D1uqhDAtUJa",
+      "parentEntity": "system"
+    },
+    "pFVP2WheBrFLeVA8PIDJ": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Auki 5",
+      "parent": "wdAfJW9WLcLP4mVvVfLq",
+      "parentEntity": "moon"
+    },
+    "rqmPp17tTZaOocG4M0Ry": {
+      "attributes": {
+        "occupation": "religious",
+        "situation": "agents"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Cluny 2",
+      "parent": "l7fVG3Oklkq2bTIo1C0Y",
+      "parentEntity": "moon"
+    },
+    "xiTwdch0cgAS984E2txd": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "saboteurs"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Irbit 8",
+      "parent": "dlnxxKUndXkizsHfsyc1",
+      "parentEntity": "system"
+    }
+  },
+  "researchBase": {
+    "03gUTllBV0kZMl0ncJ2P": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "research"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Kansk 1",
+      "parent": "EcexU5nJSjfnzSuOxMnH",
+      "parentEntity": "planet"
+    },
+    "0NxRgrRAeZT8feOaO7Md": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Nereus 3",
+      "parent": "QoLdy4dZ3crCo747rG43",
+      "parentEntity": "planet"
+    },
+    "0y74ZA5M1WZm6vIakNws": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Koy 2",
+      "parent": "HfCIuEhZh2sUYyuxAHvE",
+      "parentEntity": "planet"
+    },
+    "36kOIPdmOuDMjvvHtH4J": {
+      "attributes": {
+        "occupation": "experminents",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Kepler 7",
+      "parent": "PiLobrQeWEYliInzAb89",
+      "parentEntity": "moon"
+    },
+    "4641Exxuf37Qbo5ICHlR": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "research"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Loon 9",
+      "parent": "0tQrU5wsgAjV3B2OGt19",
+      "parentEntity": "system"
+    },
+    "4mX7EQPQEpSlcx3geRlN": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tarsus 5",
+      "parent": "sDkxqWf4fgtIxNNTdBEf",
+      "parentEntity": "system"
+    },
+    "54cTGWo8Dee7xmtrK7wR": {
+      "attributes": {
+        "occupation": "experminents",
+        "situation": "immoral"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Loja 6",
+      "parent": "0I8F04kWtSRmdHgQzdul",
+      "parentEntity": "moon"
+    },
+    "5BSVxKS8f6t5NgrKaMhQ": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Coimbra",
+      "parent": "AV3wwl6WPxPhtqXWUCyP",
+      "parentEntity": "moon"
+    },
+    "6OgUBv94BTv1Xt6uirSt": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Garm",
+      "parent": "BEd3a22A1WvyAuNTqjiy",
+      "parentEntity": "planet"
+    },
+    "82jqZtLRDrDCrZdkadUi": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Shatskiy 1",
+      "parent": "RHoNgOsE1IAzTBmzjt33",
+      "parentEntity": "planet"
+    },
+    "8IKWFnl8XWiLMZAv1CQ0": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Lonar 4",
+      "parent": "FAmOYSoqxvpcRK2SGGsy",
+      "parentEntity": "system"
+    },
+    "F3UMyL7eqzYlQ6IbLoQm": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "monsters"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Fenagh 9",
+      "parent": "0RkIcV3x9D1uqhDAtUJa",
+      "parentEntity": "system"
+    },
+    "FSiTYLO1usw9ZqXk2ahl": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Dison 2",
+      "parent": "4BQ6WVl4Wd69kIOE6BW8",
+      "parentEntity": "planet"
+    },
+    "JXWSeAYFCKbBCr7YFhgW": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Crater",
+      "parent": "BEd3a22A1WvyAuNTqjiy",
+      "parentEntity": "planet"
+    },
+    "JpYelH0zrdDd2d7MHwIz": {
+      "attributes": {
+        "occupation": "experminents",
+        "situation": "monsters"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ellsley 7",
+      "parent": "zLr5ewNJASdPnPoQNuQ0",
+      "parentEntity": "moon"
+    },
+    "LuNAAY3fYAzLtaAH8crp": {
+      "attributes": {
+        "description": "Triangulum researchers obsessed with the Guild.",
+        "occupation": "secret",
+        "situation": "research",
+        "tags": []
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Optic 1",
+      "parent": "s7C3hfSEw97m4nwUq2RR",
+      "parentEntity": "system"
+    },
+    "MrQL0LP5AycU2Sbbwss7": {
+      "attributes": {
+        "occupation": "experminents",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Waspam 9",
+      "parent": "kxUXYp4hjqJ9nTAY55yg",
+      "parentEntity": "planet"
+    },
+    "Pcdo5rZHWO7Tnh9iroBZ": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "research"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bree 9",
+      "parent": "ZkvEKKww4Vi3rhk28U0R",
+      "parentEntity": "moon"
+    },
+    "RO8Eu3iokzNFCyObk8ZA": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Blois 9",
+      "parent": "yYCoIVp6wpA6Hm72mNkq",
+      "parentEntity": "planet"
+    },
+    "SsurkcAXDWKsuuyqMM6X": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "monsters"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Lambert",
+      "parent": "C46ZyGAtSKV2hn3y6Crx",
+      "parentEntity": "system"
+    },
+    "SvR5y30XG705KEBQL3CY": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "immoral"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Volgograd 3",
+      "parent": "dlnxxKUndXkizsHfsyc1",
+      "parentEntity": "system"
+    },
+    "U02Ln5vZ3imcMYD4CKgy": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Gali 3",
+      "parent": "Smw8UfWa0BmljNn3QaoE",
+      "parentEntity": "moon"
+    },
+    "XYtHW23fybL688YVIs5V": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "immoral"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Proctor 8",
+      "parent": "brMDCI0K3pOXILhAUoAc",
+      "parentEntity": "planet"
+    },
+    "XlLlBQpHIzept9HJSVg4": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "immoral"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Burton 6",
+      "parent": "CFzS9dZFuYgTLEoDsFJ9",
+      "parentEntity": "system"
+    },
+    "XqMzL6Hwtl38OmSoY1Ys": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tignish 7",
+      "parent": "BEd3a22A1WvyAuNTqjiy",
+      "parentEntity": "planet"
+    },
+    "YBabVBnchua0dlwkk2EF": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Kholm 4",
+      "parent": "BEd3a22A1WvyAuNTqjiy",
+      "parentEntity": "planet"
+    },
+    "d3gNwVMa0IlVChESIsqz": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "monsters"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Joly 4",
+      "parent": "6WyDCRgOgZ9OA0P1fTkB",
+      "parentEntity": "system"
+    },
+    "eyt7FvKQ0xRdtnCBbiC4": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "monsters"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Schroeter",
+      "parent": "gFkCjIxJA3Qo43AEVUES",
+      "parentEntity": "planet"
+    },
+    "fc5fHUCScDA5MS2Owcyt": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "immoral"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Keul 7",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "hcDqClfsOd82TOI77Rwt": {
+      "attributes": {
+        "occupation": "experminents",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Fitzroy 7",
+      "parent": "pxeFN8lOfiHeFPNYlpXK",
+      "parentEntity": "system"
+    },
+    "ivxHk1h867JOJzl9QCqn": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Andapa 1",
+      "parent": "zcTSuHGSAtpP5N4FAcCQ",
+      "parentEntity": "planet"
+    },
+    "lWnjBdQrrBCpmyQzFrOV": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "immoral"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Nhill 6",
+      "parent": "BEd3a22A1WvyAuNTqjiy",
+      "parentEntity": "planet"
+    },
+    "mGT2uTzD0UYcxZW9ah7r": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "outsiders"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Betio 5",
+      "parent": "6CmnZZLixUZuVQFyDOqi",
+      "parentEntity": "system"
+    },
+    "nDq6Y2v3kRWHMi4QKlFK": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "monsters"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Santaca 5",
+      "parent": "XMsrBhMwzCCcOOzlDyPm",
+      "parentEntity": "system"
+    },
+    "omESwzoHgPqW0CUty08T": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Stokes 3",
+      "parent": "OugImbBA3cOQ5W6xopHQ",
+      "parentEntity": "planet"
+    },
+    "qgq2MQQiOrvmZVMvswKP": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Arica 2",
+      "parent": "QTS9p6ilztJk9Vu5tp7M",
+      "parentEntity": "system"
+    },
+    "u0JLGR2IssLzx3N59UAB": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Saheki 1",
+      "parent": "fucLk2tmAPkNOu5fagmY",
+      "parentEntity": "planet"
+    },
+    "uQuc4wt96Yj3HOoun4j3": {
+      "attributes": {
+        "occupation": "secret",
+        "situation": "immoral"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Colon 7",
+      "parent": "6mXy0hQz1qFUL9qaL6R5",
+      "parentEntity": "moon"
+    },
+    "vtMS8atZJhAd21ZCJsg0": {
+      "attributes": {
+        "occupation": "researchers",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Rahe 3",
+      "parent": "OWHBGjZLq6V0UrGw1srQ",
+      "parentEntity": "system"
+    },
+    "xlaVI5qgHONS4p7MwhoF": {
+      "attributes": {
+        "occupation": "scientists",
+        "situation": "monsters"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Nain 8",
+      "parent": "D6wqw1xdsNGMdnVAuhZa",
+      "parentEntity": "system"
+    },
+    "y1v53wvoNJgMGlzpbjpb": {
+      "attributes": {
+        "occupation": "alien",
+        "situation": "research"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Galdakao 2",
+      "parent": "SVEKVK9a7J0p7BUEIEMl",
+      "parentEntity": "moon"
+    },
+    "zNQkjSRbkCDJGaR11B3c": {
+      "attributes": {
+        "occupation": "experminents",
+        "situation": "tech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Timoshenko 8",
+      "parent": "syuHOnToYUekkgPAOauv",
+      "parentEntity": "system"
+    }
+  },
+  "sector": {
+    "m11ZXBOt6xiJGo21EKio": {
+      "columns": 10,
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Acheron Rho",
+      "rows": 12
+    }
+  },
+  "spaceStation": {
+    "0fjRgzp83cu0Fatm0Zz3": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Cayon 2",
+      "parent": "WR6XoNM3F6nJS7P836YI",
+      "parentEntity": "asteroidBelt"
+    },
+    "3MjCNLGiZtOeGUmbPEfK": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "sabotage"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Crater 1",
+      "parent": "WR6XoNM3F6nJS7P836YI",
+      "parentEntity": "asteroidBelt"
+    },
+    "8mXLj0xLpDFeyIh4IQel": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Seminole 6",
+      "parent": "3q2WVRDFEKkfeRPNQwzf",
+      "parentEntity": "planet"
+    },
+    "BAToBb4cNsNfYs605LuT": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "sabotage"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Eil 7",
+      "parent": "UW4X7pr2O9R2hVCibwFy",
+      "parentEntity": "planet"
+    },
+    "Baqjll970HU2ngzDmeSO": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "systems"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Darwin 7",
+      "parent": "Y5v0G7iPOzPT16Lwp9mK",
+      "parentEntity": "asteroidBelt"
+    },
+    "J1BfIsF83k272DXWyBqO": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bigbee 5",
+      "parent": "LgZ70j8NwbvIfM9oQyOo",
+      "parentEntity": "planet"
+    },
+    "JfDkunatxtkuFJJxfXJB": {
+      "attributes": {
+        "occupation": "corpses",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Knobel 3",
+      "parent": "fucLk2tmAPkNOu5fagmY",
+      "parentEntity": "planet"
+    },
+    "Q8TkDkViUi3ZGTZ9hi3j": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "systems"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Flateyri 4",
+      "parent": "RHoNgOsE1IAzTBmzjt33",
+      "parentEntity": "planet"
+    },
+    "QEGTvAkBP2E1PddmXc8U": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Lasswitz 4",
+      "parent": "KTclMLeSe3PNBNeRVmsk",
+      "parentEntity": "planet"
+    },
+    "RF5qpHLD22Kc9aExYoK2": {
+      "attributes": {
+        "occupation": "corpses",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Sefadu 1",
+      "parent": "OugImbBA3cOQ5W6xopHQ",
+      "parentEntity": "planet"
+    },
+    "SHznOwHZOSRKNyzpopx3": {
+      "attributes": {
+        "occupation": "observers",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Manzi 4",
+      "parent": "OugImbBA3cOQ5W6xopHQ",
+      "parentEntity": "planet"
+    },
+    "ShDO9ro6AnFKuJcSViZl": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Henry Moore 1",
+      "parent": "gR4o8KFjnm9W8E0hKTIe",
+      "parentEntity": "asteroidBelt"
+    },
+    "Vgo3XUnG5s2baEjWYawS": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Agassiz 7",
+      "parent": "CVmeGU9y9flMNaSevacW",
+      "parentEntity": "planet"
+    },
+    "XEJdnZhmRJw4D8QZdcEq": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "systems"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Langtang",
+      "parent": "Y5v0G7iPOzPT16Lwp9mK",
+      "parentEntity": "asteroidBelt"
+    },
+    "Zf3c18XmoQve6YCMnUcp": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Aspen 8",
+      "parent": "EcexU5nJSjfnzSuOxMnH",
+      "parentEntity": "planet"
+    },
+    "agXYmFDoXq8liNgiLG5a": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ubud 8",
+      "parent": "EcexU5nJSjfnzSuOxMnH",
+      "parentEntity": "planet"
+    },
+    "bVoiNm5WnSfyBL80z0kQ": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "systems"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Millochau 5",
+      "parent": "RHoNgOsE1IAzTBmzjt33",
+      "parentEntity": "planet"
+    },
+    "cWgP06f1NNsL1txbOjwI": {
+      "attributes": {
+        "occupation": "observers",
+        "situation": "sabotage"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Oyama",
+      "parent": "mbxmsTfCXVXGpR2gbeFd",
+      "parentEntity": "asteroidBelt"
+    },
+    "dRchpnqMOog8k24OR0iN": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Edam 5",
+      "parent": "yYCoIVp6wpA6Hm72mNkq",
+      "parentEntity": "planet"
+    },
+    "jbKUGrqPqOhD4XQUow4m": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "systems"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Magadi 1",
+      "parent": "JjJu94D3yXWvO2IShYDU",
+      "parentEntity": "planet"
+    },
+    "ktR8hwh5y3MnZGvyhbby": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Zuni 8",
+      "parent": "yYCoIVp6wpA6Hm72mNkq",
+      "parentEntity": "planet"
+    },
+    "m2smQyolrGyW4VZZOa6G": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Sibu 6",
+      "parent": "brMDCI0K3pOXILhAUoAc",
+      "parentEntity": "planet"
+    },
+    "mXsIANhkRff7WlcoNK0M": {
+      "attributes": {
+        "occupation": "observers",
+        "situation": "pretech"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Holden 1",
+      "parent": "mbxmsTfCXVXGpR2gbeFd",
+      "parentEntity": "asteroidBelt"
+    },
+    "mgOjwjS05h6D3whsxeg7": {
+      "attributes": {
+        "occupation": "corpses",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Kita 7",
+      "parent": "JjJu94D3yXWvO2IShYDU",
+      "parentEntity": "planet"
+    },
+    "ny6dfXOM0Cf2bUuIZVuR": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Llanesco 9",
+      "parent": "C1WaEUhadBfTFNzD9hAA",
+      "parentEntity": "planet"
+    },
+    "oUBVCHucpnjYByIwszKr": {
+      "attributes": {
+        "occupation": "minions",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Gastre 3",
+      "parent": "KTclMLeSe3PNBNeRVmsk",
+      "parentEntity": "planet"
+    },
+    "seHd2hAOPAGxFAVtrfPn": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "sabotage"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Gamboa 8",
+      "parent": "WP8aSrzwtERF4GRytWrw",
+      "parentEntity": "asteroidBelt"
+    },
+    "ugdRUcVBH2JKo2jXkxzv": {
+      "attributes": {
+        "occupation": "scientist",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Spry 1",
+      "parent": "UW4X7pr2O9R2hVCibwFy",
+      "parentEntity": "planet"
+    },
+    "vJ40NTTUTnBiNXJJefNf": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Kholm 2",
+      "parent": "zcTSuHGSAtpP5N4FAcCQ",
+      "parentEntity": "planet"
+    },
+    "xtM2PfMRYokNIfnmzqPu": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "sabotage"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Lowell",
+      "parent": "LgZ70j8NwbvIfM9oQyOo",
+      "parentEntity": "planet"
+    },
+    "zssiiTpWFSkVx1HCeNqU": {
+      "attributes": {
+        "occupation": "odd",
+        "situation": "market"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Falun 8",
+      "parent": "brMDCI0K3pOXILhAUoAc",
+      "parentEntity": "planet"
+    },
+    "zychFImTxK3KaFY67DnB": {
+      "attributes": {
+        "occupation": "corpses",
+        "situation": "pirates"
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Kamloops 3",
+      "parent": "C1WaEUhadBfTFNzD9hAA",
+      "parentEntity": "planet"
+    }
+  },
+  "system": {
+    "0FBEZTaTO50ZvvSFoMAw": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tavroular",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 9,
+      "y": 5
+    },
+    "0RkIcV3x9D1uqhDAtUJa": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Amedere Orbere",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 4,
+      "y": 4
+    },
+    "0tQrU5wsgAjV3B2OGt19": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Benilli",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 6,
+      "y": 10
+    },
+    "18QHcUvaDSqnkQRTpfgO": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Phalest",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 1,
+      "y": 6
+    },
+    "6CmnZZLixUZuVQFyDOqi": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Pavvis",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 1,
+      "y": 9
+    },
+    "6WyDCRgOgZ9OA0P1fTkB": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ellis",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 7,
+      "y": 6
+    },
+    "7UdekfMqDzIHZzLBMbwv": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Askirut Sal",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 10,
+      "y": 4
+    },
+    "AtaF1mHfsKMHQOYxIoLQ": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Alvero",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 5,
+      "y": 7
+    },
+    "C46ZyGAtSKV2hn3y6Crx": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Eriopei",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 3,
+      "y": 3
+    },
+    "CFzS9dZFuYgTLEoDsFJ9": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Hild",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 7,
+      "y": 11
+    },
+    "CnowsBHphwIyZ7GkfdPH": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Pujaya Nita",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 7,
+      "y": 12
+    },
+    "D6wqw1xdsNGMdnVAuhZa": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Perithr",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 7,
+      "y": 7
+    },
+    "DYj5urRgXV2QBFC66oYo": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Jel Vaa",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 10,
+      "y": 3
+    },
+    "FAmOYSoqxvpcRK2SGGsy": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Antakis",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 8,
+      "y": 6
+    },
+    "NHmtnfVddY30oXkAgNT1": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Igliza",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 3,
+      "y": 10
+    },
+    "OWHBGjZLq6V0UrGw1srQ": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Eunelas",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 2,
+      "y": 3
+    },
+    "QTS9p6ilztJk9Vu5tp7M": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Ragnhil",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 1,
+      "y": 5
+    },
+    "QdwWBwlYVvfbJBftOhdw": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Helesco",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 4,
+      "y": 9
+    },
+    "XMsrBhMwzCCcOOzlDyPm": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Almu Gerbia",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 1,
+      "y": 1
+    },
+    "dlnxxKUndXkizsHfsyc1": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Tsatsos",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 5,
+      "y": 8
+    },
+    "jBs9kmOJL5iQxSfXKRFx": {
+      "attributes": {
+        "description": "A decadent pleasure world littered with castoff Guild facilities and objet de fuq."
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Osun",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 5,
+      "y": 1
+    },
+    "lD2bvEp0gXpSjEtReYYj": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Iphoos",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 2,
+      "y": 2
+    },
+    "oQTYsEwIz8sd6sxPuqwt": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Aliya",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 6,
+      "y": 7
+    },
+    "oRJ8IAWbsMTWLJ5ZmibD": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Pamita Cha",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 3,
+      "y": 6
+    },
+    "pxeFN8lOfiHeFPNYlpXK": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "isHidden": false,
+      "name": "Sig",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 4,
+      "y": 7
+    },
+    "qh7iQKzfsj8xxSfboAcN": {
+      "attributes": {
+        "description": "Home to the Imperial Throne, a sacred world and the core of the Empire."
+      },
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Imperial Prime",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 6,
+      "y": 6
+    },
+    "rgghs8hbbCwUXvYlZZ7k": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Xandare",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 7,
+      "y": 2
+    },
+    "s7C3hfSEw97m4nwUq2RR": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Guild HQ",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 9,
+      "y": 9
+    },
+    "sDkxqWf4fgtIxNNTdBEf": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Oenon",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 1,
+      "y": 8
+    },
+    "syuHOnToYUekkgPAOauv": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Solequon",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 8,
+      "y": 1
+    },
+    "tUsEd0NFnucDbjXeAzy1": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Meneus",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 10,
+      "y": 2
+    },
+    "wGQgS070spCMKZqyqCln": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Bergunn",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 10,
+      "y": 12
+    },
+    "yURVCpYkVzXntoFpc1xL": {
+      "creator": "2JIDAut5h9Z09gylKGQY2QpnYe53",
+      "name": "Home",
+      "parent": "m11ZXBOt6xiJGo21EKio",
+      "parentEntity": "sector",
+      "x": 7,
+      "y": 4
+    }
+  }
+}

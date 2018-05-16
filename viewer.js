@@ -1,0 +1,352 @@
+var focus = {
+  x: 5,
+  y: 5,
+  detail: 4,
+  zoom: 50,
+  fps: 20
+}
+
+var galaxy
+
+var createLookup = function (d) {
+  var objectLookup = new Map()
+  // register object IDs
+  for (var bodyType in d) {
+    for (var bodyID in d[bodyType]) {
+      var objectReference = Object.assign({
+        type: bodyType,
+        id: bodyID
+      }, d[bodyType][bodyID], {})
+      objectLookup.set(bodyID, objectReference)
+    }
+  }
+
+
+  for (var bodyType in d) {
+    for (var bodyID in d[bodyType]) {
+      var parentID = objectLookup.get(bodyID).parent
+      var parentOb = objectLookup.get(parentID)
+      if (typeof (parentOb) != "undefined") {
+        if (typeof (parentOb.children) == "undefined") {
+          parentOb.children = []
+        }
+        parentOb.children.push(bodyID)
+        objectLookup.set(parentID, parentOb)
+      }
+    }
+  }
+  return objectLookup
+}
+
+var createGalaxy = function (objectLookup) {
+
+  var map = new Map()
+
+  var swapOutChildren = (o => {
+    if (typeof (o.children) != "undefined") {
+      for (var i = 0; i < o.children.length; i++) {
+        var replacement = swapOutChildren(Object.assign({
+          childId: i
+        }, objectLookup.get(o.children[i]), {}))
+        map.set(o.children[i], Object.assign({
+          childId: i
+        }, objectLookup.get(o.children[i]), {}))
+        o.children[i] = replacement
+      }
+    }
+    return o
+  })
+
+  return Object.assign({
+    map: map
+  }, swapOutChildren(objectLookup.get("m11ZXBOt6xiJGo21EKio")), {})
+}
+
+var time = 0
+
+var diminishingScale = 0.3
+
+var spin = (radius, speed, offset) => {
+  var dist = speed * time / 500 // + offset
+  return [radius * Math.cos(dist), radius * Math.sin(dist)]
+}
+
+var position = objectId => {
+
+  var dLocation = spaceObject => {
+    if (typeof (spaceObject) == "undefined") {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+    // Need just x, y
+    var hash = hashCode(spaceObject.id)
+    switch (spaceObject.type) {
+
+      case "asteroidBelt":
+      case "sector":
+        return {
+          x: 0,
+          y: 0
+        }
+      case "blackHole":
+      case "system":
+        return {
+          x: spaceObject.x - 0.2 + 0.1 * (hash % 10) / 10,
+          y: spaceObject.y - 0.2 + 0.1 * (hash % 10) / 10 - 0.5 * (spaceObject.x % 2)
+        }
+      default:
+        var parent = galaxy.map.get(spaceObject.parent)
+        var radius = childRadius(spaceObject) / diminishingScale
+        var oSpin = spin(radius, (2 * (hashCode(parent.id) % 2) - 1) * Math.abs(1 + (hash % 100) / 10), hash % 3601)
+        return {
+          x: oSpin[0],
+          y: oSpin[1]
+        }
+    }
+  }
+  return dLocation(galaxy.map.get(objectId))
+}
+
+var hashCode = function (string) {
+  var hash = 0,
+    i, chr;
+  if (string.length === 0) return hash;
+  for (i = 0; i < string.length; i++) {
+    chr = string.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  return hash;
+}
+
+var makeChild = (parentSVG, childId, level, callback) => {
+  if (level < focus.detail) {
+    var o = galaxy.map.get(childId)
+    var g = parentSVG.group()
+    var loc = position(o.id)
+    g.transform(`t${loc.x},${loc.y})s${diminishingScale}`)
+    drawElement(g, o)
+    g.attr({
+      id: childId,
+      style: "will-change: transform;"
+    })
+    if (typeof (o.children) != "undefined") {
+      o.children.forEach(c => {
+        callback(g, c.id, level + 1, callback)
+      })
+    }
+    return g
+  }
+}
+
+var childRadius = childObject => {
+  var parent = galaxy.map.get(childObject.parent)
+  var childHash = hashCode(childObject.id)
+  var parentHash = hashCode(parent.id)
+  // want some randomness?
+  // Too computationally expensive for the effect
+  // Need to find a suitable base
+  // var shuffle = Math.pow(base, (parentHash % 13) * childObject.childId) % parent.children.length
+
+  // max radius value is 0.5, because we want galaxies of approximate width 1
+  return 0.5 * (diminishingScale + (1 - diminishingScale) * (1 + childObject.childId + 0.9 * (childHash % 10) / 10) / (1 + parent.children.length))
+
+}
+
+var drawElement = (svgGroup, data) => {
+  var c
+  var scale = 0.9 + 0.2 * ((hashCode(data.id) % 23) / 23)
+  switch (data.type) {
+    case "blackHole":
+      c = svgGroup.circle(0, 0, scale * 0.3)
+      break;
+    case "deepSpaceStation":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "#644"
+      })
+      break;
+    case "system":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "red"
+      })
+      break;
+    case "planet":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "lightblue"
+      })
+      break;
+    case "moon":
+    case "moonBase":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "#BBB"
+      })
+      break;
+    case "orbitalRuin":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "#666"
+      })
+      break;
+    case "spaceStation":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "#EEE"
+      })
+      break;
+    case "asteroidBelt":
+      c = svgGroup.circle(0, 0, childRadius(data) / (diminishingScale * diminishingScale)).attr({
+        fill: "none",
+        stroke: "grey",
+        "stroke-width": scale * 0.01
+      })
+      break;
+    default:
+      c = svgGroup.circle(0, 0, scale * 0.1).attr({
+        fill: "white"
+      })
+  }
+  c.attr({
+    onclick: `window.latestClick = "${data.id}"`
+  })
+}
+
+var spreadCamel = s => {
+
+  var dSpreadCamel = s => {
+    if (typeof (s) == "string") {
+      return s.replace(/([a-z])([A-Z])/g, function (m, a, b) {
+        return `${a} ${b.toLowerCase()}`
+      })
+    } else {
+      var t = []
+      s.forEach(x => t.push(dSpreadCamel(x)))
+      return t.join(", ")
+    }
+  }
+
+  return dSpreadCamel(s)
+}
+
+var details = id => {
+  var o = galaxy.map.get(id)
+  if (typeof (o) != "undefined") {
+    var description = attributes.description || ""
+    if (description.length > 0) {
+      description = " (" + description + ")"
+    }
+    var type = spreadCamel(o.type)
+    return `${type} ${o.name}${description}`
+  } else {
+    return ``
+  }
+}
+
+var attributes = a => {
+
+  var attr = a || {}
+  var s = ""
+  for (var key in a) {
+    s += `- ${spreadCamel(key)}: ${spreadCamel(a[key])}\n`
+  }
+  return s
+}
+
+
+var chartSvg = function () {
+
+  const galaxyWidth = galaxy.columns
+  const galaxyHeight = galaxy.rows
+
+  const viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
+  const viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
+  const left = galaxyWidth * focus.x / 100 - viewWidth / 2
+  const top = galaxyWidth * (focus.y / 100) - viewHeight / 2
+
+  svg.clear()
+  svg.attr({
+    viewBox: `${left}, ${top}, ${viewWidth}, ${viewHeight}`
+  })
+
+  // background
+  svg.rect(-1, -1, galaxyWidth + 2, galaxyHeight + 2).attr({
+    fill: "#336"
+  })
+
+  const svgGalaxy = svg.g()
+    .attr({
+      "font-family": "sans-serif",
+      "font-size": 10
+    })
+
+
+  for (var i = 0; i < galaxy.children.length; i++) {
+    var c = galaxy.children[i]
+    makeChild(svgGalaxy, c.id, 1, makeChild)
+  }
+
+
+}
+
+/*
+latestClick = {
+  
+
+  
+  
+  
+  var getDescription = () => {
+    var o = galaxy.map.get(window.latestClick)
+  if(typeof(o) != "undefined"){
+  return md`### ${details(o.id)}
+${attributes(o.attributes)}
+
+#### parent: ${details(o.parent)}`
+  } else {
+   return md`Disabled: ~~Click an object to see its details (refreshes every ${clickRefreshRate} seconds to improve performance.)~~` 
+  }
+  }
+  yield getDescription();
+  //while (true) yield Promises.delay(1000 * clickRefreshRate, getDescription());
+}
+
+*/
+var svg
+var baseTime = (new Date()).getTime()
+var lastUpdate = null
+var redraw = (timeStamp) => {
+  if(timeStamp - lastUpdate > (1000/ focus.fps)){
+  lastUpdate = timeStamp
+  time = (baseTime + timeStamp) / 1000
+  chartSvg()
+  /*svgPanZoom('#chart', {
+    zoomEnabled: true,
+    controlIconsEnabled: true,
+    fit: true,
+    center: true,
+  })*/
+  }
+  window.requestAnimationFrame(redraw)
+}
+
+
+
+$(function () {
+  const mapWidth = 400
+  const mapHeight = 400
+
+  svg = Snap(mapWidth, mapHeight)
+  svg.attr({
+    id: "chart",
+    width: "100%",
+    height: "100%"
+  })
+
+
+
+
+  $.getJSON("./AcheronRho.json", function (d) {
+    var objectLookup = createLookup(d)
+    galaxy = createGalaxy(objectLookup)
+    window.requestAnimationFrame(redraw)
+  })
+})
