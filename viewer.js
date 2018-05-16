@@ -1,9 +1,9 @@
 var focus = {
-  x: 5,
-  y: 5,
+  x: 50,
+  y: 50,
   detail: 4,
   zoom: 50,
-  fps: 20
+  fps: 15
 }
 
 var galaxy
