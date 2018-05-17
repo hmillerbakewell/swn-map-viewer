@@ -130,7 +130,7 @@ var addSvgTouchHandlers = () => {
   }
 
   var setSpeed = (s) => {
-    focus.speed = constrain(0, s, 2)
+    focus.speed = constrain(0, s, 5)
     $("#optionSpeed")[0].value = focus.speed
   }
 
