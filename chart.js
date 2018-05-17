@@ -70,7 +70,7 @@ var createGalaxy = function (objectLookup) {
 
 var time = 0
 
-var diminishingScale = 0.4
+var diminishingScale = 0.3
 
 var spin = (radius, speed, offset) => {
   var dist = speed * focus.spaceTime / 1000
@@ -216,7 +216,7 @@ var drawElement = (svgGroup, data) => {
       c = svgGroup.circle(0, 0, childRadius(data) / (diminishingScale * diminishingScale)).attr({
         fill: "none",
         stroke: "grey",
-        "stroke-width": scale * 0.01
+        "stroke-width": scale * 0.02
       })
       break;
     default:
@@ -250,7 +250,7 @@ var updateSvg = function () {
         var loc = position(o.id)
         var d = diminishingScale
         var distFromFocus = (g.transform().globalMatrix.f / mapSize - focus.y / 100) * tiltMatrix.d
-        var distScale = 0.5 + 0.25 * distFromFocus
+        var distScale = 1// 0.8 + 0.1 * distFromFocus
 
         switch (o.type) {
           case "asteroidBelt":
