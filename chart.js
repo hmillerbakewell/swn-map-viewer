@@ -6,7 +6,7 @@ var focus = {
   zoom: 50,
   fps: 15,
   tilt: 30,
-  spaceTime: 100
+  spaceTime: (new Date()).getTime()
 }
 
 var tiltMatrix = new Snap.Matrix()
@@ -240,11 +240,6 @@ var updateSvg = function () {
   var left = galaxyWidth * focus.x / 100 - viewWidth / 2
   var top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
 
-  svg.attr({
-    viewBox: `${left}, ${top}, ${viewWidth}, ${viewHeight}`
-  })
-
-
   for (keypair of galaxy.map) {
     var o = keypair[1]
     var g = svg.select("#group" + keypair[0])
@@ -275,6 +270,12 @@ var updateSvg = function () {
       }
     }
   }
+
+  
+  svg.attr({
+    viewBox: `${left}, ${top}, ${viewWidth}, ${viewHeight}`
+  })
+  
 }
 
 var initialiseSvg = function () {
