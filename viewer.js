@@ -237,6 +237,20 @@ var drawElement = (svgGroup, data) => {
 
 
 var updateSvg = function () {
+
+  const galaxyWidth = galaxy.columns
+  const galaxyHeight = galaxy.rows
+
+  const viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
+  const viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
+  const left = galaxyWidth * focus.x / 100 - viewWidth / 2
+  const top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
+
+  svg.attr({
+    viewBox: `${left}, ${top}, ${viewWidth}, ${viewHeight}`
+  })
+
+
   for (keypair of galaxy.map) {
     var o = keypair[1]
     var g = svg.select("#group" + keypair[0])
@@ -317,6 +331,8 @@ $(function () {
     width: "100%",
     height: "100%"
   })
+
+  addSvgTouchHandlers()
 
 
 

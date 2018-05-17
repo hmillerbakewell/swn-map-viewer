@@ -80,3 +80,72 @@ var attributes = a => {
   }
   return s
 }
+
+
+
+// scroll blocking from https://stackoverflow.com/questions/3957017/jquery-if-target-is-child-of-wrapper-then-do-something
+
+var drag = {
+  blockScroll : false,
+  last: null
+}
+
+var constrain = (min, val, max) => {
+  return Math.min(Math.max(min, val), max)
+}
+
+var addSvgTouchHandlers = () => {
+
+  var shiftFocus = (x,y) => {
+    focus.x = constrain(0, focus.x - focus.zoom*(x)/1000, 100)
+    focus.y = constrain(0, focus.y - focus.zoom*(y)/1000, 100)
+
+  }
+
+  $("svg")
+  .mousedown(function(e) {
+    drag.blockScroll = true
+    log(e)
+      drag.last = {x: e.pageX, y: e.pageY};
+  })
+  .mousemove(function(e) {
+    var last = drag.last
+    var next = {x: e.pageX, y: e.pageY}
+
+    if (drag.blockScroll)
+    {
+        e.preventDefault();
+        shiftFocus(next.x-last.x, next.y-last.y)
+    }
+
+
+    drag.last = {x: e.pageX, y: e.pageY}
+   })
+  .mouseup(function(e) {
+    drag.blockScroll = false
+  })
+
+
+  $("svg").on('touchstart', function(e)
+  {
+    drag.blockScroll = true;
+    var touches = e.targetTouches[0]
+    drag.last = {x: touches.pageX, y: touches.pageY}
+  });
+  $("svg").on('touchend',  function()
+  {
+    drag.blockScroll = false;
+  });
+  $("svg").on('touchmove', function(e)
+  {
+    var touches = e.targetTouches[0]
+    var last = drag.last
+    var next = {x: touches.pageX, y: touches.pageY}
+      if (drag.blockScroll)
+      {
+          e.preventDefault();
+          shiftFocus(next.x-last.x, next.y-last.y)
+      }
+      drag.last = {x: touches.pageX, y: touches.pageY}
+  })
+}
