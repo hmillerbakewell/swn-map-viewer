@@ -221,8 +221,7 @@ var drawElement = (svgGroup, data) => {
       c = svgGroup.circle(0, 0, childRadius(data) / (diminishingScale * diminishingScale)).attr({
         fill: "none",
         stroke: "grey",
-        "stroke-width": scale * 0.01,
-        transform: tiltMatrix
+        "stroke-width": scale * 0.01
       })
       break;
     default:
@@ -258,7 +257,7 @@ var updateSvg = function () {
       // Some bodies won't have been drawn, so check for null svg element
       var loc = position(o.id)
       var d = diminishingScale
-      g.transform(`m ${0.3}, 0, 0, ${d}, ${loc.x}, ${loc.y}`)
+      g.transform(`m ${d}, 0, 0, ${d}, ${loc.x}, ${loc.y}`)
     }
   }
 }

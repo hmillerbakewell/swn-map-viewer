@@ -10,7 +10,6 @@ updateBodySelection = (bodyId) => {
       if (typeof (o) != "undefined") {
         var s = `# ${details(o.id)}
 ${attributes(o.attributes)}`
-        console.log(o)
         if (o.parentEntity != "sector") {
           s += `
 ## Parent ${details(o.parent)}`
@@ -22,7 +21,6 @@ ${attributes(o.attributes)}`
     $(".details").show()
     $("#detailsWords").html(markdown.makeHtml(getDescription()))
   } else {
-    log("hiding")
     $(".details").hide()
   }
 
@@ -109,12 +107,17 @@ var addSvgTouchHandlers = () => {
 
   var shiftTilt = (t) => {
     focus.tilt = constrain(15, focus.tilt + t / 10, 90)
+    updateTilt()
+  }
+
+
+  var updateTilt = () => {
+    tiltMatrix.d = Math.cos((focus.tilt) * Math.PI / 180)
   }
 
   $("svg")
     .mousedown(function (e) {
       drag.blockScroll = true
-      log(e)
       drag.last = {
         x: e.pageX,
         y: e.pageY
@@ -156,21 +159,23 @@ var addSvgTouchHandlers = () => {
     var last = drag.last
     if (drag.blockScroll) {
       e.preventDefault();
-      
-    if (last.length == touches.length){
-      if(last.length == 1){
-        var diff = {x: last[0].pageX - touches[0].pageX, y:  last[0].pageY - touches[0].pageY}
-        shiftFocus(-diff.x,-diff.y)
-      }
 
-      if(last.length == 2){
-          avgYChange =  (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY)/2
+      if (last.length == touches.length) {
+        if (last.length == 1) {
+          var diff = {
+            x: last[0].pageX - touches[0].pageX,
+            y: last[0].pageY - touches[0].pageY
+          }
+          shiftFocus(-diff.x, -diff.y)
+        }
+
+        if (last.length == 2) {
+          avgYChange = (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY) / 2
           distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
-          log(distYChange)
           shiftZoom(distYChange)
           shiftTilt(avgYChange)
+        }
       }
-    }
     }
     drag.last = touches
   })
