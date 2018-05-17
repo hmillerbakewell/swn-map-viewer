@@ -2,9 +2,11 @@ var focus = {
   x: 50,
   y: 50,
   detail: 4,
+  speed: 1,
   zoom: 50,
-  fps: 15,
-  tilt: 30
+  fps: 30,
+  tilt: 30,
+  spaceTime: 100
 }
 
 var updateTilt = () => {
@@ -74,7 +76,7 @@ var time = 0
 var diminishingScale = 0.3
 
 var spin = (radius, speed, offset) => {
-  var dist = speed * time / 500 // + offset
+  var dist = speed * focus.spaceTime / 1000
   return [radius * Math.cos(dist), radius * Math.sin(dist)]
 }
 
@@ -100,14 +102,15 @@ var position = objectId => {
         }
       case "blackHole":
       case "system":
-      var topSqueeze = Math.cos(focus.tilt * Math.PI/ 180)
-      var distUp = 1-(spaceObject.y / galaxy.rows)
-      var midSqueeze = (1-distUp) + distUp* topSqueeze
-      var rawX = spaceObject.x - 0.2 + 0.1 * (hash % 10) / 10
+        var topSqueeze = Math.cos(focus.tilt * Math.PI / 180)
+        var distUp = 1 - (spaceObject.y / galaxy.rows)
+        var midSqueeze = (1 - distUp) + distUp * topSqueeze
+        var rawX = spaceObject.x - 0.05 + 0.1 * (hash % 10) / 10
         return {
-          x: midSqueeze*rawX + (1-midSqueeze)*galaxy.columns/2,
-          y: spaceObject.y - 0.2 + 0.1 * (hash % 10) / 10 - 0.5 * (spaceObject.x % 2)
+          x: midSqueeze * rawX + (1 - midSqueeze) * galaxy.columns / 2,
+          y: spaceObject.y - 0.05 + 0.1 * (hash % 10) / 10 - 0.5 * (spaceObject.x % 2)
         }
+        break;
       default:
         var parent = galaxy.map.get(spaceObject.parent)
         var radius = childRadius(spaceObject) / diminishingScale
@@ -147,7 +150,7 @@ var makeChild = (parentSVG, childId, level, callback) => {
     g.transform(`t${loc.x},${loc.y})s${diminishingScale}`)
     drawElement(g, o)
     g.attr({
-      id: childId,
+      id: "group"+childId,
       style: "will-change: transform;"
     })
     if (typeof (o.children) != "undefined") {
@@ -186,9 +189,9 @@ var drawElement = (svgGroup, data) => {
       })
       break;
     case "system":
-    var bv = (5.2)*((data.hash % 123)/123) - 0.5
-    var size = 0.1 + 0.1*Math.pow((data.hash % 123)/123,1.5)
-      var finalColour =  bv_to_rgb(bv)
+      var bv = (5.2) * ((data.hash % 123) / 123) - 0.5
+      var size = 0.1 + 0.1 * Math.pow((data.hash % 123) / 123, 1.5)
+      var finalColour = bv_to_rgb(bv)
       c = svgGroup.circle(0, 0, scale * size).attr({
         fill: finalColour //svg.gradient(`r(0.5, 0.5, 0.5)#fff-#${finalColour}`)
       })
@@ -273,7 +276,20 @@ var attributes = a => {
   return s
 }
 
-var chartSvg = function () {
+var updateSvg = function () {
+  for (keypair of galaxy.map) {
+    var o = keypair[1]
+    var g = svg.select("#group" + keypair[0])
+    if (g) {
+      // Some bodies won't have been drawn, so check for null svg element
+      var loc = position(o.id)
+      var d = diminishingScale
+      g.transform(`m ${0.3}, 0, 0, ${d}, ${loc.x}, ${loc.y}`)
+    }
+  }
+}
+
+var initialiseSvg = function () {
 
   const galaxyWidth = galaxy.columns
   const galaxyHeight = galaxy.rows
@@ -338,8 +354,8 @@ var redraw = (timeStamp) => {
   if (timeStamp - lastUpdate > (1000 / focus.fps)) {
     updateTilt()
     lastUpdate = timeStamp
-    time = (baseTime + timeStamp) / 1000
-    chartSvg()
+    focus.spaceTime = focus.spaceTime + focus.speed
+    updateSvg()
     /*svgPanZoom('#chart', {
       zoomEnabled: true,
       controlIconsEnabled: true,
@@ -369,6 +385,7 @@ $(function () {
   $.getJSON("./AcheronRho.json", function (d) {
     var objectLookup = createLookup(d)
     galaxy = createGalaxy(objectLookup)
+    initialiseSvg()
     window.requestAnimationFrame(redraw)
   })
 })
