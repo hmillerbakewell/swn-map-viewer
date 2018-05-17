@@ -234,13 +234,13 @@ var drawElement = (svgGroup, data) => {
 
 var updateSvg = function () {
 
-  const galaxyWidth = galaxy.columns
-  const galaxyHeight = galaxy.rows
+  var galaxyWidth = galaxy.columns
+  var galaxyHeight = galaxy.rows
 
-  const viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
-  const viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
-  const left = galaxyWidth * focus.x / 100 - viewWidth / 2
-  const top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
+  var viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
+  var viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
+  var left = galaxyWidth * focus.x / 100 - viewWidth / 2
+  var top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
 
   svg.attr({
     viewBox: `${left}, ${top}, ${viewWidth}, ${viewHeight}`
@@ -254,12 +254,15 @@ var updateSvg = function () {
       // Some bodies won't have been drawn, so check for null svg element
       var loc = position(o.id)
       var d = diminishingScale
+      var distFromFocus = (g.transform().globalMatrix.f / mapSize - focus.y / 100)
+      var distScale = 0.5 + 0.25 * distFromFocus
+
       switch(o.type){
         case "asteroidBelt":
-          g.transform(`m ${d}, 0, 0, ${d * tiltMatrix.d}, ${loc.x}, ${loc.y}`)
+          g.transform(`m ${d* distScale}, 0, 0, ${d * tiltMatrix.d * distScale}, ${loc.x}, ${loc.y}`)
           break;
         default:
-          g.transform(`m ${d}, 0, 0, ${d}, ${loc.x}, ${loc.y}`)
+          g.transform(`m ${d* distScale}, 0, 0, ${d* distScale}, ${loc.x}, ${loc.y}`)
 
       }
     }
@@ -325,13 +328,11 @@ var redraw = (timeStamp) => {
   window.requestAnimationFrame(redraw)
 }
 
-
+const mapSize = 400
 
 $(function () {
-  const mapWidth = 400
-  const mapHeight = 400
 
-  svg = Snap(mapWidth, mapHeight)
+  svg = Snap(mapSize, mapSize)
   svg.attr({
     id: "chart",
     width: "100%",

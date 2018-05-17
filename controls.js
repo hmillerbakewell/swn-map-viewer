@@ -96,23 +96,18 @@ var constrain = (min, val, max) => {
 var addSvgTouchHandlers = () => {
 
   var shiftFocus = (x, y) => {
-    focus.x = constrain(0, focus.x - focus.zoom * (x) / 1000, 100)
-    focus.y = constrain(0, focus.y - focus.zoom * (y) / 1000, 100)
+    focus.x = constrain(0, focus.x - focus.zoom * (x) / (mapSize * 10), 100)
+    focus.y = constrain(0, focus.y - focus.zoom * (y) / (mapSize * 10), 100)
 
   }
 
   var shiftZoom = (z) => {
-    focus.zoom = constrain(1, focus.zoom + z / 10, 99)
+    focus.zoom = constrain(20, focus.zoom + (z / 10), 90)
   }
 
   var shiftTilt = (t) => {
     focus.tilt = constrain(15, focus.tilt + t / 10, 90)
     updateTilt()
-  }
-
-
-  var updateTilt = () => {
-    tiltMatrix.d = Math.cos((focus.tilt) * Math.PI / 180)
   }
 
   $("svg")
