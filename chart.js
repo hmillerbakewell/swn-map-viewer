@@ -322,7 +322,6 @@ var baseTime = (new Date()).getTime()
 var lastUpdate = null
 var redraw = (timeStamp) => {
   if (timeStamp - lastUpdate > (1000 / focus.fps)) {
-    updateTilt()
     lastUpdate = timeStamp
     focus.spaceTime = focus.spaceTime + focus.speed
     updateSvg()

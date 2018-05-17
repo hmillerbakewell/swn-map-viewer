@@ -9,8 +9,11 @@ updateBodySelection = (bodyId) => {
       var o = galaxy.map.get(bodyId)
 
       var systemGet = body => {
-        if(body.parentEntity == "sector"){
-          return {x: body.x, y: body.y}
+        if (body.parentEntity == "sector") {
+          return {
+            x: body.x,
+            y: body.y
+          }
         } else {
           return systemGet(galaxy.map.get(body.parent))
         }
@@ -26,7 +29,7 @@ ${attributes(o.attributes)}`
 ## Parent ${details(o.parent)}
 `
         }
-        s+=`
+        s += `
 
         (System ${system.x}-${system.y})
         `
@@ -107,7 +110,7 @@ var drag = {
 }
 
 var constrain = (min, val, max) => {
-  if(val === NaN){
+  if (val === NaN) {
     val = 0
   }
   return Math.min(Math.max(min, val), max)
@@ -116,8 +119,8 @@ var constrain = (min, val, max) => {
 var addSvgTouchHandlers = () => {
 
   var shiftFocus = (x, y) => {
-    focus.x = constrain(0, focus.x - Math.pow(focus.zoom,1.2) * (x) / (mapSize * 10), 100)
-    focus.y = constrain(0, focus.y - Math.pow(focus.zoom,1.2) * (y) / (mapSize * 10), 100)
+    focus.x = constrain(0, focus.x - Math.pow(focus.zoom, 1.2) * (x) / (mapSize * 10), 100)
+    focus.y = constrain(0, focus.y - Math.pow(focus.zoom, 1.2) * (y) / (mapSize * 10), 100)
 
   }
 
@@ -125,6 +128,12 @@ var addSvgTouchHandlers = () => {
     focus.zoom = constrain(20, z, 95)
     $("#optionZoom")[0].value = focus.zoom
   }
+
+  var setSpeed = (s) => {
+    focus.speed = constrain(0, s, 2)
+    $("#optionSpeed")[0].value = focus.speed
+  }
+
 
   var setTilt = (t) => {
     focus.tilt = constrain(0, t, 80)
@@ -134,27 +143,33 @@ var addSvgTouchHandlers = () => {
 
   // Options menu
 
-  $("#optionLOD").change(function(e){
+  $("#optionLOD").change(function (e) {
     focus.detail = parseInt($("#optionLOD")[0].value)
   })
 
   $("#optionLOD").change()
 
-  $("#optionTilt").change(function(e){
+  $("#optionTilt").change(function (e) {
     setTilt(parseInt($("#optionTilt")[0].value))
   })
 
   $("#optionTilt").change()
 
-  
-  $("#optionZoom").change(function(e){
+
+  $("#optionZoom").change(function (e) {
     setZoom(parseInt($("#optionZoom")[0].value))
   })
 
   $("#optionZoom").change()
 
 
-// Touch and drag
+  $("#optionSpeed").change(function (e) {
+    setSpeed(parseInt($("#optionSpeed")[0].value))
+  })
+
+  $("#optionSpeed").change()
+
+  // Touch and drag
 
   $("svg")
     .mousedown(function (e) {
@@ -217,8 +232,8 @@ var addSvgTouchHandlers = () => {
         if (last.length == 2) {
           avgYChange = (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY) / 2
           distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
-          setZoom(focus.zoom + distYChange/10)
-          setTilt(focus.tilt + avgYChange/10)
+          setZoom(focus.zoom + distYChange / 10)
+          setTilt(focus.tilt + avgYChange / 10)
         }
       }
     }
