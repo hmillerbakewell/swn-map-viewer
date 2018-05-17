@@ -1,28 +1,26 @@
-
-
 var markdown = new showdown.Converter()
 var log = console.log
 
 
 updateBodySelection = (bodyId) => {
 
-  if(bodyId && bodyId.length > 0){
-  var getDescription = () => {
-    var o = galaxy.map.get(bodyId)
-  if(typeof(o) != "undefined"){
-  var s =  `# ${details(o.id)}
+  if (bodyId && bodyId.length > 0) {
+    var getDescription = () => {
+      var o = galaxy.map.get(bodyId)
+      if (typeof (o) != "undefined") {
+        var s = `# ${details(o.id)}
 ${attributes(o.attributes)}`
-console.log(o)
-if(o.parentEntity != "sector"){
-s += `
+        console.log(o)
+        if (o.parentEntity != "sector") {
+          s += `
 ## Parent ${details(o.parent)}`
-}
-return s
-  }
-  }
+        }
+        return s
+      }
+    }
 
-  $(".details").show()
-$("#detailsWords").html(markdown.makeHtml(getDescription()))
+    $(".details").show()
+    $("#detailsWords").html(markdown.makeHtml(getDescription()))
   } else {
     log("hiding")
     $(".details").hide()
@@ -30,10 +28,13 @@ $("#detailsWords").html(markdown.makeHtml(getDescription()))
 
 }
 
-$(function(){
-  var s = "# Click an object to show details."
+$(function () {
+  var s = `
+- Click an object to show details.
+  
+- Drag the map around.`
   $("#detailsWords").html(markdown.makeHtml(s))
-}())
+})
 
 
 var spreadCamel = s => {
@@ -86,7 +87,7 @@ var attributes = a => {
 // scroll blocking from https://stackoverflow.com/questions/3957017/jquery-if-target-is-child-of-wrapper-then-do-something
 
 var drag = {
-  blockScroll : false,
+  blockScroll: false,
   last: null
 }
 
@@ -96,56 +97,81 @@ var constrain = (min, val, max) => {
 
 var addSvgTouchHandlers = () => {
 
-  var shiftFocus = (x,y) => {
-    focus.x = constrain(0, focus.x - focus.zoom*(x)/1000, 100)
-    focus.y = constrain(0, focus.y - focus.zoom*(y)/1000, 100)
+  var shiftFocus = (x, y) => {
+    focus.x = constrain(0, focus.x - focus.zoom * (x) / 1000, 100)
+    focus.y = constrain(0, focus.y - focus.zoom * (y) / 1000, 100)
 
   }
 
+  var shiftZoom = (z) => {
+    focus.zoom = constrain(1, focus.zoom + z / 10, 99)
+  }
+
+  var shiftTilt = (t) => {
+    focus.tilt = constrain(15, focus.tilt + t / 10, 90)
+  }
+
   $("svg")
-  .mousedown(function(e) {
-    drag.blockScroll = true
-    log(e)
-      drag.last = {x: e.pageX, y: e.pageY};
-  })
-  .mousemove(function(e) {
-    var last = drag.last
-    var next = {x: e.pageX, y: e.pageY}
+    .mousedown(function (e) {
+      drag.blockScroll = true
+      log(e)
+      drag.last = {
+        x: e.pageX,
+        y: e.pageY
+      };
+    })
+    .mousemove(function (e) {
+      var last = drag.last
+      var next = {
+        x: e.pageX,
+        y: e.pageY
+      }
 
-    if (drag.blockScroll)
-    {
+      if (drag.blockScroll) {
         e.preventDefault();
-        shiftFocus(next.x-last.x, next.y-last.y)
-    }
+        shiftFocus(next.x - last.x, next.y - last.y)
+      }
 
 
-    drag.last = {x: e.pageX, y: e.pageY}
-   })
-  .mouseup(function(e) {
-    drag.blockScroll = false
-  })
+      drag.last = {
+        x: e.pageX,
+        y: e.pageY
+      }
+    })
+    .mouseup(function (e) {
+      drag.blockScroll = false
+    })
 
 
-  $("svg").on('touchstart', function(e)
-  {
+  $("svg").on('touchstart', function (e) {
     drag.blockScroll = true;
-    var touches = e.targetTouches[0]
-    drag.last = {x: touches.pageX, y: touches.pageY}
+    var touches = e.targetTouches
+    drag.last = e.touches
   });
-  $("svg").on('touchend',  function()
-  {
+  $("svg").on('touchend', function () {
     drag.blockScroll = false;
   });
-  $("svg").on('touchmove', function(e)
-  {
-    var touches = e.targetTouches[0]
+  $("svg").on('touchmove', function (e) {
+    var touches = e.targetTouches
     var last = drag.last
-    var next = {x: touches.pageX, y: touches.pageY}
-      if (drag.blockScroll)
-      {
-          e.preventDefault();
-          shiftFocus(next.x-last.x, next.y-last.y)
+    if (drag.blockScroll) {
+      e.preventDefault();
+      
+    if (last.length == touches.length){
+      if(last.length == 1){
+        var diff = {x: last[0].pageX - touches[0].pageX, y:  last[0].pageY - touches[0].pageY}
+        shiftFocus(-diff.x,-diff.y)
       }
-      drag.last = {x: touches.pageX, y: touches.pageY}
+
+      if(last.length == 2){
+          avgYChange =  (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY)/2
+          distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
+          log(distYChange)
+          shiftZoom(distYChange)
+          shiftTilt(avgYChange)
+      }
+    }
+    }
+    drag.last = touches
   })
 }

@@ -280,7 +280,7 @@ var initialiseSvg = function () {
 
   // background
   svg.rect(-1, -1, galaxyWidth + 2, galaxyHeight + 2).attr({
-    fill: "#336"
+    fill: "none"
   })
 
   const svgGalaxy = svg.g()
