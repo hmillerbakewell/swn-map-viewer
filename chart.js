@@ -1,10 +1,10 @@
 var focus = {
   x: 50,
   y: 50,
-  detail: 4,
+  detail: 2,
   speed: 1,
   zoom: 50,
-  fps: 30,
+  fps: 15,
   tilt: 30,
   spaceTime: 100
 }
@@ -51,12 +51,12 @@ var createGalaxy = function (objectLookup) {
     if (typeof (o.children) != "undefined") {
       for (var i = 0; i < o.children.length; i++) {
         var replacement = swapOutChildren(Object.assign({
-          childId: i
-        }, objectLookup.get(o.children[i]), {}))
-        map.set(o.children[i], Object.assign({
           childId: i,
+          depth: (o.depth || 0) + 1,
           hash: hashCode(o.children[i])
         }, objectLookup.get(o.children[i]), {}))
+
+        map.set(o.children[i], replacement)
         o.children[i] = replacement
       }
     }
@@ -70,7 +70,7 @@ var createGalaxy = function (objectLookup) {
 
 var time = 0
 
-var diminishingScale = 0.3
+var diminishingScale = 0.4
 
 var spin = (radius, speed, offset) => {
   var dist = speed * focus.spaceTime / 1000
@@ -139,24 +139,22 @@ var hashCode = function (string) {
   return Math.abs(hash); // abs, so it plays well with modulo
 }
 
-var makeChild = (parentSVG, childId, level, callback) => {
-  if (level < focus.detail) {
-    var o = galaxy.map.get(childId)
-    var g = parentSVG.group()
-    var loc = position(o.id)
-    g.transform(`t${loc.x},${loc.y})s${diminishingScale}`)
-    drawElement(g, o)
-    g.attr({
-      id: "group"+childId,
-      style: "will-change: transform;"
+var makeChild = (parentSVG, childId, callback) => {
+  var o = galaxy.map.get(childId)
+  var g = parentSVG.group()
+  var loc = position(o.id)
+  g.transform(`t${loc.x},${loc.y})s${diminishingScale}`)
+  drawElement(g, o)
+  g.attr({
+    id: "group" + childId,
+    style: "will-change: transform;"
+  })
+  if (typeof (o.children) != "undefined") {
+    o.children.forEach(c => {
+      callback(g, c.id, callback)
     })
-    if (typeof (o.children) != "undefined") {
-      o.children.forEach(c => {
-        callback(g, c.id, level + 1, callback)
-      })
-    }
-    return g
   }
+  return g
 }
 
 var childRadius = childObject => {
@@ -237,8 +235,8 @@ var updateSvg = function () {
   var galaxyWidth = galaxy.columns
   var galaxyHeight = galaxy.rows
 
-  var viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
-  var viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
+  var viewWidth = Math.pow(tiltMatrix.d,0.5) * (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
+  var viewHeight = Math.pow(tiltMatrix.d,0.5) * (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
   var left = galaxyWidth * focus.x / 100 - viewWidth / 2
   var top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
 
@@ -252,18 +250,28 @@ var updateSvg = function () {
     var g = svg.select("#group" + keypair[0])
     if (g) {
       // Some bodies won't have been drawn, so check for null svg element
-      var loc = position(o.id)
-      var d = diminishingScale
-      var distFromFocus = (g.transform().globalMatrix.f / mapSize - focus.y / 100)
-      var distScale = 0.5 + 0.25 * distFromFocus
+      var visible = (o.depth <= focus.detail)
+      if (visible) {
+        var loc = position(o.id)
+        var d = diminishingScale
+        var distFromFocus = (g.transform().globalMatrix.f / mapSize - focus.y / 100) * tiltMatrix.d
+        var distScale = 0.5 + 0.25 * distFromFocus
 
-      switch(o.type){
-        case "asteroidBelt":
-          g.transform(`m ${d* distScale}, 0, 0, ${d * tiltMatrix.d * distScale}, ${loc.x}, ${loc.y}`)
-          break;
-        default:
-          g.transform(`m ${d* distScale}, 0, 0, ${d* distScale}, ${loc.x}, ${loc.y}`)
+        switch (o.type) {
+          case "asteroidBelt":
+            g.transform(`m ${d* distScale}, 0, 0, ${d * tiltMatrix.d * distScale}, ${loc.x}, ${loc.y}`)
+            break;
+          default:
+            g.transform(`m ${d* distScale}, 0, 0, ${d* distScale}, ${loc.x}, ${loc.y}`)
 
+        }
+        g.attr({
+          visibility: "visible"
+        })
+      } else {
+        g.attr({
+          visibility: "hidden"
+        })
       }
     }
   }
@@ -298,7 +306,7 @@ var initialiseSvg = function () {
 
   for (var i = 0; i < galaxy.children.length; i++) {
     var c = galaxy.children[i]
-    makeChild(svgGalaxy, c.id, 1, makeChild)
+    makeChild(svgGalaxy, c.id, makeChild)
   }
 
 

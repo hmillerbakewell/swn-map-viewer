@@ -2,7 +2,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
   <script src="./jquery-3.3.1.js"></script>
-  <script src="./viewer.js"></script>
+  <script src="./chart.js"></script>
   <script src="./controls.js"></script>
   <script src="./bv-to-rgb.js"></script>
   <link rel="stylesheet" href="normalise.css">
@@ -15,26 +15,47 @@
       background: #336;
     }
 
-    .details {
-      position: fixed;
-    right: 5%;
-    /* width: 30%; */
-    top: 5%;
-    max-height: 50%;
-    background: #222255AA;
-    padding: 4%;
-    border-radius: 20px;
-    border: 1px solid #111133;
-    color: white;
-    min-width: 20%;
-    max-width: 30%;
+    table {
+      color: inherit;
+      width: 100%;
     }
 
+    td {
+      padding: 5px;
+    }
+
+    #words {
+      overflow-y: auto;
+      position: fixed;
+      right: 5%;
+      width: 25%;
+      top: 5%;
+      max-height: 50%;
+      background: #222255AA;
+      padding: 2%;
+      border-radius: 20px;
+      border: 1px solid #111133;
+      color: white;
+    }
+
+    #words input, select {
+      width: 100%;
+    }
+
+
     #detailsClose {
-      position: absolute;
-      right: 20px;
-      top: 20px;
       text-align: right;
+    }
+
+    button {
+      color: white;
+      background: #00000000;
+      border: none;
+    }
+
+    #disclaimer {
+      position: absolute;
+      background: white;
     }
   </style>
 </head>
@@ -44,10 +65,42 @@
     Far Verona belongs to Rollplay, and the data is from the Sectors Without Number json export. I am not affiliated with Rollplay,
     beyond contributing to their Patreon.</div>
   <div id="map"></div>
-  <div class="details">
-    <div id="detailsClose">
-      <button onClick="updateBodySelection('')">X</button>
+  <div id="words">
+    <div id="options">
+      <h2>Options</h2>
+
+      <table>
+        <tr>
+          <td>
+            Detail
+          </td>
+          <td>
+            <select id="optionLOD">
+              <option value="1">Systems</option>
+              <option value="2">Planets</option>
+              <option value="3">Satellites</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Tilt</td>
+          <td>
+            <input type="range" min="0" max="80" value="0" class="slider" id="optionTilt">
+          </td>
+        </tr>
+        <tr>
+          <td>Zoom</td>
+          <td>
+            <input type="range" min="20" max="95" value="50" class="slider" id="optionZoom">
+          </td>
+        </tr>
+      </table>
     </div>
-    <div id="detailsWords">Words.</div>
+    <div id="details">
+      <div id="detailsWords">Words.</div>
+      <div id="detailsClose">
+        <button onClick="updateBodySelection('')">Close</button>
+      </div>
+    </div>
   </div>
 </body>

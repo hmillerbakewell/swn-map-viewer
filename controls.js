@@ -7,21 +7,37 @@ updateBodySelection = (bodyId) => {
   if (bodyId && bodyId.length > 0) {
     var getDescription = () => {
       var o = galaxy.map.get(bodyId)
+
+      var systemGet = body => {
+        if(body.parentEntity == "sector"){
+          return {x: body.x, y: body.y}
+        } else {
+          return systemGet(galaxy.map.get(body.parent))
+        }
+      }
+
+      var system = systemGet(o)
+
       if (typeof (o) != "undefined") {
         var s = `# ${details(o.id)}
 ${attributes(o.attributes)}`
         if (o.parentEntity != "sector") {
           s += `
-## Parent ${details(o.parent)}`
+## Parent ${details(o.parent)}
+`
         }
+        s+=`
+
+        (System ${system.x}-${system.y})
+        `
         return s
       }
     }
 
-    $(".details").show()
+    $("#details").show()
     $("#detailsWords").html(markdown.makeHtml(getDescription()))
   } else {
-    $(".details").hide()
+    $("#details").hide()
   }
 
 }
@@ -86,29 +102,59 @@ var attributes = a => {
 
 var drag = {
   blockScroll: false,
-  last: null
+  last: null,
+  oldDetail: null
 }
 
 var constrain = (min, val, max) => {
+  if(val === NaN){
+    val = 0
+  }
   return Math.min(Math.max(min, val), max)
 }
 
 var addSvgTouchHandlers = () => {
 
   var shiftFocus = (x, y) => {
-    focus.x = constrain(0, focus.x - focus.zoom * (x) / (mapSize * 10), 100)
-    focus.y = constrain(0, focus.y - focus.zoom * (y) / (mapSize * 10), 100)
+    focus.x = constrain(0, focus.x - Math.pow(focus.zoom,1.2) * (x) / (mapSize * 10), 100)
+    focus.y = constrain(0, focus.y - Math.pow(focus.zoom,1.2) * (y) / (mapSize * 10), 100)
 
   }
 
-  var shiftZoom = (z) => {
-    focus.zoom = constrain(20, focus.zoom + (z / 10), 90)
+  var setZoom = (z) => {
+    focus.zoom = constrain(20, z, 95)
+    $("#optionZoom")[0].value = focus.zoom
   }
 
-  var shiftTilt = (t) => {
-    focus.tilt = constrain(15, focus.tilt + t / 10, 90)
+  var setTilt = (t) => {
+    focus.tilt = constrain(0, t, 80)
     updateTilt()
+    $("#optionTilt")[0].value = focus.tilt
   }
+
+  // Options menu
+
+  $("#optionLOD").change(function(e){
+    focus.detail = parseInt($("#optionLOD")[0].value)
+  })
+
+  $("#optionLOD").change()
+
+  $("#optionTilt").change(function(e){
+    setTilt(parseInt($("#optionTilt")[0].value))
+  })
+
+  $("#optionTilt").change()
+
+  
+  $("#optionZoom").change(function(e){
+    setZoom(parseInt($("#optionZoom")[0].value))
+  })
+
+  $("#optionZoom").change()
+
+
+// Touch and drag
 
   $("svg")
     .mousedown(function (e) {
@@ -145,9 +191,13 @@ var addSvgTouchHandlers = () => {
     drag.blockScroll = true;
     var touches = e.targetTouches
     drag.last = e.touches
+    //drag.oldDetail = focus.detail
+    //focus.detail = 2
   });
   $("svg").on('touchend', function () {
     drag.blockScroll = false;
+    // Not firing on multitouch end :(
+    //focus.detail = drag.oldDetail
   });
   $("svg").on('touchmove', function (e) {
     var touches = e.targetTouches
@@ -167,8 +217,8 @@ var addSvgTouchHandlers = () => {
         if (last.length == 2) {
           avgYChange = (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY) / 2
           distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
-          shiftZoom(distYChange)
-          shiftTilt(avgYChange)
+          setZoom(focus.zoom + distYChange/10)
+          setTilt(focus.tilt + avgYChange/10)
         }
       }
     }
