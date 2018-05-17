@@ -22,11 +22,11 @@ updateBodySelection = (bodyId) => {
       var system = systemGet(o)
 
       if (typeof (o) != "undefined") {
-        var s = `# ${details(o.id)}
+        var s = `## ${capitalise(details(o.id))}
 ${attributes(o.attributes)}`
         if (o.parentEntity != "sector") {
           s += `
-## Parent ${details(o.parent)}
+### Parent ${details(o.parent)}
 `
         }
         s += `
@@ -71,10 +71,13 @@ var spreadCamel = s => {
   return dSpreadCamel(s)
 }
 
+
+
+function capitalise(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 var details = id => {
-  function capitalise(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
 
   var o = galaxy.map.get(id)
   if (typeof (o) != "undefined") {
@@ -83,7 +86,7 @@ var details = id => {
       description = " (" + description + ")"
     }
     var type = spreadCamel(o.type)
-    return `${capitalise(type)}: ${o.name}${description}`
+    return `${type}: ${o.name}${description}`
   } else {
     return ``
   }
@@ -117,10 +120,14 @@ var constrain = (min, val, max) => {
 }
 
 
-var moveTowards = (x,y) => {
-  drag.focusTarget = {x: x, y: y}
+var moveTowards = (x, y) => {
+  log(`${x} - ${y}`)
+  drag.focusTarget = {
+    x: x,
+    y: y
+  }
   drag.focusTime = 1000
-  drag.focusSpeed = Math.sqrt(Math.pow(focus.x - x,2) + Math.pow(focus.y-y,2)) / drag.focusTime
+  drag.focusSpeed = Math.sqrt(Math.pow(focus.x - x, 2) + Math.pow(focus.y - y, 2)) / drag.focusTime
 }
 
 
@@ -134,7 +141,7 @@ var addSvgTouchHandlers = () => {
   var shiftFocus = (dx, dy) => {
     var x = constrain(0, focus.x - Math.pow(focus.zoom, 1.2) * (dx) / (mapSize * 10), 100)
     var y = constrain(0, focus.y - Math.pow(focus.zoom, 1.2) * (dy) / (mapSize * 10), 100)
-    setFocus(x,y)
+    setFocus(x, y)
   }
 
 
@@ -221,9 +228,10 @@ var addSvgTouchHandlers = () => {
       //console.log(event.deltaX, event.deltaY, event.deltaFactor)
     })
     .dblclick(function (e) {
+      e.preventDefault()
       var x = e.pageX - $('#chart').offset().left
       var y = e.pageY - $('#chart').offset().top
-      setFocus(x, y)
+      //moveTowards( 100 * x / mapSize,  100 * y / mapSize)
     })
 
 
