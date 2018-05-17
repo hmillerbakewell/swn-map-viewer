@@ -322,7 +322,18 @@ var svg
 var baseTime = (new Date()).getTime()
 var lastUpdate = null
 var redraw = (timeStamp) => {
-  if (timeStamp - lastUpdate > (1000 / focus.fps)) {
+  var delta = timeStamp - lastUpdate
+  if (delta > (1000 / focus.fps)) {
+    if(drag.focusTime > 0){
+
+      drag.focusTime = Math.max(0, drag.focusTime - delta)
+      var dx = drag.focusTarget.x - focus.x
+      var dy = drag.focusTarget.y - focus.y
+      var dDist = Math.sqrt(dx*dx+dy*dy)
+      var dist = Math.min(dDist,drag.focusSpeed * delta)
+      setFocus(focus.x + dist * dx / dDist, focus.y + dist * dy / dDist)
+
+    }
     lastUpdate = timeStamp
     focus.spaceTime = focus.spaceTime + focus.speed
     updateSvg()

@@ -116,13 +116,28 @@ var constrain = (min, val, max) => {
   return Math.min(Math.max(min, val), max)
 }
 
+
+var moveTowards = (x,y) => {
+  drag.focusTarget = {x: x, y: y}
+  drag.focusTime = 1000
+  drag.focusSpeed = Math.sqrt(Math.pow(focus.x - x,2) + Math.pow(focus.y-y,2)) / drag.focusTime
+}
+
+
+var setFocus = (x, y) => {
+  focus.x = constrain(0, x, 100)
+  focus.y = constrain(0, y, 100)
+}
+
 var addSvgTouchHandlers = () => {
 
-  var shiftFocus = (x, y) => {
-    focus.x = constrain(0, focus.x - Math.pow(focus.zoom, 1.2) * (x) / (mapSize * 10), 100)
-    focus.y = constrain(0, focus.y - Math.pow(focus.zoom, 1.2) * (y) / (mapSize * 10), 100)
-
+  var shiftFocus = (dx, dy) => {
+    var x = constrain(0, focus.x - Math.pow(focus.zoom, 1.2) * (dx) / (mapSize * 10), 100)
+    var y = constrain(0, focus.y - Math.pow(focus.zoom, 1.2) * (dy) / (mapSize * 10), 100)
+    setFocus(x,y)
   }
+
+
 
   var setZoom = (z) => {
     focus.zoom = constrain(20, z, 95)
@@ -200,11 +215,16 @@ var addSvgTouchHandlers = () => {
     .mouseup(function (e) {
       drag.blockScroll = false
     })
-    .mousewheel(function(e) {
-      setZoom(focus.zoom - e.deltaY/5)
+    .mousewheel(function (e) {
+      setZoom(focus.zoom - e.deltaY / 5)
       e.preventDefault()
       //console.log(event.deltaX, event.deltaY, event.deltaFactor)
-  });
+    })
+    .dblclick(function (e) {
+      var x = e.pageX - $('#chart').offset().left
+      var y = e.pageY - $('#chart').offset().top
+      setFocus(x, y)
+    })
 
 
   $("svg").on('touchstart', function (e) {
