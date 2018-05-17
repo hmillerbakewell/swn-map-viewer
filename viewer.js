@@ -9,9 +9,6 @@ var focus = {
   spaceTime: 100
 }
 
-var updateTilt = () => {
-  tiltMatrix.d = Math.cos((focus.tilt) * Math.PI / 180)
-}
 var tiltMatrix = new Snap.Matrix()
 
 var galaxy
@@ -257,7 +254,14 @@ var updateSvg = function () {
       // Some bodies won't have been drawn, so check for null svg element
       var loc = position(o.id)
       var d = diminishingScale
-      g.transform(`m ${d}, 0, 0, ${d}, ${loc.x}, ${loc.y}`)
+      switch(o.type){
+        case "asteroidBelt":
+          g.transform(`m ${d}, 0, 0, ${d * tiltMatrix.d}, ${loc.x}, ${loc.y}`)
+          break;
+        default:
+          g.transform(`m ${d}, 0, 0, ${d}, ${loc.x}, ${loc.y}`)
+
+      }
     }
   }
 }
@@ -297,6 +301,9 @@ var initialiseSvg = function () {
 
 }
 
+var updateTilt = () => {
+  tiltMatrix.d = Math.cos((focus.tilt) * Math.PI / 180)
+}
 
 
 var svg
