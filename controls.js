@@ -200,6 +200,11 @@ var addSvgTouchHandlers = () => {
     .mouseup(function (e) {
       drag.blockScroll = false
     })
+    .mousewheel(function(e) {
+      setZoom(focus.zoom - e.deltaY/5)
+      e.preventDefault()
+      //console.log(event.deltaX, event.deltaY, event.deltaFactor)
+  });
 
 
   $("svg").on('touchstart', function (e) {
