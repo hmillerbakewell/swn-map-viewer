@@ -231,50 +231,10 @@ var drawElement = (svgGroup, data) => {
       })
   }
   c.attr({
-    onclick: `window.latestClick = "${data.id}"`
+    onclick: `updateBodySelection("${data.id}")`
   })
 }
 
-var spreadCamel = s => {
-
-  var dSpreadCamel = s => {
-    if (typeof (s) == "string") {
-      return s.replace(/([a-z])([A-Z])/g, function (m, a, b) {
-        return `${a} ${b.toLowerCase()}`
-      })
-    } else {
-      var t = []
-      s.forEach(x => t.push(dSpreadCamel(x)))
-      return t.join(", ")
-    }
-  }
-
-  return dSpreadCamel(s)
-}
-
-var details = id => {
-  var o = galaxy.map.get(id)
-  if (typeof (o) != "undefined") {
-    var description = attributes.description || ""
-    if (description.length > 0) {
-      description = " (" + description + ")"
-    }
-    var type = spreadCamel(o.type)
-    return `${type} ${o.name}${description}`
-  } else {
-    return ``
-  }
-}
-
-var attributes = a => {
-
-  var attr = a || {}
-  var s = ""
-  for (var key in a) {
-    s += `- ${spreadCamel(key)}: ${spreadCamel(a[key])}\n`
-  }
-  return s
-}
 
 var updateSvg = function () {
   for (keypair of galaxy.map) {
@@ -324,29 +284,8 @@ var initialiseSvg = function () {
 
 }
 
-/*
-latestClick = {
-  
 
-  
-  
-  
-  var getDescription = () => {
-    var o = galaxy.map.get(window.latestClick)
-  if(typeof(o) != "undefined"){
-  return md`### ${details(o.id)}
-${attributes(o.attributes)}
 
-#### parent: ${details(o.parent)}`
-  } else {
-   return md`Disabled: ~~Click an object to see its details (refreshes every ${clickRefreshRate} seconds to improve performance.)~~` 
-  }
-  }
-  yield getDescription();
-  //while (true) yield Promises.delay(1000 * clickRefreshRate, getDescription());
-}
-
-*/
 var svg
 var baseTime = (new Date()).getTime()
 var lastUpdate = null
