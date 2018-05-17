@@ -80,7 +80,7 @@ var spin = (radius, speed, offset) => {
 
 var position = objectId => {
 
-  var yScale = tiltMatrix.d
+  var ySkew = tiltMatrix.d
   var dLocation = spaceObject => {
     if (typeof (spaceObject) == "undefined") {
       return {
@@ -100,8 +100,12 @@ var position = objectId => {
         }
       case "blackHole":
       case "system":
+      var topSqueeze = Math.cos(focus.tilt * Math.PI/ 180)
+      var distUp = 1-(spaceObject.y / galaxy.rows)
+      var midSqueeze = (1-distUp) + distUp* topSqueeze
+      var rawX = spaceObject.x - 0.2 + 0.1 * (hash % 10) / 10
         return {
-          x: spaceObject.x - 0.2 + 0.1 * (hash % 10) / 10,
+          x: midSqueeze*rawX + (1-midSqueeze)*galaxy.columns/2,
           y: spaceObject.y - 0.2 + 0.1 * (hash % 10) / 10 - 0.5 * (spaceObject.x % 2)
         }
       default:
@@ -115,11 +119,11 @@ var position = objectId => {
     }
   }
 
-  const trueLocation = dLocation(galaxy.map.get(objectId))
+  const skewedX = dLocation(galaxy.map.get(objectId))
 
   return {
-    x: trueLocation.x,
-    y: trueLocation.y * yScale
+    x: skewedX.x,
+    y: skewedX.y * ySkew
   }
 }
 
@@ -183,8 +187,9 @@ var drawElement = (svgGroup, data) => {
       break;
     case "system":
     var bv = (5.2)*((data.hash % 123)/123) - 0.5
+    var size = 0.1 + 0.1*Math.pow((data.hash % 123)/123,1.5)
       var finalColour =  bv_to_rgb(bv)
-      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+      c = svgGroup.circle(0, 0, scale * size).attr({
         fill: finalColour //svg.gradient(`r(0.5, 0.5, 0.5)#fff-#${finalColour}`)
       })
       break;
