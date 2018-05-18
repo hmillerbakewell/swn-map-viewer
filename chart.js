@@ -1,8 +1,8 @@
 var focus = {
   x: 50,
   y: 50,
-  detail: 2,
-  speed: 1,
+  detail: 1,
+  speed: 0,
   zoom: 50,
   fps: 15,
   tilt: 30,

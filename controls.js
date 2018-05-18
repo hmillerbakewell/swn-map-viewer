@@ -49,7 +49,11 @@ $(function () {
   var s = `
 - Click an object to show details.
   
-- Drag the map around.`
+- Drag the map around.
+
+- Change the detail options (systems, planets, satellits.)
+
+- Tilt controls temporarily changed.`
   $("#detailsWords").html(markdown.makeHtml(s))
 })
 
