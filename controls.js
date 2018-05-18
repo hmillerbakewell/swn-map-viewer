@@ -5,6 +5,7 @@ var log = console.log
 updateBodySelection = (bodyId) => {
 
   if (bodyId && bodyId.length > 0) {
+    if(!drag.showWords){toggleWords()}
     var getDescription = () => {
       var o = galaxy.map.get(bodyId)
 
@@ -113,7 +114,8 @@ var attributes = a => {
 var drag = {
   blockScroll: false,
   last: null,
-  oldDetail: null
+  oldDetail: null,
+  showWords: true
 }
 
 var constrain = (min, val, max) => {
@@ -277,5 +279,39 @@ var addSvgTouchHandlers = () => {
       }
     }
     drag.last = touches
-  })
+  }
+
+)
 }
+
+var toggleWords = () => {
+  drag.showWords = !drag.showWords
+
+  
+  var wordsToggle = Snap("#wordsToggle > svg")
+  wordsToggle.animate({transform: ((wordsToggle.transform().localMatrix).rotate(180))}, 100)
+
+  if(drag.showWords){
+    $("#words").show()
+  } else {
+    $("#words").hide()
+  }
+}
+
+$(function(){
+
+  var wordsToggle = Snap("#wordsToggle > svg").attr({viewBox: "0,0,1,1"})
+
+  wordsToggle.circle(0.5,0.5,0.5).attr({fill: "orange"})
+  var p6 = Math.PI / 6
+  var BL = {x: 0.5 - 0.4*Math.cos(p6), y: 0.5 + 0.4*Math.sin(p6)}
+  var BR = {x: 0.5 + 0.4*Math.cos(p6), y: 0.5 + 0.4*Math.sin(p6)}
+  var T = {x: 0.5, y: 0.1}
+  var triangle = wordsToggle
+  .path(`M${BR.x},${BR.y} L${T.x},${T.y} L${BL.x},${BL.y}Z M${T.x},${T.y} L${T.x},${BR.y}`)
+  .attr({stroke: "white", fill: "orange", "stroke-width":0.03})
+
+  $("#wordsToggle > svg").click(function(e){
+    toggleWords()
+  })
+})

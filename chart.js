@@ -4,7 +4,7 @@ var focus = {
   detail: 1,
   speed: 0,
   zoom: 50,
-  fps: 15,
+  fps: 10,
   tilt: 30,
   spaceTime: (new Date()).getTime(),
   systemToXY: (sx, sy) => {
