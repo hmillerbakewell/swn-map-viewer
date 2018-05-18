@@ -139,8 +139,10 @@ var setFocus = (x, y) => {
 var addSvgTouchHandlers = () => {
 
   var shiftFocus = (dx, dy) => {
-    var x = constrain(0, focus.x - Math.pow(focus.zoom, 1.2) * (dx) / (mapSize * 10), 100)
-    var y = constrain(0, focus.y - Math.pow(focus.zoom, 1.2) * (dy) / (mapSize * 10), 100)
+    var size = $("#chart")[0].getBoundingClientRect()
+    var svgSize = Math.min(size.width, size.height)
+    var x = constrain(0, focus.x - 20 * (100 / focus.zoom) * (dx / svgSize), 100)
+    var y = constrain(0, focus.y - 20 * (100 / focus.zoom) * (dy / svgSize), 100)
     setFocus(x, y)
   }
 

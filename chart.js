@@ -6,7 +6,17 @@ var focus = {
   zoom: 50,
   fps: 15,
   tilt: 30,
-  spaceTime: (new Date()).getTime()
+  spaceTime: (new Date()).getTime(),
+  systemToXY: (sx, sy) => {
+    var topSqueeze = Math.cos(focus.tilt * Math.PI / 180)
+    var distUp = 1 - (sy / galaxy.rows)
+    var midSqueeze = (1 - distUp) + distUp * topSqueeze
+    var rx = Math.round(sx)
+    return {
+      x: midSqueeze * sx + (1 - midSqueeze) * galaxy.columns / 2,
+      y: sy - 0.5 * (rx % 2)
+    }
+  }
 }
 
 var tiltMatrix = new Snap.Matrix()
@@ -99,18 +109,14 @@ var position = objectId => {
         }
       case "blackHole":
       case "system":
-        var topSqueeze = Math.cos(focus.tilt * Math.PI / 180)
-        var distUp = 1 - (spaceObject.y / galaxy.rows)
-        var midSqueeze = (1 - distUp) + distUp * topSqueeze
-        var rawX = spaceObject.x - 0.05 + 0.1 * (hash % 10) / 10
-        return {
-          x: midSqueeze * rawX + (1 - midSqueeze) * galaxy.columns / 2,
-          y: spaceObject.y - 0.05 + 0.1 * (hash % 10) / 10 - 0.5 * (spaceObject.x % 2)
-        }
+        return focus.systemToXY(spaceObject.x - 0.05 + 0.1 * (hash % 10) / 10, spaceObject.y - 0.05 + 0.1 * (hash % 13) / 13)
         break;
       default:
         var parent = galaxy.map.get(spaceObject.parent)
         var radius = childRadius(spaceObject) / diminishingScale
+        if (spaceObject.parentEntity == "asteroidBelt") {
+          radius = 1 / childRadius(galaxy.map.get(spaceObject.parent))
+        }
         var oSpin = spin(radius, (2 * (hashCode(parent.id) % 2) - 1) * Math.abs(1 + (hash % 100) / 10), hash % 3601)
         return {
           x: oSpin[0],
@@ -186,14 +192,67 @@ var drawElement = (svgGroup, data) => {
     case "system":
       var bv = (5.2) * ((data.hash % 123) / 123) - 0.5
       var size = 0.1 + 0.1 * Math.pow((data.hash % 123) / 123, 1.5)
+      var midColour= "#FFFFFF"
       var finalColour = bv_to_rgb(bv)
       c = svgGroup.circle(0, 0, scale * size).attr({
-        fill: finalColour //svg.gradient(`r(0.5, 0.5, 0.5)#fff-#${finalColour}`)
+        fill: svg.gradient(`r(0.5, 0.5, 0.5)${midColour}-${midColour}:25-${finalColour}`)
       })
       break;
     case "planet":
+      var surfaceColour = null
+      switch (data.attributes.biosphere) {
+        case "humanMiscible":
+          surfaceColour = "#AADDFF"
+          break;
+          case "remnant":
+          surfaceColour = "#BB88DD"
+          break;
+          case "none":
+          surfaceColour = "#999999"
+          break;
+          case "engineered":
+          surfaceColour = "#AAEEEE"
+          break;
+          case "hybrid":
+          surfaceColour = "#EE5555"
+          break;
+          case "microbial":
+          surfaceColour = "#55EE55"
+          break;
+          case "immiscible":
+          surfaceColour = "#FFAAAA"
+          break;
+        default:
+          log(`Biosphere unspecified: ${data.attributes.biosphere}`)
+      }
+      var atmoshphereColour = null
+      switch (data.attributes.atmosphere) {
+        case "breathable":
+          atomsphereColour = "#ADD8E6"
+          break;
+        case "corrosive":
+          atomsphereColour = "#EEBB99"
+          break;
+        case "thick":
+          atomsphereColour = "#AAAAFF"
+          break;
+        case "inert":
+          atomsphereColour = surfaceColour
+          break;
+        case "corrosiveInvasive":
+          atomsphereColour = "#AA5533"
+          break;
+        case "airlessThin":
+          atomsphereColour = "#DDDDFF"
+          break;
+        case "invasive":
+          atomsphereColour = "#333333"
+          break;
+        default:
+          log(`Atmosphere unspecified: ${data.attributes.atmosphere}`)
+      }
       c = svgGroup.circle(0, 0, scale * 0.2).attr({
-        fill: "green"
+        fill: svg.gradient(`r(0.5, 0.5, 0.5)${surfaceColour}-${surfaceColour}:50-${atomsphereColour}`)
       })
       break;
     case "moon":
@@ -216,8 +275,9 @@ var drawElement = (svgGroup, data) => {
       c = svgGroup.circle(0, 0, childRadius(data) / (diminishingScale * diminishingScale)).attr({
         fill: "none",
         stroke: "grey",
-        "stroke-width": scale * 0.02
+        "stroke-width": scale * 0.08
       })
+      c.transform(`s1,${tiltMatrix.d}`)
       break;
     default:
       c = svgGroup.circle(0, 0, scale * 0.1).attr({
@@ -235,8 +295,8 @@ var updateSvg = function () {
   var galaxyWidth = galaxy.columns
   var galaxyHeight = galaxy.rows
 
-  var viewWidth = Math.pow(tiltMatrix.d,0.5) * (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
-  var viewHeight = Math.pow(tiltMatrix.d,0.5) * (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
+  var viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth)
+  var viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight)
   var left = galaxyWidth * focus.x / 100 - viewWidth / 2
   var top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
 
@@ -250,12 +310,12 @@ var updateSvg = function () {
         var loc = position(o.id)
         var d = diminishingScale
         var distFromFocus = (g.transform().globalMatrix.f / mapSize - focus.y / 100) * tiltMatrix.d
-        var distScale = 1// 0.8 + 0.1 * distFromFocus
+        var distScale = 1 // 0.8 + 0.1 * distFromFocus
 
         switch (o.type) {
           case "asteroidBelt":
-            g.transform(`m ${d* distScale}, 0, 0, ${d * tiltMatrix.d * distScale}, ${loc.x}, ${loc.y}`)
-            break;
+            var c = svg.select("#group" + keypair[0] + " > circle")
+            c.transform(`S1,${tiltMatrix.d}`)
           default:
             g.transform(`m ${d* distScale}, 0, 0, ${d* distScale}, ${loc.x}, ${loc.y}`)
 
@@ -271,11 +331,11 @@ var updateSvg = function () {
     }
   }
 
-  
+
   svg.attr({
     viewBox: `${left}, ${top}, ${viewWidth}, ${viewHeight}`
   })
-  
+
 }
 
 var initialiseSvg = function () {
@@ -324,13 +384,13 @@ var lastUpdate = null
 var redraw = (timeStamp) => {
   var delta = timeStamp - lastUpdate
   if (delta > (1000 / focus.fps)) {
-    if(drag.focusTime > 0){
+    if (drag.focusTime > 0) {
 
       drag.focusTime = Math.max(0, drag.focusTime - delta)
       var dx = drag.focusTarget.x - focus.x
       var dy = drag.focusTarget.y - focus.y
-      var dDist = Math.sqrt(dx*dx+dy*dy)
-      var dist = Math.min(dDist,drag.focusSpeed * delta)
+      var dDist = Math.sqrt(dx * dx + dy * dy)
+      var dist = Math.min(dDist, drag.focusSpeed * delta)
       setFocus(focus.x + dist * dx / dDist, focus.y + dist * dy / dDist)
 
     }
