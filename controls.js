@@ -169,7 +169,7 @@ var addSvgTouchHandlers = () => {
 
 
   var setTilt = (t) => {
-    focus.tilt = constrain(0, t, 80)
+    focus.tilt = 0 //constrain(0, t, 80)
     $("#optionTilt")[0].value = focus.tilt
     updateTilt()
   }
