@@ -5,7 +5,9 @@ var log = console.log
 updateBodySelection = (bodyId) => {
 
   if (bodyId && bodyId.length > 0) {
-    if(!drag.showWords){toggleWords()}
+    if (!drag.showWords) {
+      toggleWords()
+    }
     var getDescription = () => {
       var o = galaxy.map.get(bodyId)
 
@@ -27,12 +29,11 @@ updateBodySelection = (bodyId) => {
 ${attributes(o.attributes)}`
         if (o.parentEntity != "sector") {
           s += `
-### Parent ${details(o.parent)}
-`
+
+### Parent ${details(o.parent)}`
         }
         s += `
-
-        (System ${system.x}-${system.y})
+### (System ${system.x}-${system.y})
         `
         return s
       }
@@ -54,7 +55,9 @@ $(function () {
 
 - Change the detail options (systems, planets, satellits.)
 
-- Tilt controls temporarily changed.`
+- Tilt controls temporarily disabled.
+
+- Click the House Triangulum logo to hide the option panel.`
   $("#detailsWords").html(markdown.makeHtml(s))
 })
 
@@ -256,62 +259,81 @@ var addSvgTouchHandlers = () => {
     //focus.detail = drag.oldDetail
   });
   $("svg").on('touchmove', function (e) {
-    var touches = e.targetTouches
-    var last = drag.last
-    if (drag.blockScroll) {
-      e.preventDefault();
+      var touches = e.targetTouches
+      var last = drag.last
+      if (drag.blockScroll) {
+        e.preventDefault();
 
-      if (last.length == touches.length) {
-        if (last.length == 1) {
-          var diff = {
-            x: last[0].pageX - touches[0].pageX,
-            y: last[0].pageY - touches[0].pageY
+        if (last.length == touches.length) {
+          if (last.length == 1) {
+            var diff = {
+              x: last[0].pageX - touches[0].pageX,
+              y: last[0].pageY - touches[0].pageY
+            }
+            shiftFocus(-diff.x, -diff.y)
           }
-          shiftFocus(-diff.x, -diff.y)
-        }
 
-        if (last.length == 2) {
-          avgYChange = (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY) / 2
-          distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
-          setZoom(focus.zoom + distYChange / 10)
-          setTilt(focus.tilt + avgYChange / 10)
+          if (last.length == 2) {
+            avgYChange = (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY) / 2
+            distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
+            setZoom(focus.zoom + distYChange / 10)
+            setTilt(focus.tilt + avgYChange / 10)
+          }
         }
       }
+      drag.last = touches
     }
-    drag.last = touches
-  }
 
-)
+  )
 }
 
 var toggleWords = () => {
   drag.showWords = !drag.showWords
 
-  
-  var wordsToggle = Snap("#wordsToggle > svg")
-  wordsToggle.animate({transform: ((wordsToggle.transform().localMatrix).rotate(180))}, 100)
 
-  if(drag.showWords){
+  var wordsToggle = Snap("#wordsToggle > svg")
+  wordsToggle.animate({
+    transform: ((wordsToggle.transform().localMatrix).rotate(180))
+  }, 100)
+
+  if (drag.showWords) {
     $("#words").show()
   } else {
     $("#words").hide()
   }
 }
 
-$(function(){
+$(function () {
 
-  var wordsToggle = Snap("#wordsToggle > svg").attr({viewBox: "0,0,1,1"})
+  var wordsToggle = Snap("#wordsToggle > svg").attr({
+    viewBox: "0,0,1,1"
+  })
 
-  wordsToggle.circle(0.5,0.5,0.5).attr({fill: "orange"})
+  wordsToggle.circle(0.5, 0.5, 0.5).attr({
+    fill: "orange"
+  })
   var p6 = Math.PI / 6
-  var BL = {x: 0.5 - 0.4*Math.cos(p6), y: 0.5 + 0.4*Math.sin(p6)}
-  var BR = {x: 0.5 + 0.4*Math.cos(p6), y: 0.5 + 0.4*Math.sin(p6)}
-  var T = {x: 0.5, y: 0.1}
+  var BL = {
+    x: 0.5 - 0.4 * Math.cos(p6),
+    y: 0.5 + 0.4 * Math.sin(p6)
+  }
+  var BR = {
+    x: 0.5 + 0.4 * Math.cos(p6),
+    y: 0.5 + 0.4 * Math.sin(p6)
+  }
+  var T = {
+    x: 0.5,
+    y: 0.1
+  }
   var triangle = wordsToggle
-  .path(`M${BR.x},${BR.y} L${T.x},${T.y} L${BL.x},${BL.y}Z M${T.x},${T.y} L${T.x},${BR.y}`)
-  .attr({stroke: "white", fill: "orange", "stroke-width":0.03})
+    .path(`M${BR.x},${BR.y} L${T.x},${T.y} L${BL.x},${BL.y}Z M${T.x},${T.y} L${T.x},${BR.y}`)
+    .attr({
+      stroke: "white",
+      fill: "orange",
+      "stroke-width": 0.03
+    })
 
-  $("#wordsToggle > svg").click(function(e){
+  $("#wordsToggle > svg").click(function (e) {
     toggleWords()
   })
 })

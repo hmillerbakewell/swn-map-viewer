@@ -39,7 +39,8 @@
       color: white;
     }
 
-    #words input, select {
+    #words input,
+    select {
       width: 100%;
     }
 
@@ -65,6 +66,8 @@
     #disclaimer {
       position: absolute;
       background: white;
+      width: 100%;
+      text-align: center;
     }
   </style>
 </head>
@@ -72,22 +75,24 @@
 <body>
   <div id="disclaimer">
     Far Verona belongs to Rollplay, and the data is from the Sectors Without Number json export. I am not affiliated with Rollplay,
-    beyond contributing to their Patreon.</div>
+    beyond contributing to their Patreon.
+    <a onclick="$(this).parent().hide()"> {hide} </a>
+  </div>
   <div id="map"></div>
   <div id="words">
     <div id="options">
       <h2>Options</h2>
 
-      
+
       <table>
-          <tr>
-              <td>
-                Speed
-              </td>
-              <td>
-                <input type="range" min="0" max="5" value="0" class="slider" id="optionSpeed">
-              </td>
-            </tr>
+        <tr>
+          <td>
+            Animation
+          </td>
+          <td>
+            <input type="range" min="0" max="5" value="0" class="slider" id="optionSpeed">
+          </td>
+        </tr>
         <tr>
           <td>
             Detail
@@ -101,15 +106,16 @@
           </td>
         </tr>
         <tr>
-          <td>Tilt</td>
-          <td>
-            <input type="range" min="0" max="80" value="0" class="slider" id="optionTilt">
-          </td>
-        </tr>
-        <tr>
           <td>Zoom</td>
           <td>
             <input type="range" min="20" max="95" value="50" class="slider" id="optionZoom">
+          </td>
+        </tr>
+        <tr>
+          <td>Tilt</td>
+          <td>
+            <!-- <input type="range" min="0" max="80" value="0" class="slider" id="optionTilt"> -->
+            (Temporarily disabled.)
           </td>
         </tr>
       </table>
