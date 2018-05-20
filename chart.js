@@ -1,10 +1,11 @@
 var focus = {
-  x: 50,
-  y: 50,
+  x: 0,
+  y: 0,
   detail: 1,
   speed: 0,
-  zoom: 50,
-  fps: 10,
+  zoom: 2,
+  fps: 15,
+  dirty: true,
   spaceTime: (new Date()).getTime(),
   systemToXY: (sx, sy) => {
     var rx = Math.round(sx)
@@ -102,7 +103,10 @@ var position = objectId => {
         }
       case "blackHole":
       case "system":
-        return focus.systemToXY(spaceObject.x - 0.05 + 0.1 * (hash % 10) / 10, spaceObject.y - 0.05 + 0.1 * (hash % 13) / 13)
+        return {
+          x: spaceObject.x - 0.05 + 0.1 * (hash % 10) / 10,
+          y: spaceObject.y - 0.05 + 0.1 * (hash % 13) / 13
+        }
         break;
       default:
         var parent = galaxy.map.get(spaceObject.parent)
@@ -284,14 +288,6 @@ var drawElement = (svgGroup, data) => {
 
 var updateSvg = function () {
 
-  var galaxyWidth = galaxy.columns
-  var galaxyHeight = galaxy.rows
-
-  var viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth)
-  var viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight)
-  var left = galaxyWidth * focus.x / 100 - viewWidth / 2
-  var top = galaxyWidth * (focus.y / 100) - viewHeight / 2
-
   var d = diminishingScale
 
   for (keypair of galaxy.map) {
@@ -315,15 +311,32 @@ var updateSvg = function () {
     }
   }
 
+
+}
+
+var updateViewPort = () => {
+
+  var galaxyWidth = galaxy.columns
+  var galaxyHeight = galaxy.rows
+
+  var viewWidth = focus.zoom
+  var viewHeight = focus.zoom
+  var left = focus.x - viewWidth / 2
+  var top = focus.y - viewHeight / 2
+
   var viewBoxStr = `${left} ${top} ${viewWidth} ${viewHeight}`
 
-  if (svg.attr("viewBox").vb != viewBoxStr) {
+  if (!svg.attr("viewBox") || svg.attr("viewBox").vb != viewBoxStr) {
     svg.attr({
       viewBox: viewBoxStr
     })
   }
+}
 
-
+var touchSvg = () => {
+  svg.attr({
+    visibility: "visibile"
+  })
 }
 
 var initialiseSvg = function () {
@@ -331,15 +344,11 @@ var initialiseSvg = function () {
   const galaxyWidth = galaxy.columns
   const galaxyHeight = galaxy.rows
 
-  const viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
-  const viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
-  const left = galaxyWidth * focus.x / 100 - viewWidth / 2
-  const top = galaxyWidth * (focus.y / 100) - viewHeight / 2
+  focus.x = galaxyWidth / 2
+  focus.y = galaxyHeight / 2
 
   svg.clear()
-  svg.attr({
-    viewBox: `${left}, ${top}, ${viewWidth}, ${viewHeight}`
-  })
+  updateViewPort()
 
   // background
   svg.rect(-1, -1, galaxyWidth + 2, galaxyHeight + 2).attr({
@@ -379,7 +388,11 @@ var redraw = (timeStamp) => {
     }
     lastUpdate = timeStamp
     focus.spaceTime = focus.spaceTime + focus.speed
-    updateSvg()
+    if (focus.dirty || focus.speed > 0) {
+      updateSvg()
+      focus.dirty = false
+    }
+    updateViewPort()
     /*svgPanZoom('#chart', {
       zoomEnabled: true,
       controlIconsEnabled: true,

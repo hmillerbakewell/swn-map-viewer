@@ -53,7 +53,7 @@ $(function () {
   
 - Drag the map around.
 
-- Change the detail options (systems, planets, satellits.)
+- Change the detail options (systems, planets, satellites.)
 
 - Click the House Triangulum logo to hide the option panel.`
   $("#detailsWords").html(markdown.makeHtml(s))
@@ -126,8 +126,12 @@ var constrain = (min, val, max) => {
   return Math.min(Math.max(min, val), max)
 }
 
+var moveTowards = (id) => {
+  var loc = position(id)
+  moveToCoords(loc.x, loc.y)
+}
 
-var moveTowards = (x, y) => {
+var moveToCoords = (x, y) => {
   log(`${x} - ${y}`)
   drag.focusTarget = {
     x: x,
@@ -141,23 +145,28 @@ var moveTowards = (x, y) => {
 var setFocus = (x, y) => {
   focus.x = constrain(0, x, 100)
   focus.y = constrain(0, y, 100)
+  dirty()
+}
+
+var dirty = () => {
+  focus.dirty = true
 }
 
 var addSvgTouchHandlers = () => {
 
   var shiftFocus = (dx, dy) => {
     var size = $("#chart")[0].getBoundingClientRect()
-    var svgSize = Math.min(size.width, size.height)
-    var x = constrain(0, focus.x - 20 * (100 / focus.zoom) * (dx / svgSize), 100)
-    var y = constrain(0, focus.y - 20 * (100 / focus.zoom) * (dy / svgSize), 100)
+    var canvasSize = Math.min(size.width, size.height)
+    var x = constrain(0, focus.x - focus.zoom * dx / (canvasSize), galaxy.columns)
+    var y = constrain(0, focus.y - focus.zoom * dy / (canvasSize), galaxy.rows)
     setFocus(x, y)
   }
 
 
 
   var setZoom = (z) => {
-    focus.zoom = constrain(20, z, 95)
-    $("#optionZoom")[0].value = focus.zoom
+    zz = constrain(1, z, 99)
+    focus.zoom = Math.pow(2, 2 * (50 - zz) / 50 + 2)
   }
 
   var setSpeed = (s) => {
@@ -221,8 +230,11 @@ var addSvgTouchHandlers = () => {
       drag.blockScroll = false
     })
     .mousewheel(function (e) {
-      setZoom(focus.zoom - e.deltaY / 5)
+      var current = parseInt($("#optionZoom")[0].value)
+      $("#optionZoom")[0].value = constrain(1, current + e.deltaY / 2, 99)
+      $("#optionZoom").change()
       e.preventDefault()
+      //$("#optionZoom").change()
       //console.log(event.deltaX, event.deltaY, event.deltaFactor)
     })
     .dblclick(function (e) {
@@ -263,7 +275,9 @@ var addSvgTouchHandlers = () => {
           if (last.length == 2) {
             avgYChange = (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY) / 2
             distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
-            setZoom(focus.zoom + distYChange / 10)
+            var current = parseInt($("#optionZoom")[0].value)
+            $("#optionZoom")[0].value = constrain(1, current  + distYChange / 10, 99)
+            $("#optionZoom").change()
           }
         }
       }
@@ -333,43 +347,48 @@ $(() => {
     var listHolder = $("#searchResults")
     listHolder.empty()
     $("#searchResultsClose").hide()
-    if(results.length > 0){
+    if (results.length > 0) {
 
 
-    var goto = function (e) {
-      updateBodySelection($(e.target).attr("bodyId"))
-    }
-
-    var resultsDivs = []
-
-    for (var i = 0; i < Math.min(results.length, maxResults); i++) {
-      var o = results[i][0]
-      var a = results[i][1]
-      var li = $("<li>")
-      var name = $("<a>", {
-        bodyId: o.id
-      }).text(o.name).click(goto)
-      li.append(name)
-      if (a) {
-        var sub = $("<p>").text(`${a}: ${o.attributes[a]}`)
-        li.append(sub)
+      var goto = function (e) {
+        updateBodySelection($(e.target).attr("bodyId"))
       }
-      resultsDivs.push(li)
-    }
-    if (results.length > maxResults) {
-      resultsDiv.push($("<li>").append($("<p>").text(`Showing first ${maxResults} results only.`)))
-    }
 
-    var ul = $("<ul>")
-    resultsDivs.forEach(v => ul.append(v))
-    listHolder.append(ul)
-    $("#searchResultsClose").show()
-    listHolder.append(hideMessage)
-  } 
+      var resultsDivs = []
+
+      for (var i = 0; i < Math.min(results.length, maxResults); i++) {
+        var o = results[i][0]
+        var a = results[i][1]
+        var li = $("<li>")
+        var name = $("<a>", {
+          bodyId: o.id
+        }).text(o.name).click(goto)
+        li.append(name)
+        if (a) {
+          var sub = $("<p>").text(`${a}: ${o.attributes[a]}`)
+          li.append(sub)
+        }
+        resultsDivs.push(li)
+      }
+      if (results.length > maxResults) {
+        resultsDiv.push($("<li>").append($("<p>").text(`Showing first ${maxResults} results only.`)))
+      }
+
+      var ul = $("<ul>")
+      resultsDivs.forEach(v => ul.append(v))
+      listHolder.append(ul)
+      $("#searchResultsClose").show()
+      listHolder.append(hideMessage)
+    }
   })
 
-  $("#searchInput")[0].value = "";$("#searchInput").change()
+  $("#searchInput")[0].value = "";
+  $("#searchInput").change()
 
+})
+
+$(() => {
+  $(window).resize(dirty())
 })
 
 var search = s => {
