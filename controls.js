@@ -55,8 +55,6 @@ $(function () {
 
 - Change the detail options (systems, planets, satellits.)
 
-- Tilt controls temporarily disabled.
-
 - Click the House Triangulum logo to hide the option panel.`
   $("#detailsWords").html(markdown.makeHtml(s))
 })
@@ -168,12 +166,6 @@ var addSvgTouchHandlers = () => {
   }
 
 
-  var setTilt = (t) => {
-    focus.tilt = 0 //constrain(0, t, 80)
-    $("#optionTilt")[0].value = focus.tilt
-    updateTilt()
-  }
-
   // Options menu
 
   $("#optionLOD").change(function (e) {
@@ -182,11 +174,6 @@ var addSvgTouchHandlers = () => {
 
   $("#optionLOD").change()
 
-  $("#optionTilt").change(function (e) {
-    setTilt(parseInt($("#optionTilt")[0].value))
-  })
-
-  $("#optionTilt").change()
 
 
   $("#optionZoom").change(function (e) {
@@ -277,7 +264,6 @@ var addSvgTouchHandlers = () => {
             avgYChange = (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY) / 2
             distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
             setZoom(focus.zoom + distYChange / 10)
-            setTilt(focus.tilt + avgYChange / 10)
           }
         }
       }

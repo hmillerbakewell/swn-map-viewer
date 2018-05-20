@@ -5,21 +5,15 @@ var focus = {
   speed: 0,
   zoom: 50,
   fps: 10,
-  tilt: 30,
   spaceTime: (new Date()).getTime(),
   systemToXY: (sx, sy) => {
-    var topSqueeze = Math.cos(focus.tilt * Math.PI / 180)
-    var distUp = 1 - (sy / galaxy.rows)
-    var midSqueeze = (1 - distUp) + distUp * topSqueeze
     var rx = Math.round(sx)
     return {
-      x: midSqueeze * sx + (1 - midSqueeze) * galaxy.columns / 2,
+      x: sx + galaxy.columns / 2,
       y: sy - 0.5 * (rx % 2)
     }
   }
 }
-
-var tiltMatrix = new Snap.Matrix()
 
 var galaxy
 
@@ -89,7 +83,6 @@ var spin = (radius, speed, offset) => {
 
 var position = objectId => {
 
-  var ySkew = tiltMatrix.d
   var dLocation = spaceObject => {
     if (typeof (spaceObject) == "undefined") {
       return {
@@ -129,7 +122,7 @@ var position = objectId => {
 
   return {
     x: skewedX.x,
-    y: skewedX.y * ySkew
+    y: skewedX.y
   }
 }
 
@@ -192,7 +185,7 @@ var drawElement = (svgGroup, data) => {
     case "system":
       var bv = (5.2) * ((data.hash % 123) / 123) - 0.5
       var size = 0.1 + 0.1 * Math.pow((data.hash % 123) / 123, 1.5)
-      var midColour= "#FFFFFF"
+      var midColour = "#FFFFFF"
       var finalColour = bv_to_rgb(bv)
       c = svgGroup.circle(0, 0, scale * size).attr({
         fill: svg.gradient(`r(0.5, 0.5, 0.5)${midColour}-${midColour}:25-${finalColour}`)
@@ -204,22 +197,22 @@ var drawElement = (svgGroup, data) => {
         case "humanMiscible":
           surfaceColour = "#AADDFF"
           break;
-          case "remnant":
+        case "remnant":
           surfaceColour = "#BB88DD"
           break;
-          case "none":
+        case "none":
           surfaceColour = "#999999"
           break;
-          case "engineered":
+        case "engineered":
           surfaceColour = "#AAEEEE"
           break;
-          case "hybrid":
+        case "hybrid":
           surfaceColour = "#EE5555"
           break;
-          case "microbial":
+        case "microbial":
           surfaceColour = "#55EE55"
           break;
-          case "immiscible":
+        case "immiscible":
           surfaceColour = "#FFAAAA"
           break;
         default:
@@ -277,7 +270,6 @@ var drawElement = (svgGroup, data) => {
         stroke: "grey",
         "stroke-width": scale * 0.08
       })
-      c.transform(`s1,${tiltMatrix.d}`)
       break;
     default:
       c = svgGroup.circle(0, 0, scale * 0.1).attr({
@@ -298,7 +290,9 @@ var updateSvg = function () {
   var viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth)
   var viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight)
   var left = galaxyWidth * focus.x / 100 - viewWidth / 2
-  var top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
+  var top = galaxyWidth * (focus.y / 100) - viewHeight / 2
+
+  var d = diminishingScale
 
   for (keypair of galaxy.map) {
     var o = keypair[1]
@@ -308,18 +302,8 @@ var updateSvg = function () {
       var visible = (o.depth <= focus.detail)
       if (visible) {
         var loc = position(o.id)
-        var d = diminishingScale
-        var distFromFocus = (g.transform().globalMatrix.f / mapSize - focus.y / 100) * tiltMatrix.d
-        var distScale = 1 // 0.8 + 0.1 * distFromFocus
+        g.transform(`m ${d}, 0, 0, ${d}, ${loc.x}, ${loc.y}`)
 
-        switch (o.type) {
-          case "asteroidBelt":
-            var c = svg.select("#group" + keypair[0] + " > circle")
-            c.transform(`S1,${tiltMatrix.d}`)
-          default:
-            g.transform(`m ${d* distScale}, 0, 0, ${d* distScale}, ${loc.x}, ${loc.y}`)
-
-        }
         g.attr({
           visibility: "visible"
         })
@@ -331,10 +315,14 @@ var updateSvg = function () {
     }
   }
 
+  var viewBoxStr = `${left} ${top} ${viewWidth} ${viewHeight}`
 
-  svg.attr({
-    viewBox: `${left}, ${top}, ${viewWidth}, ${viewHeight}`
-  })
+  if (svg.attr("viewBox").vb != viewBoxStr) {
+    svg.attr({
+      viewBox: viewBoxStr
+    })
+  }
+
 
 }
 
@@ -346,7 +334,7 @@ var initialiseSvg = function () {
   const viewWidth = (1 - (focus.zoom / 100)) * (galaxyWidth + 2)
   const viewHeight = (1 - (focus.zoom / 100)) * (galaxyHeight + 2)
   const left = galaxyWidth * focus.x / 100 - viewWidth / 2
-  const top = galaxyWidth * (focus.y / 100) * tiltMatrix.d - viewHeight / 2
+  const top = galaxyWidth * (focus.y / 100) - viewHeight / 2
 
   svg.clear()
   svg.attr({
@@ -372,11 +360,6 @@ var initialiseSvg = function () {
 
 
 }
-
-var updateTilt = () => {
-  tiltMatrix.d = Math.cos((focus.tilt) * Math.PI / 180)
-}
-
 
 var svg
 var baseTime = (new Date()).getTime()
