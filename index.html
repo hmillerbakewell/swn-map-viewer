@@ -48,12 +48,24 @@
       position: fixed;
       right: 2.5%;
       top: 2.5%;
-      width: 5%;
-      height: 5%;
+      width: 6em;
+      height: 6em;
+    }
+
+    table .options {
+      table-layout: fixed;
+    }
+
+    .columnLeft {
+      width: 25%;
+    }
+
+    .columnRight {
+      width: 75%;
     }
 
 
-    #detailsClose {
+    .rightButton {
       text-align: right;
     }
 
@@ -84,7 +96,11 @@
       <h2>Options</h2>
 
 
-      <table>
+      <table class="options">
+        <colgroup>
+          <col class="columnLeft">
+          <col class="columnRight">
+        </colgroup>
         <tr>
           <td>
             Animation
@@ -122,9 +138,32 @@
     </div>
     <div id="details">
       <div id="detailsWords">Words.</div>
-      <div id="detailsClose">
+      <div id="detailsClose" class="rightButton">
         <button onClick="updateBodySelection('')">Close</button>
       </div>
+    </div>
+    <div id="search">
+      <table class="options">
+        <colgroup>
+          <col class="columnLeft">
+          <col class="columnRight">
+        </colgroup>
+        <tr>
+          <td>
+            Search
+          </td>
+          <td>
+            <input type="text" id="searchInput">
+          </td>
+        </tr>
+      </table>
+      <div id="searchTextbox">
+      </div>
+      <div id="searchResults">
+      </div>
+    </div>
+    <div id="searchResultsClose" class="rightButton">
+      <button onClick='$("#searchInput")[0].value = "";$("#searchInput").change()'>Clear results</button>
     </div>
   </div>
   <div id="wordsToggle">

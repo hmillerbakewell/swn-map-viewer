@@ -337,3 +337,72 @@ $(function () {
     toggleWords()
   })
 })
+
+$(() => {
+
+  $("#searchInput").change(() => {
+    var maxResults = 10
+    var input = $("#searchInput")[0].value
+    var results = search(input)
+    var listHolder = $("#searchResults")
+    listHolder.empty()
+    $("#searchResultsClose").hide()
+    if(results.length > 0){
+
+
+    var goto = function (e) {
+      updateBodySelection($(e.target).attr("bodyId"))
+    }
+
+    var resultsDivs = []
+
+    for (var i = 0; i < Math.min(results.length, maxResults); i++) {
+      var o = results[i][0]
+      var a = results[i][1]
+      var li = $("<li>")
+      var name = $("<a>", {
+        bodyId: o.id
+      }).text(o.name).click(goto)
+      li.append(name)
+      if (a) {
+        var sub = $("<p>").text(`${a}: ${o.attributes[a]}`)
+        li.append(sub)
+      }
+      resultsDivs.push(li)
+    }
+    if (results.length > maxResults) {
+      resultsDiv.push($("<li>").append($("<p>").text(`Showing first ${maxResults} results only.`)))
+    }
+
+    var ul = $("<ul>")
+    resultsDivs.forEach(v => ul.append(v))
+    listHolder.append(ul)
+    $("#searchResultsClose").show()
+    listHolder.append(hideMessage)
+  } 
+  })
+
+  $("#searchInput")[0].value = "";$("#searchInput").change()
+
+})
+
+var search = s => {
+  var results = []
+  if (s.length > 0) {
+    var m = new RegExp(s, "i")
+
+    var searchRecursive = o => {
+      if (o.name.match(m)) results.push([o, ""])
+      if (o.attributes) {
+        for (attr in o.attributes) {
+          if (o.attributes[attr].toString().match(m)) results.push([o, attr])
+        }
+      }
+      if (o.children) o.children.forEach(searchRecursive)
+    }
+
+    searchRecursive(galaxy)
+  }
+  return results
+
+}
