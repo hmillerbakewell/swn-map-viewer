@@ -20,9 +20,14 @@ var galaxy
 
 var createLookup = function (d) {
   var objectLookup = new Map()
+
+  var sectorID = ""
   // register object IDs
   for (var bodyType in d) {
     for (var bodyID in d[bodyType]) {
+      if (bodyType == "sector") {
+        sectorID = bodyID
+      }
       var objectReference = Object.assign({
         type: bodyType,
         id: bodyID
@@ -45,6 +50,7 @@ var createLookup = function (d) {
       }
     }
   }
+  objectLookup.set("sector", objectLookup.get(sectorID))
   return objectLookup
 }
 
@@ -80,11 +86,11 @@ var createGalaxy = function (objectLookup) {
     return o
   })
 
-  return Object.assign({
-    map: map,
-    systemGet: systemGet,
-    get: (id) => map.get(id)
-  }, swapOutChildren(objectLookup.get("m11ZXBOt6xiJGo21EKio")), {})
+    return Object.assign({
+      map: map,
+      systemGet: systemGet,
+      get: (id) => map.get(id)
+    }, swapOutChildren(objectLookup.get("sector")), {})
 }
 
 var time = 0
