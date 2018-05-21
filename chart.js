@@ -116,10 +116,10 @@ var position = objectId => {
         }
       case "blackHole":
       case "system":
-        var halfWobble = 0.1
+        var halfWobble = 0.2
         return {
           x: spaceObject.x - halfWobble + 2 * halfWobble * (hash % 10) / 10,
-          y: spaceObject.y - halfWobble + 2 * halfWobble * (hash % 13) / 13
+          y: spaceObject.y - halfWobble + 2 * halfWobble * (hash % 13) / 13 + 0.5 * (spaceObject.x % 2 == 0)
         }
         break;
       case "asteroidBelt":
