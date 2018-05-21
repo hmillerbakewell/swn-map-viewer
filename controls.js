@@ -419,7 +419,13 @@ $(() => {
 })
 
 $(() => {
-  $(window).resize(dirty())
+  $(window).resize(resizeHandler).on("rotationchange", resizeHandler)
+  $("body").resize(resizeHandler)
+
+  var resizeHandler = () => {
+    dirty()
+    log("resize")
+  }
 
   $(window).on(
     "dragover",
