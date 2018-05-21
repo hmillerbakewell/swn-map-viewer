@@ -182,8 +182,8 @@ var addSvgTouchHandlers = () => {
   var shiftFocus = (dx, dy) => {
     var size = $("#chart")[0].getBoundingClientRect()
     var canvasSize = Math.min(size.width, size.height)
-    var x = constrain(0, focus.x - dx / (focus.zoom * canvasSize), galaxy.columns)
-    var y = constrain(0, focus.y - dy / (focus.zoom * canvasSize), galaxy.rows)
+    var x = constrain(-1, focus.x - dx / (focus.zoom * canvasSize), galaxy.columns+1)
+    var y = constrain(-1, focus.y - dy / (focus.zoom * canvasSize), galaxy.rows+1)
     setFocus(x, y)
   }
 
