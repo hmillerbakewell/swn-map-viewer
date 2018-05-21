@@ -19,21 +19,19 @@ updateBodySelection = (bodyId) => {
         var s = `## ${capitalise(details(o.id))}
 ${attributes(o.attributes)}`
         if (o.parentEntity != "sector") {
-          s +=
-
-            `
+          s += `
 
 ### Parent ${details(o.parent)}`
         }
 
         if (o.children) {
-          s+=`
+          s += `
 ### Children:`
-        
+
           for (c in o.children) {
             log()
             s += `
-- <a onclick='updateBodySelection("${o.children[c].id}")' bodyid='${o.children[c].id}'>${o.children[c].name}</a>`
+- <a onclick='updateBodySelection("${o.children[c].id}"); moveTowards("${o.children[c].id}")' bodyid='${o.children[c].id}'>${o.children[c].name}</a>`
           }
         }
 
@@ -98,7 +96,8 @@ var details = id => {
       description = " (" + description + ")"
     }
     var type = spreadCamel(o.type)
-    return `${type}: <a onclick='updateBodySelection("${o.id}")' bodyid='${o.id}'>${o.name}</a>${description}`
+    return `${type}: <a onclick='updateBodySelection("${o.id}")` +
+      `;moveTowards("${o.id}")' bodyid='${o.id}'>${o.name}</a>${description}`
   } else {
     return ``
   }
@@ -133,25 +132,45 @@ var constrain = (min, val, max) => {
 }
 
 var moveTowards = (id) => {
+
+  $("#optionSpeed").val(0)
+
+  $("#optionSpeed").change()
+
+  $("#optionLOD").val(Math.max(focus.detail, galaxy.get(id).depth))
+  $("#optionLOD").change()
+
   var loc = Snap("#group" + id).transform().localMatrix
-  moveToCoords(loc.e, loc.f)
+  moveToCoords(loc.e, loc.f, Math.pow(diminishingScale, 1.5 - galaxy.map.get(id).depth))
 }
 
-var moveToCoords = (x, y) => {
+var moveToCoords = (x, y, z) => {
   drag.focusTarget = {
     x: x,
-    y: y
+    y: y,
+    z: z
   }
   drag.focusTime = 700
   drag.focusSpeed = Math.sqrt(Math.pow(focus.x - x, 2) + Math.pow(focus.y - y, 2)) / drag.focusTime
+  drag.zoomSpeed = (z - focus.zoom) / drag.focusTime
   dirty()
 }
 
 
 var setFocus = (x, y) => {
-  focus.x = constrain(0, x, 100)
-  focus.y = constrain(0, y, 100)
+  focus.x = constrain(-10, x, 110)
+  focus.y = constrain(-10, y, 110)
   dirty()
+}
+
+var setZoom = (z) => {
+  var range = 8
+  var shift = 0
+  if (z) {
+    zz = constrain(1, z, 99)
+    focus.zoom = Math.exp(Math.log(2) * range * (zz - 50) / 100 - shift)
+  }
+  $("#optionZoom")[0].value = (Math.log(focus.zoom) + shift) * 100 / (Math.log(2) * range) + 50
 }
 
 var dirty = () => {
@@ -163,17 +182,12 @@ var addSvgTouchHandlers = () => {
   var shiftFocus = (dx, dy) => {
     var size = $("#chart")[0].getBoundingClientRect()
     var canvasSize = Math.min(size.width, size.height)
-    var x = constrain(0, focus.x - focus.zoom * dx / (canvasSize), galaxy.columns)
-    var y = constrain(0, focus.y - focus.zoom * dy / (canvasSize), galaxy.rows)
+    var x = constrain(0, focus.x - dx / (focus.zoom * canvasSize), galaxy.columns)
+    var y = constrain(0, focus.y - dy / (focus.zoom * canvasSize), galaxy.rows)
     setFocus(x, y)
   }
 
 
-
-  var setZoom = (z) => {
-    zz = constrain(1, z, 99)
-    focus.zoom = Math.pow(2, 3 * (50 - zz) / 50 + 2)
-  }
 
   var setSpeed = (s) => {
     focus.speed = constrain(0, s, 5)
@@ -192,6 +206,9 @@ var addSvgTouchHandlers = () => {
 
 
 
+  $("#optionZoom").on("input", function (e) {
+    setZoom(parseInt($("#optionZoom")[0].value))
+  })
   $("#optionZoom").change(function (e) {
     setZoom(parseInt($("#optionZoom")[0].value))
   })
@@ -348,14 +365,15 @@ $(function () {
 
 
 var gotoEvent = function (e) {
+  log(e)
   updateBodySelection($(e.target).attr("bodyId"))
   moveTowards($(e.target).attr("bodyId"))
 }
 
 $(() => {
 
-  $("#searchInput").change(() => {
-    var maxResults = 10
+  var updateResults = () => {
+    var maxResults = 50
     var input = $("#searchInput")[0].value
     var results = search(input)
     var listHolder = $("#searchResults")
@@ -371,7 +389,7 @@ $(() => {
         var o = results[i][0]
         var a = results[i][1]
         var li = $("<li>")
-        var name = $("<a>", {
+        var name = $("<button>", {
           bodyId: o.id
         }).text(o.name).click(gotoEvent)
         li.append(name)
@@ -390,15 +408,78 @@ $(() => {
       listHolder.append(ul)
       $("#searchResultsClose").show()
     }
-  })
+  }
 
-  $("#searchInput")[0].value = "";
+
+  $("#searchInput").keyup(updateResults).change(updateResults)
+
+  $("#searchInput")[0].value = ""
   $("#searchInput").change()
 
 })
 
 $(() => {
   $(window).resize(dirty())
+
+  $(window).on(
+    "dragover",
+    function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  )
+  $(window).on(
+    "dragenter",
+    function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  )
+
+  $(window).on("drop", (e) => {
+    if (e.originalEvent.dataTransfer.files.length) {
+      log(e)
+      e.preventDefault();
+      e.stopPropagation();
+      var FR = new FileReader()
+      FR.onload = (e2) => {
+        loadData(JSON.parse(e2.target.result))
+      }
+      FR.readAsText(e.originalEvent.dataTransfer.files[0])
+      hideDisclaimer()
+    }
+  })
+
+  $("#fileUpload").change((e) => {
+    var file = $("#fileUpload")[0].files[0]
+    var FR = new FileReader()
+    FR.onload = (e2) => {
+      loadData(JSON.parse(e2.target.result))
+      hideDisclaimer()
+    }
+    FR.readAsText(file)
+  })
+
+  $(".urlLoader").click((e) => {
+    var url = $(e.target).attr("url")
+    if (url.length > 0) {
+      loadURL(url)
+      hideDisclaimer()
+    } else {
+      $("#fileUpload").click()
+    }
+  })
+
+  var hideDisclaimer = () => {
+    $("#disclaimer").hide()
+    $("#words").show()
+    $("#wordsToggle").show()
+  }
+
+
+  $("#words").hide()
+  $("#wordsToggle").hide()
+
 })
 
 var search = s => {

@@ -82,13 +82,14 @@ var createGalaxy = function (objectLookup) {
 
   return Object.assign({
     map: map,
-    systemGet: systemGet
+    systemGet: systemGet,
+    get: (id) => map.get(id)
   }, swapOutChildren(objectLookup.get("m11ZXBOt6xiJGo21EKio")), {})
 }
 
 var time = 0
 
-var diminishingScale = 0.35
+var diminishingScale = 0.4
 
 var spin = (radius, speed, offset) => {
   var dist = speed * focus.spaceTime / 1000 + offset
@@ -115,9 +116,10 @@ var position = objectId => {
         }
       case "blackHole":
       case "system":
+        var halfWobble = 0.1
         return {
-          x: spaceObject.x - 0.05 + 0.1 * (hash % 10) / 10,
-          y: spaceObject.y - 0.05 + 0.1 * (hash % 13) / 13
+          x: spaceObject.x - halfWobble + 2 * halfWobble * (hash % 10) / 10,
+          y: spaceObject.y - halfWobble + 2 * halfWobble * (hash % 13) / 13
         }
         break;
       case "asteroidBelt":
@@ -198,13 +200,15 @@ var childRadius = childObject => {
   // var shuffle = Math.pow(base, (parentHash % 13) * childObject.childId) % parent.children.length
 
   // max radius value is 0.5, because we want galaxies of approximate width 1
-  return 0.4 * (diminishingScale + (1 - diminishingScale) * (1 + childObject.childId + 0.9 * (childHash % 10) / 10) / (1 + parent.children.length))
+  var min = (parent.type == "system") ? 1.5 * diminishingScale : 0.5 * diminishingScale
+  var max = (parent.type == "system") ? 0.8 : 0.4
+  return 0.4 * (min + (max - min) * (1 + childObject.childId + 0.9 * (childHash % 10) / 10) / (1 + parent.children.length))
 
 }
 
 var drawElement = (svgGroup, data) => {
   var c
-  var scale = 0.9 + 0.2 * ((hashCode(data.id) % 23) / 23)
+  var scale = (0.9 + 0.2 * ((hashCode(data.id) % 23) / 23)) * Math.pow(diminishingScale, (data.depth - 1) / 2)
   switch (data.type) {
     case "blackHole":
       c = svgGroup.circle(0, 0, scale * 0.3)
@@ -233,7 +237,7 @@ var drawElement = (svgGroup, data) => {
           surfaceColour = "#BB88DD"
           break;
         case "none":
-          surfaceColour = "#999999"
+          surfaceColour = "#AAA"
           break;
         case "engineered":
           surfaceColour = "#AAEEEE"
@@ -296,6 +300,26 @@ var drawElement = (svgGroup, data) => {
         fill: "#EEE"
       })
       break;
+    case "gasGiantMine":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "#7E7"
+      })
+      break;
+    case "asteroidBase":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "#476"
+      })
+      break;
+    case "refuelingStation":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "#BB7"
+      })
+      break;
+    case "researchBase":
+      c = svgGroup.circle(0, 0, scale * 0.2).attr({
+        fill: "#7BB"
+      })
+      break;
     case "asteroidBelt":
       c = svgGroup.circle(0, 0, childRadius(data) / (diminishingScale * diminishingScale)).attr({
         fill: "none",
@@ -304,7 +328,7 @@ var drawElement = (svgGroup, data) => {
       })
       break;
     default:
-      log("Hit default")
+      log("Hit default " + data.type)
       c = svgGroup.circle(0, 0, scale * 0.1).attr({
         fill: "white"
       })
@@ -348,8 +372,8 @@ var updateViewPort = () => {
   var galaxyWidth = galaxy.columns
   var galaxyHeight = galaxy.rows
 
-  var viewWidth = Math.max(focus.zoom, 0.001)
-  var viewHeight = Math.max(focus.zoom, 0.001)
+  var viewWidth = Math.max(1 / focus.zoom, 0.001)
+  var viewHeight = Math.max(1 / focus.zoom, 0.001)
   var left = focus.x - viewWidth / 2
   var top = focus.y - viewHeight / 2
 
@@ -410,33 +434,37 @@ var svg
 var baseTime = (new Date()).getTime()
 var lastUpdate = null
 var redraw = (timeStamp) => {
-  var delta = timeStamp - lastUpdate
-  if (delta > (1000 / focus.fps)) {
-    if (drag.focusTime > 0) {
+  if (galaxy) {
+    var delta = timeStamp - lastUpdate
+    if (delta > (1000 / focus.fps)) {
+      if (drag.focusTime > 0) {
 
-      drag.focusTime = Math.max(0, drag.focusTime - delta)
-      var dx = drag.focusTarget.x - focus.x
-      var dy = drag.focusTarget.y - focus.y
-      var dDist = Math.sqrt(dx * dx + dy * dy)
-      var dist = Math.min(dDist, drag.focusSpeed * delta)
-      if (dist > 0.001) {
-        setFocus(focus.x + dist * dx / dDist, focus.y + dist * dy / dDist)
+        drag.focusTime = Math.max(0, drag.focusTime - delta)
+        var dx = drag.focusTarget.x - focus.x
+        var dy = drag.focusTarget.y - focus.y
+        var dDist = Math.sqrt(dx * dx + dy * dy)
+        var dist = Math.min(dDist, drag.focusSpeed * delta)
+        if (dist > 0.0000001) {
+          setFocus(focus.x + dist * dx / dDist, focus.y + dist * dy / dDist)
+        }
+        focus.zoom += drag.zoomSpeed * delta
+        setZoom(null)
+
       }
-
+      lastUpdate = timeStamp
+      focus.spaceTime = focus.spaceTime + focus.speed
+      if (focus.dirty || focus.speed > 0) {
+        updateSvg()
+        focus.dirty = false
+      }
+      updateViewPort()
+      /*svgPanZoom('#chart', {
+        zoomEnabled: true,
+        controlIconsEnabled: true,
+        fit: true,
+        center: true,
+      })*/
     }
-    lastUpdate = timeStamp
-    focus.spaceTime = focus.spaceTime + focus.speed
-    if (focus.dirty || focus.speed > 0) {
-      updateSvg()
-      focus.dirty = false
-    }
-    updateViewPort()
-    /*svgPanZoom('#chart', {
-      zoomEnabled: true,
-      controlIconsEnabled: true,
-      fit: true,
-      center: true,
-    })*/
   }
   window.requestAnimationFrame(redraw)
 }
@@ -456,11 +484,21 @@ $(function () {
 
 
 
+  window.requestAnimationFrame(redraw)
 
-  $.getJSON("./AcheronRho.json", function (d) {
-    var objectLookup = createLookup(d)
-    galaxy = createGalaxy(objectLookup)
-    initialiseSvg()
-    window.requestAnimationFrame(redraw)
-  })
 })
+
+var loadData = d => {
+  galaxy = null
+
+  dirty()
+  var objectLookup = createLookup(d)
+  galaxy = createGalaxy(objectLookup)
+  initialiseSvg()
+}
+
+var loadURL = u => {
+  $.getJSON(u, function (d) {
+    loadData(d)
+  })
+}

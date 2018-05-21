@@ -82,19 +82,38 @@
 
     #disclaimer {
       position: absolute;
-      background: white;
-      width: 100%;
+      background: #222255AA;
+      padding: 2%;
+      border-radius: 20px;
+      border: 1px solid #111133;
+      color: white;
+      left: 20%;
+      top: 20%;
+      height: 60%;
+      width: 60%;
       text-align: center;
+    }
+
+    #disclaimer>table tr td:nth-child(1) {
+      text-align: center;
+      height: 25vmin;
+      margin: 1em;
+    }
+
+    
+    #disclaimer>table tr td:nth-child(2) {
+      padding: 1em;
+    }
+
+    button.urlLoader {
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
 
 <body>
-  <div id="disclaimer">
-    Far Verona belongs to Rollplay, and the data is from the Sectors Without Number json export. I am not affiliated with Rollplay,
-    beyond contributing to their Patreon.
-    <a onclick="$(this).parent().hide()"> {hide} </a>
-  </div>
+
   <div id="map"></div>
   <div id="words">
     <div id="options">
@@ -123,13 +142,14 @@
               <option value="1">Systems</option>
               <option value="2">Planets</option>
               <option value="3" selected="selected">Satellites</option>
+              <option value="4">Satellites of satellites</option>
             </select>
           </td>
         </tr>
         <tr>
           <td>Zoom</td>
           <td>
-            <input type="range" min="1" max="99" value="50" class="slider" id="optionZoom">
+            <input type="range" min="1" max="99" value="10" class="slider" id="optionZoom">
           </td>
         </tr>
       </table>
@@ -166,5 +186,37 @@
   </div>
   <div id="wordsToggle">
     <svg width="100%" height="100%"></svg>
+  </div>
+  <div id="disclaimer">
+    <div>
+      <h1>Choose your galaxy</h1>
+    </div>
+    <table>
+      <colgroup>
+        <col class="columnLeft" align="center">
+        <col class="columnRight">
+      </colgroup>
+      <tr>
+        <td>
+          <button class="urlLoader" url="./AcheronRho.json">Acheron Rho</button>
+        </td>
+        <td>
+          Far Verona belongs to Rollplay, and the data is from the Sectors Without Number json export. I am not affiliated with Rollplay,
+          beyond contributing to their Patreon.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="urlLoader" url="">Upload your own!</button>
+        </td>
+        <td>
+          You can drag and drop your Sectors Without Number data into this window at any time.
+        </td>
+      </tr>
+    </table>
+    <input type="file" id="fileUpload" style="display:none">
+    <div>
+      By Hector Miller-Bakewell
+    </div>
   </div>
 </body>
