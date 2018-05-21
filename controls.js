@@ -11,7 +11,7 @@ updateBodySelection = (bodyId) => {
     var getDescription = () => {
       var o = galaxy.map.get(bodyId)
 
-      
+
 
       var system = galaxy.systemGet(o)
 
@@ -19,12 +19,26 @@ updateBodySelection = (bodyId) => {
         var s = `## ${capitalise(details(o.id))}
 ${attributes(o.attributes)}`
         if (o.parentEntity != "sector") {
-          s += `
+          s +=
+
+            `
 
 ### Parent ${details(o.parent)}`
         }
-        log(system)
+
+        if (o.children) {
+          s+=`
+### Children:`
+        
+          for (c in o.children) {
+            log()
+            s += `
+- <a onclick='updateBodySelection("${o.children[c].id}")' bodyid='${o.children[c].id}'>${o.children[c].name}</a>`
+          }
+        }
+
         s += `
+
 <a onclick='moveTowards("${system.id}")'>System ${system.x}-${system.y}</a>
         `
         return s
@@ -84,7 +98,7 @@ var details = id => {
       description = " (" + description + ")"
     }
     var type = spreadCamel(o.type)
-    return `${type}: ${o.name}${description}`
+    return `${type}: <a onclick='updateBodySelection("${o.id}")' bodyid='${o.id}'>${o.name}</a>${description}`
   } else {
     return ``
   }
@@ -119,19 +133,18 @@ var constrain = (min, val, max) => {
 }
 
 var moveTowards = (id) => {
-  var loc = Snap("#group"+id).transform().globalMatrix
-  log(Snap("#group"+id).transform())
+  var loc = Snap("#group" + id).transform().localMatrix
   moveToCoords(loc.e, loc.f)
 }
 
 var moveToCoords = (x, y) => {
-  log(`${x} - ${y}`)
   drag.focusTarget = {
     x: x,
     y: y
   }
-  drag.focusTime = 1000
+  drag.focusTime = 700
   drag.focusSpeed = Math.sqrt(Math.pow(focus.x - x, 2) + Math.pow(focus.y - y, 2)) / drag.focusTime
+  dirty()
 }
 
 
@@ -172,6 +185,7 @@ var addSvgTouchHandlers = () => {
 
   $("#optionLOD").change(function (e) {
     focus.detail = parseInt($("#optionLOD")[0].value)
+    dirty()
   })
 
   $("#optionLOD").change()
@@ -281,6 +295,7 @@ var addSvgTouchHandlers = () => {
 }
 
 var toggleWords = () => {
+  dirty()
   drag.showWords = !drag.showWords
 
 
@@ -331,6 +346,12 @@ $(function () {
   })
 })
 
+
+var gotoEvent = function (e) {
+  updateBodySelection($(e.target).attr("bodyId"))
+  moveTowards($(e.target).attr("bodyId"))
+}
+
 $(() => {
 
   $("#searchInput").change(() => {
@@ -343,10 +364,6 @@ $(() => {
     if (results.length > 0) {
 
 
-      var goto = function (e) {
-        updateBodySelection($(e.target).attr("bodyId"))
-        moveTowards($(e.target).attr("bodyId"))
-      }
 
       var resultsDivs = []
 
@@ -356,7 +373,7 @@ $(() => {
         var li = $("<li>")
         var name = $("<a>", {
           bodyId: o.id
-        }).text(o.name).click(goto)
+        }).text(o.name).click(gotoEvent)
         li.append(name)
         if (a) {
           var sub = $("<p>").text(`${a}: ${o.attributes[a]}`)

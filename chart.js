@@ -88,7 +88,7 @@ var createGalaxy = function (objectLookup) {
 
 var time = 0
 
-var diminishingScale = 0.3
+var diminishingScale = 0.35
 
 var spin = (radius, speed, offset) => {
   var dist = speed * focus.spaceTime / 1000
@@ -108,7 +108,6 @@ var position = objectId => {
     var hash = spaceObject.hash
     switch (spaceObject.type) {
 
-      case "asteroidBelt":
       case "sector":
         return {
           x: 0,
@@ -121,21 +120,31 @@ var position = objectId => {
           y: spaceObject.y - 0.05 + 0.1 * (hash % 13) / 13
         }
         break;
+      case "asteroidBelt":
+        var parent = galaxy.map.get(spaceObject.parent)
+        var ppos = position(parent.id)
+        return {
+          x: ppos.x,
+          y: ppos.y
+        }
+        break;
       default:
         var parent = galaxy.map.get(spaceObject.parent)
-        var radius = childRadius(spaceObject) / diminishingScale
+        var ppos = position(parent.id)
+        var radius = childRadius(spaceObject) * Math.pow(diminishingScale, spaceObject.depth - 2)
         if (spaceObject.parentEntity == "asteroidBelt") {
           radius = 1 / childRadius(galaxy.map.get(spaceObject.parent))
         }
         var oSpin = spin(radius, (2 * (hashCode(parent.id) % 2) - 1) * Math.abs(1 + (hash % 100) / 10), hash % 3601)
         return {
-          x: oSpin[0],
-          y: oSpin[1]
+          x: ppos.x + oSpin[0],
+          y: ppos.y + oSpin[1]
         }
     }
   }
 
-  const skewedX = dLocation(galaxy.map.get(objectId))
+  const o = galaxy.map.get(objectId)
+  const skewedX = dLocation(o)
 
   return {
     x: skewedX.x,
@@ -155,11 +164,11 @@ var hashCode = function (string) {
   return Math.abs(hash); // abs, so it plays well with modulo
 }
 
-var makeChild = (parentSVG, childId, callback) => {
+var makeChild = (parentLocation, childId, callback) => {
   var o = galaxy.map.get(childId)
-  var g = parentSVG.group()
+  var g = svg.group()
   var loc = position(o.id)
-  g.transform(`t${loc.x},${loc.y})s${diminishingScale}`)
+  g.transform(`t${loc.x},${loc.y})s${Math.pow(diminishingScale, -o.depth)}`)
   drawElement(g, o)
   g.attr({
     id: "group" + childId,
@@ -201,7 +210,7 @@ var drawElement = (svgGroup, data) => {
       break;
     case "system":
       var bv = (5.2) * ((data.hash % 123) / 123) - 0.5
-      var size = 0.1 + 0.1 * Math.pow((data.hash % 123) / 123, 1.5)
+      var size = 0.3 + 0.1 * Math.pow((data.hash % 123) / 123, 1.5)
       var midColour = "#FFFFFF"
       var finalColour = bv_to_rgb(bv)
       c = svgGroup.circle(0, 0, scale * size).attr({
@@ -301,11 +310,11 @@ var drawElement = (svgGroup, data) => {
 
 var updateSvg = function () {
 
-  var d = diminishingScale
 
   for (keypair of galaxy.map) {
     var o = keypair[1]
     var g = svg.select("#group" + keypair[0])
+    var d = Math.pow(diminishingScale, o.depth)
     if (g) {
       // Some bodies won't have been drawn, so check for null svg element
       var visible = (o.depth <= focus.detail)
@@ -332,10 +341,17 @@ var updateViewPort = () => {
   var galaxyWidth = galaxy.columns
   var galaxyHeight = galaxy.rows
 
-  var viewWidth = focus.zoom
-  var viewHeight = focus.zoom
+  var viewWidth = Math.max(focus.zoom, 0.001)
+  var viewHeight = Math.max(focus.zoom, 0.001)
   var left = focus.x - viewWidth / 2
   var top = focus.y - viewHeight / 2
+
+  if (focus.x === NaN) {
+    focus.x = 0
+  }
+  if (focus.y === NaN) {
+    focus.y = 0
+  }
 
   var viewBoxStr = `${left} ${top} ${viewWidth} ${viewHeight}`
 
@@ -396,7 +412,9 @@ var redraw = (timeStamp) => {
       var dy = drag.focusTarget.y - focus.y
       var dDist = Math.sqrt(dx * dx + dy * dy)
       var dist = Math.min(dDist, drag.focusSpeed * delta)
-      setFocus(focus.x + dist * dx / dDist, focus.y + dist * dy / dDist)
+      if (dist > 0.001) {
+        setFocus(focus.x + dist * dx / dDist, focus.y + dist * dy / dDist)
+      }
 
     }
     lastUpdate = timeStamp
