@@ -1,10 +1,10 @@
 var focus = {
   x: 0,
   y: 0,
-  detail: 1,
+  detail: 2,
   speed: 0,
   zoom: 2,
-  fps: 15,
+  fps: 30,
   dirty: true,
   spaceTime: (new Date()).getTime(),
   systemToXY: (sx, sy) => {
@@ -91,7 +91,7 @@ var time = 0
 var diminishingScale = 0.35
 
 var spin = (radius, speed, offset) => {
-  var dist = speed * focus.spaceTime / 1000
+  var dist = speed * focus.spaceTime / 1000 + offset
   return [radius * Math.cos(dist), radius * Math.sin(dist)]
 }
 
@@ -129,13 +129,19 @@ var position = objectId => {
         }
         break;
       default:
-        var parent = galaxy.map.get(spaceObject.parent)
-        var ppos = position(parent.id)
-        var radius = childRadius(spaceObject) * Math.pow(diminishingScale, spaceObject.depth - 2)
         if (spaceObject.parentEntity == "asteroidBelt") {
-          radius = 1 / childRadius(galaxy.map.get(spaceObject.parent))
+          var parent = galaxy.map.get(galaxy.map.get(spaceObject.parent).parent)
+          var ppos = position(parent.id)
+          var radius = childRadius(galaxy.map.get(spaceObject.parent)) * 1.05 * Math.pow(diminishingScale, spaceObject.depth - 3)
+          var speed = Math.abs(1 + (galaxy.map.get(spaceObject.parent).hash % 100) / 10)
+        } else {
+          var parent = galaxy.map.get(spaceObject.parent)
+          var ppos = position(parent.id)
+          var radius = childRadius(spaceObject) * Math.pow(diminishingScale, spaceObject.depth - 2)
+          var speed = Math.abs(1 + (hash % 100) / 10)
         }
-        var oSpin = spin(radius, (2 * (hashCode(parent.id) % 2) - 1) * Math.abs(1 + (hash % 100) / 10), hash % 3601)
+        var systemSpin = 2 * (parent.hash % 2) - 1
+        var oSpin = spin(radius, systemSpin * speed, hash % 3601)
         return {
           x: ppos.x + oSpin[0],
           y: ppos.y + oSpin[1]
@@ -192,7 +198,7 @@ var childRadius = childObject => {
   // var shuffle = Math.pow(base, (parentHash % 13) * childObject.childId) % parent.children.length
 
   // max radius value is 0.5, because we want galaxies of approximate width 1
-  return 0.5 * (diminishingScale + (1 - diminishingScale) * (1 + childObject.childId + 0.9 * (childHash % 10) / 10) / (1 + parent.children.length))
+  return 0.4 * (diminishingScale + (1 - diminishingScale) * (1 + childObject.childId + 0.9 * (childHash % 10) / 10) / (1 + parent.children.length))
 
 }
 
@@ -298,6 +304,7 @@ var drawElement = (svgGroup, data) => {
       })
       break;
     default:
+      log("Hit default")
       c = svgGroup.circle(0, 0, scale * 0.1).attr({
         fill: "white"
       })

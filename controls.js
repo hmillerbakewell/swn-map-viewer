@@ -172,7 +172,7 @@ var addSvgTouchHandlers = () => {
 
   var setZoom = (z) => {
     zz = constrain(1, z, 99)
-    focus.zoom = Math.pow(2, 2 * (50 - zz) / 50 + 2)
+    focus.zoom = Math.pow(2, 3 * (50 - zz) / 50 + 2)
   }
 
   var setSpeed = (s) => {
