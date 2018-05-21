@@ -255,7 +255,7 @@ var addSvgTouchHandlers = () => {
     })
     .mousewheel(function (e) {
       var current = parseInt($("#optionZoom")[0].value)
-      $("#optionZoom")[0].value = constrain(1, current + e.deltaY / 2, 99)
+      $("#optionZoom")[0].value = constrain(1, current + e.deltaY, 99)
       $("#optionZoom").change()
       e.preventDefault()
       //$("#optionZoom").change()
