@@ -11,18 +11,9 @@ updateBodySelection = (bodyId) => {
     var getDescription = () => {
       var o = galaxy.map.get(bodyId)
 
-      var systemGet = body => {
-        if (body.parentEntity == "sector") {
-          return {
-            x: body.x,
-            y: body.y
-          }
-        } else {
-          return systemGet(galaxy.map.get(body.parent))
-        }
-      }
+      
 
-      var system = systemGet(o)
+      var system = galaxy.systemGet(o)
 
       if (typeof (o) != "undefined") {
         var s = `## ${capitalise(details(o.id))}
@@ -32,8 +23,9 @@ ${attributes(o.attributes)}`
 
 ### Parent ${details(o.parent)}`
         }
+        log(system)
         s += `
-### (System ${system.x}-${system.y})
+<a onclick='moveTowards("${system.id}")'>System ${system.x}-${system.y}</a>
         `
         return s
       }
@@ -127,8 +119,9 @@ var constrain = (min, val, max) => {
 }
 
 var moveTowards = (id) => {
-  var loc = position(id)
-  moveToCoords(loc.x, loc.y)
+  var loc = Snap("#group"+id).transform().globalMatrix
+  log(Snap("#group"+id).transform())
+  moveToCoords(loc.e, loc.f)
 }
 
 var moveToCoords = (x, y) => {
@@ -241,7 +234,7 @@ var addSvgTouchHandlers = () => {
       e.preventDefault()
       var x = e.pageX - $('#chart').offset().left
       var y = e.pageY - $('#chart').offset().top
-      //moveTowards( 100 * x / mapSize,  100 * y / mapSize)
+      //moveTowards(x / mapSize, y / mapSize)
     })
 
 
@@ -276,7 +269,7 @@ var addSvgTouchHandlers = () => {
             avgYChange = (last[0].pageY + last[1].pageY - touches[0].pageY - touches[1].pageY) / 2
             distYChange = Math.abs(touches[1].pageY - touches[0].pageY) - Math.abs(last[1].pageY - last[0].pageY)
             var current = parseInt($("#optionZoom")[0].value)
-            $("#optionZoom")[0].value = constrain(1, current  + distYChange / 10, 99)
+            $("#optionZoom")[0].value = constrain(1, current + distYChange / 10, 99)
             $("#optionZoom").change()
           }
         }
@@ -352,6 +345,7 @@ $(() => {
 
       var goto = function (e) {
         updateBodySelection($(e.target).attr("bodyId"))
+        moveTowards($(e.target).attr("bodyId"))
       }
 
       var resultsDivs = []
@@ -371,14 +365,13 @@ $(() => {
         resultsDivs.push(li)
       }
       if (results.length > maxResults) {
-        resultsDiv.push($("<li>").append($("<p>").text(`Showing first ${maxResults} results only.`)))
+        resultsDivs.push($("<li>").append($("<p>").text(`Showing first ${maxResults} results only.`)))
       }
 
       var ul = $("<ul>")
       resultsDivs.forEach(v => ul.append(v))
       listHolder.append(ul)
       $("#searchResultsClose").show()
-      listHolder.append(hideMessage)
     }
   })
 

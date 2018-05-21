@@ -50,6 +50,18 @@ var createLookup = function (d) {
 
 var createGalaxy = function (objectLookup) {
 
+  var systemGet = body => {
+    if (body.parentEntity == "sector") {
+      return {
+        id: body.id,
+        x: body.x,
+        y: body.y
+      }
+    } else {
+      return systemGet(galaxy.map.get(body.parent))
+    }
+  }
+
   var map = new Map()
 
   var swapOutChildren = (o => {
@@ -69,7 +81,8 @@ var createGalaxy = function (objectLookup) {
   })
 
   return Object.assign({
-    map: map
+    map: map,
+    systemGet: systemGet
   }, swapOutChildren(objectLookup.get("m11ZXBOt6xiJGo21EKio")), {})
 }
 
