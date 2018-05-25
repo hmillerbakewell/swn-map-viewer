@@ -37,7 +37,7 @@ ${attributes(o.attributes)}`
 
         s += `
 
-<a onclick='moveTowards("${system.id}")'>System ${system.x}-${system.y}</a>
+<a onclick='moveTowards("${system.id}")'>System ${system.x-1}-${system.y-1}</a>
         `
         return s
       }
